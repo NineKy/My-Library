@@ -1,6 +1,6 @@
 # Table of contents
 
-* [My Book](README.md)
+* [My Note](README.md)
 * [백준문제](baekjoon/README.md)
   * [동적계획법](baekjoon/dynamic_programming/README.md)
     * [피보나치 함수\(1003\)](baekjoon/dynamic_programming/1003.md)
