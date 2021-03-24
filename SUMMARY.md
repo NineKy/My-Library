@@ -2,6 +2,8 @@
 
 * [My Note](README.md)
 * [백준문제](baekjoon/README.md)
+  * [백트래킹](baekjoon/undefined/README.md)
+    * [Untitled](baekjoon/undefined/untitled.md)
   * [동적계획법](baekjoon/dynamic_programming/README.md)
     * [피보나치 함수\(1003\)](baekjoon/dynamic_programming/1003.md)
     * [신나는 함수 실행\(9184\)](baekjoon/dynamic_programming/9184.md)
