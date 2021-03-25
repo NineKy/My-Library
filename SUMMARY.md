@@ -2,6 +2,7 @@
 
 * [My Note](README.md)
 * [백준문제](baekjoon/README.md)
+  * [정렬](baekjoon/sorting.md)
   * [백트래킹](baekjoon/undefined/README.md)
     * [N과 M - 1\(15649\)](baekjoon/undefined/untitled.md)
     * [N과 M - 2\(15650\)](baekjoon/undefined/n-m-2-15650.md)
