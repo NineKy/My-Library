@@ -2,7 +2,7 @@
 description: 나의 기록장
 ---
 
-# My Note
+# Welcome To Kyu's Note!
 
 ## 공부를 하는 과정에서 기록해야할 것들, 공부해왔던 것들을 저장해두는 장소!!
 
