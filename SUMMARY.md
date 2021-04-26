@@ -2,6 +2,12 @@
 
 * [My Note](README.md)
 * [백준문제](baekjoon/README.md)
+  * [브루트 포스\(Brute Force\)](baekjoon/brute-force/README.md)
+    * [블랙잭\(2798\)](baekjoon/brute-force/2798.md)
+    * [분해합\(2231\)](baekjoon/brute-force/2231.md)
+    * [덩치\(7568\)](baekjoon/brute-force/7568.md)
+    * [체스판 다시 칠하기\(1018\)](baekjoon/brute-force/1018.md)
+    * [영화감독 슘\(1436\)](baekjoon/brute-force/1436.md)
   * [정렬](baekjoon/sorting/README.md)
     * [수 정렬하기\(2750\)](baekjoon/sorting/2750.md)
     * [수 정렬하기 2\(2751\)](baekjoon/sorting/2-2751.md)
