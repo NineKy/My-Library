@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Welcome To Kyu's Note!](README.md)
+* [WS 자바 스터디\(완\)](ws.md)
 * [백준문제](baekjoon/README.md)
   * [입출력과 사칙연산](baekjoon/i-o-and-calculate/README.md)
     * [We love kriii\(10718\)](baekjoon/i-o-and-calculate/we-love-kriii-10718.md)
