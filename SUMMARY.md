@@ -113,4 +113,7 @@
     * [LCS\(9251\)](baekjoon/dynamic_programming/lcs-9251.md)
     * [연속합\(1912\)](baekjoon/dynamic_programming/1912.md)
     * [평범한 배낭\(12865\)](baekjoon/dynamic_programming/12865.md)
+* [프로그래머스 문제](programmers/README.md)
+  * [소수 만들기](programmers/undefined.md)
+  * [모의고사](programmers/undefined-1.md)
 
