@@ -39,7 +39,37 @@
 
 
 
+자바스크립트
+
 ```text
+function solution(answers) {
+    var f1 = [1,2,3,4,5];
+    var f2 = [2,1,2,3,2,4,2,5];
+    var f3 = [3,3,1,1,2,2,4,4,5,5];
+    const result = [0,0,0];    
+    
+    for(var i=0; i<answers.length; i++){
+        if(answers[i] === f1[i%5])  result[0]++;
+        if(answers[i] === f2[i%8])  result[1]++;
+        if(answers[i] === f3[i%10]) result[2]++;
+    }
+    var max = Math.max(...result);
+    var index=0;
+    var answer = [];
+    for(var j=0; j<result.length; j++){
+        if(max === result[j]){
+            answer[index] = j+1;
+            index++;
+        }
+    }
+    
+    return answer;
+}
+
 
 ```
+
+
+
+
 

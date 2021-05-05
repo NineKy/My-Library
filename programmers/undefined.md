@@ -31,6 +31,8 @@
 
 
 
+자바스크립트
+
 ```text
 function solution(nums) {
     var count=0;
@@ -61,4 +63,8 @@ function primeNum(num){
 }
 
 ```
+
+
+
+
 
