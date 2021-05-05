@@ -49,16 +49,67 @@ Javascript을 사용
 
 * 배열에서의 함수 사용
   * concat\(\) : 인자로 주어진 배열이나 값들을 기존 배열에 합쳐서 새 배열을 반환
-    * const arr = \[1,2,3\]
-    * arr.concat\(4,5\) =&gt; \[1,2,3,4,5\]
-    * arr.concat\(\[4,5\]\) =&gt; \[1,2,3,4,5\]
-    * arr는 그대로 \[1,2,3\]임
-    * const라서 그대로? let이면 다른가? =&gt; ????
+    * ```text
+      const arr = [1,2,3]
+      arr.concat(4,5) //[1,2,3,4,5]
+      arr.concat([4,5]) //[1,2,3,4,5]
+
+      //arr는 그대로 [1,2,3]임
+      //const라서 그대로? let이면 다른가? => ?????
+      ```
   * filter\(\) : 배열의 원소 중 제공된 함수를 통과하는 원소를 반환하는 메소드
-    * const arr = \[1,2,3,4,5\]
-    * arr.forEach\(el=&gt;el&lt;3\) =&gt; \[1,2\]
-    * arr는 그대로 \[1,2,3\]
-  * includes\(\) : 
+    * ```text
+      const arr = [1,2,3,4,5]
+      arr.forEach(el=>el<3) //[1,2]
+
+      //arr는 그대로 [1,2,3]
+      ```
+  * includes\(\) : 배열에 특정 원소가 포함되어 있는지 여부를 확인해 true, false로 리턴
+    * ```text
+      const arr = [1,2,3,4]
+      arr.includes(3) //true
+      arr.includes(1,1) // false
+      ```
+  * indexOf\(\) : 배열에 특정 원소가 포함되어 있는지 여부를 확인하고, 있다면 인덱스를 리턴, 만약 없다면 -1을 리턴
+  * lastIndexOf\(\) : 반대로 순서를 탐색
+    * ```text
+      const arr = [1,2,3,4]
+      arr.indexOf(3) //2
+      arr.indexOf(5) //-1
+      ```
+  * push\(\) : 배열의 맨 뒤에 새로운 원소를 추가하는 메소드
+  * pop\(\) : 배열의 맨 뒤 원소를 지우는 메소드
+  * unshift\(\) : 배열의 맨 앞에 새로운 원소를 추가하는 메소드
+  * shift\(\) : 배열의 맨 앞 원소를 지우는 메소드
+    * ```text
+      const arr = [1,2,3]
+      arr.push(5) //4(배열의 길이 리턴)
+      arr //[1,2,3,5]
+      arr.pop() //3(배열의 길이 리턴)
+      arr //[1,2,3]
+      arr.unshift(2) //4(배열의 길이 리턴)
+      arr //[2,1,2,3]
+      arr.shift() //2(삭제한 원소 리턴)
+      arr //[1,2,3]
+      ```
+  * reverse\(\) : 배열의 원소 순서를 반대로 정렬
+  * slice\(\) : 배열의 start부터 end까지 copy하는 메소드
+    * ```text
+      const arr=[1,2,3,4,5]
+      arr.slice(2) // [3,4,5] 2번째부터 끝까지
+      arr.slice(1,3) // [2,3] 1번째부터 3번째 전까지
+      ```
+  * sort\(\) : 배열을 정렬하는데 사용
+    * ```text
+      const arr = [3,20,12,1,4]
+      arr.sort() //[1,12,20,3,4]
+      arr.sort((a,b)=>a-b) // 오름차순 [1,3,4,12,20]
+      arr.sort((a,b)=>b-a) // 내림차순 [20,12,4,3,1]
+      ```
+
+ 
+
+
 
 ```text
 function solution(nums) {
