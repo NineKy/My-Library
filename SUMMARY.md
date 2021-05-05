@@ -1,7 +1,14 @@
 # Table of contents
 
 * [Welcome To Kyu's Note!](README.md)
-* [WS 자바 스터디\(완\)](ws.md)
+* [WS 온라인 자바 스터디](ws/README.md)
+  * [Week1](ws/week1.md)
+  * [Week2](ws/week2.md)
+  * [Week3](ws/week3.md)
+  * [Week4](ws/week4.md)
+  * [Week5](ws/week5.md)
+  * [Week6](ws/week6.md)
+  * [Week7](ws/week7.md)
 * [백준문제](baekjoon/README.md)
   * [입출력과 사칙연산](baekjoon/i-o-and-calculate/README.md)
     * [We love kriii\(10718\)](baekjoon/i-o-and-calculate/we-love-kriii-10718.md)
