@@ -1,8 +1,4 @@
----
-description: 제어문
----
-
-# Week4
+# Week4\(제어문\)
 
 ## 선택문 : switch
 

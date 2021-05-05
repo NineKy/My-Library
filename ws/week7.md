@@ -1,8 +1,4 @@
----
-description: 패키지
----
-
-# Week7
+# Week7\(패키지\)
 
 ## package 키워드
 
