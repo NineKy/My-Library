@@ -116,4 +116,5 @@
 * [프로그래머스 문제](programmers/README.md)
   * [소수 만들기](programmers/undefined.md)
   * [모의고사](programmers/undefined-1.md)
+  * [체육복](programmers/undefined-2.md)
 
