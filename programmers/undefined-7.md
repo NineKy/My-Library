@@ -25,9 +25,7 @@
 
 
 
-#### Javascript
-
-Comparator을 사용했던거 기억 다시 되짚어보자
+Comparator
 
 ```text
 import java.util.Arrays;
