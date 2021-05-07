@@ -25,7 +25,11 @@
 
 
 
-Comparator
+#### ㅓ
+
+#### Java
+
+Comparator을 사용했던거 기억 다시 되짚어보자
 
 ```text
 import java.util.Arrays;
