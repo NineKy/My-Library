@@ -149,5 +149,9 @@
   * [카펫](programmers/undefined-9.md)
   * [가운데 글자 가져오기](programmers/undefined-8.md)
   * [같은 숫자는 싫어](programmers/undefined-10.md)
-  * [큰 수 만들기](programmers/untitled.md)
+  * [큰 수 만들기\(Lv2\)](programmers/untitled.md)
+  * [문자열 다루기 기본\(Lv1\)](programmers/lv1.md)
+  * [2016년\(Lv1\)](programmers/2016-lv1.md)
+  * [서울에서 김서방 찾기\(Lv1\)](programmers/lv1-1.md)
+  * [나누어 떨어지는 숫자 배열\(Lv1\)](programmers/lv1-2.md)
 
