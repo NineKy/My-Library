@@ -151,6 +151,7 @@
   * [탐욕법\(Greedy\)](programmers/greedy/README.md)
     * [체육복\(Lv1\)](programmers/greedy/undefined-2.md)
     * [큰 수 만들기\(Lv2\)](programmers/greedy/untitled.md)
+    * [구명보트\(Lv2\)](programmers/greedy/lv2.md)
   * [소수 만들기](programmers/undefined.md)
   * [폰캣몬](programmers/undefined-3.md)
   * [타겟 넘버](programmers/undefined-5.md)
