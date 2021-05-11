@@ -1,4 +1,4 @@
-# 타겟 넘버
+# 타겟 넘버\(Lv2\)
 
 **문제 설명**
 
@@ -30,9 +30,9 @@ n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 
 
 문제에 나온 예와 같습니다.
 
+### Javascript
 
-
-```text
+```javascript
 function solution(numbers, target) {
     var answer = 0;
     function recur(index, sum){
@@ -48,5 +48,13 @@ function solution(numbers, target) {
     recur(0,0);
     return answer;
 }
+```
+
+
+
+### Java
+
+```java
+
 ```
 
