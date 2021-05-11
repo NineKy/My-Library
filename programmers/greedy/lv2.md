@@ -32,32 +32,8 @@
 
 
 
-배를 탈 수 있는 사람의 한계는 2명이기 때문에 
+```text
 
-최대값과 최소값을 더해서 limit을 넘는지 확인하고 
-
-만약 limit을 넘는다면 최대값은 혼자 타야한다!
-
-만약 최대값과 최소값을 더해서 값이 안넘는다면, 배타고 건너갔으니까 min값을 다음껄로 넘겨서 체크, max값은 맨 끝에서부터 하나씩 체크
-
-
-
-```java
-import java.util.*;
-class Solution {
-    public int solution(int[] people, int limit) {
-        int answer = 0;
-        Arrays.sort(people);
-        int min = 0;
-        
-        for(int max = people.length-1; min<=max; max--){
-            if(people[min] + people[max] <= limit)
-                min++;
-            answer++;
-        }
-        return answer;
-    }
-}
 ```
 
 
