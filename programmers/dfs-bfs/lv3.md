@@ -32,50 +32,5 @@
 
 
 
-```java
-        //이걸로 해보니까 테스트 2개는 잘 통과했지만 제출하니까 바로 틀림 
-        //=> 방문했던거를 기록해야 했나봐
-         int answer = 0;
-         for(int i=0; i<n-1; i++){
-             for(int j=i+1; j<n; j++){
-                 if(computers[i][j] == 1){
-                        answer++;
-                }
-            }
-        }
-        return n-answer;
-```
 
-
-
-처음에 생각했던건 점화식을 만들지 않았다. 그리구 방문을 체크하지 않았던게 문제였다고 생각한다
-
-아직도 dfs를 잘 못만드는 거 같다..! 그리고 딱보면 딱 알아야하지만 그런 눈도 좀 부족한거같음
-
-```java
-class Solution {
-    int answer = 0;
-    public int solution(int n, int[][] computers) {  
-        
-        boolean [] visited = new boolean[n];
-        
-        for(int i=0; i<n; i++){
-            if(visited[i] == false){
-                answer++;
-                recur(i, visited, computers);
-            }
-        }
-        return answer;
-    }
-    
-    public void recur(int index, boolean[] visited, int[][] computers){
-        visited[index] = true;
-        for(int i=0; i<computers.length; i++){
-            if(computers[index][i] == 1 && i != index && visited[i]==false){
-                recur(i, visited, computers);
-            }
-        }
-    }
-}
-```
 
