@@ -160,7 +160,7 @@
     * [타겟 넘버\(Lv2\)](programmers/dfs-bfs/undefined-5.md)
     * [네트워크\(Lv3\)](programmers/dfs-bfs/lv3.md)
     * [단어 변환\(Lv3\)](programmers/dfs-bfs/lv3-1.md)
-  * [소수 찾기](programmers/undefined-1.md)
+  * [소수 찾기\(Lv1-에라토스테네스의 체\)](programmers/undefined-1.md)
   * [소수 만들기](programmers/undefined.md)
   * [폰캣몬](programmers/undefined-3.md)
   * [124 나라의 숫자](programmers/124.md)
