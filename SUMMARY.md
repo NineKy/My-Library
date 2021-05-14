@@ -149,6 +149,8 @@
     * [문자열 다루기 기본](programmers/lv1-4/lv1.md)
     * [소수 찾기\(에라토스테네스의 체\)](programmers/lv1-4/undefined-1.md)
   * [Lv2](programmers/lv2/README.md)
+    * [영어 끝말잇기](programmers/lv2/undefined-1.md)
+    * [N개의 최소 공배수](programmers/lv2/n.md)
     * [피보나치 수](programmers/lv2/undefined.md)
     * [124 나라의 숫자](programmers/lv2/124.md)
   * [완전탐색](programmers/undefined-4/README.md)
