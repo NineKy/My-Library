@@ -155,7 +155,6 @@
     * [124 나라의 숫자](programmers/lv2/124.md)
   * [완전탐색](programmers/undefined-4/README.md)
     * [모의고사\(Lv1\)](programmers/undefined-4/undefined-1.md)
-    * [소수 찾기\(Lv2\)](programmers/undefined-4/lv2.md)
     * [카펫\(Lv2\)](programmers/undefined-4/undefined-9.md)
     * [소수 찾기\(Lv2\)](programmers/undefined-4/lv2-1.md)
   * [정렬\(Sorting\)](programmers/sorting/README.md)
