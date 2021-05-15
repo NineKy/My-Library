@@ -35,7 +35,7 @@ arr.join\(""\) : 배열의 요소들을 하나의 문자열로 묶어줌
 
 .substr\(a, b\) : 배열의의 a 부터 b번째 자리수까지 리턴
 
-```text
+```javascript
 function solution(number, k) {
     var answer = '';
     let count=0;
@@ -52,4 +52,51 @@ function solution(number, k) {
     return answer;
 }
 ```
+
+
+
+### Java
+
+레벨 2인데도 잘 못풀겠네... 열심히 해봅시당....
+
+[https://moon1226.tistory.com/67](https://moon1226.tistory.com/67) &lt;- 좋은 글 감사합니다 :\)
+
+문제의 해설이라고하긴 뭣하지만 방식은 큰 값의 자리수를 지키는 한에서 돌아가면서 숫자의 최대값을 찾아가면서 최대값을 더해가는 방식이다.
+
+```java
+class Solution {
+    public String solution(String number, int k) {
+        //String answer = "";
+        StringBuilder sb = new StringBuilder();
+        
+        char max;
+        //index변수로 최대값을 찾으면 그 이후부터 찾도록 나누는 분기점 역할!
+        int index=0;
+        
+        //결과 값(숫자)의 자리 수만큼 돈다
+        for(int i=0; i<number.length()-k; i++){
+            //최대값을 확인하기 위해서는 for문이 돌때마다 초기화를 시켜줘야하고
+            max = '0';
+            
+            for(int j=index; j<=k+i; j++){
+                if(max < number.charAt(j)){
+                    //최대값을 찾았으면 최대값으로 바꿔주고 
+                    max = number.charAt(j);
+                    //다음부터 다시 찾기 시작
+                    index = j+1;
+                }
+            }
+            //최대값이 확정 -> answer에 concat을 이용해서 붙히자
+            //answer = answer.concat(Character.toString(max));
+            sb.append(max);
+        }
+        //return answer;
+        return sb.toString();
+    }
+}
+```
+
+하나의 테스트에서 시간 초과가 났다. 하나에서 시간초과가 났다는 것은 코드적인 문제보다는 그냥 string을 concat하는 과정이지 않을까 싶다.
+
+그래서 참고한분의 코드를 보니 StringBuilder을 사용하셨더라, 이건 옛날에도 알고 있던 사실이였지만 시간을 조금이라도 줄일 수 있는 방법이다!
 
