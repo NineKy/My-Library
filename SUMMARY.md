@@ -155,6 +155,7 @@
     * [문자열 다루기 기본](programmers/lv1-4/lv1.md)
     * [소수 찾기\(에라토스테네스의 체\)](programmers/lv1-4/undefined-1.md)
   * [Lv2](programmers/lv2/README.md)
+    * [행렬의 곱셈](programmers/lv2/undefined-9.md)
     * [영어 끝말잇기](programmers/lv2/undefined-8.md)
     * [영어 끝말잇기](programmers/lv2/undefined-1.md)
     * [N개의 최소 공배수](programmers/lv2/n.md)
