@@ -2,7 +2,7 @@
 description: 나의 기록장
 ---
 
-# Welcome To Kyu's Note!
+# Welcome To Kyu's Wiki
 
 ## 공부를 하는 과정에서 기록해야할 것들, 공부해왔던 것들을 저장해두는 장소!!
 
@@ -16,6 +16,7 @@ description: 나의 기록장
 
 * [ ] 코테 문제 다 옮기기
 * [ ] iCloud에 있는 기록들 옮기기
+* [ ] 메모앱에 있는 기록들 옮기기
 
 
 
