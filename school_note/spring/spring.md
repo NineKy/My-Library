@@ -4,8 +4,6 @@
 
 Spring Framework은 전자정부 표준 프레임워크로, 개발할 때 설계의 기본이 되는 구조를 제공하는 서비스이다.
 
-
-
 Spring은 Light Weight Java Application Framework이다. 즉, App 구조로써 코드의 상당부분을 제공해준다. 그래서 핵심 로직\(비지니스 로직\)에만 집중할 수 있는 것이 장점이다. 그리고 POJO\(Plain Old Java Object\) 기반의 엔터프라이즈이기 떄문에 App의 개발을 쉽고 편하게 할 수 있다는 점이 장점이다.
 
 
@@ -14,7 +12,7 @@ Spring은 Light Weight Java Application Framework이다. 즉, App 구조로써 �
 
 #### POJO 방식의 프레임워크
 
-POJO란 Plain Old Java Object로, 따로 인터페이스를 구현하거나 상속을 받을 필요가 없어서 객체자체가 가볍다.
+POJO란 Plain Old Java Object로, 따로 인터페이스를 구현하거나 상속을 받아서 메소드가 추가되어 있는 클래스가 아닌 우리가 일반적으로 알고있는 getter나 setter와 같은 기본적인 기능만을 가지고 있는 자바 객체를 의미한다. 그리고 이러한 객체는 가볍다는 것이 특징이다.
 
 #### Inversion of Control\(IoC\) : 제어의 역행
 
@@ -36,7 +34,7 @@ POJO란 Plain Old Java Object로, 따로 인터페이스를 구현하거나 상�
 
 Container란 인스턴스의 생명 주기를 관리하고, 생성된 인스턴스에게 추가적인 기능을 제공하도록 하는 것이다. 생명 주기를 관리하기 때문에 객체의 생성과 소멸을 관리한다고 생각하면된다.
 
-container는 Bean을 생성, 관리, 제거한다. 즉, Container가 Bean을 관리하고 있다는 것이라고 생각하면 된다.
+container는 Bean을 생성, 관리, 제거한다. 즉, Container가 Bean을 관리하고 있다는 것이라고 생각하면 된다
 
 그러면 Spring Container는 뭘까?
 
@@ -53,7 +51,22 @@ IoC을 사용하는데 : 개발자는 New 연산자, 인터페이스 호출, 팩
 
 {% embed url="https://jobjava00.github.io/language/java/framework/spring/container/" %}
 
-위에서 참고해서 작성
+위에서 참고했다.
+
+그러면 Spring Bean은 뭘까?
+
+spring에서 말하는 bean은 Spring IoC 컨테이너가 관리하는 자바 객체를 의미한다.
+
+= new 뭐시기~ 해서 만든 객체는 bean이라고 할 수 없다.
+
+= ApplicationContext.getBean\(\)으로 얻을 수 있는 것이 bean이라고 할 수 있다.
+
+= ApplicationContext가 만들어서 내부에서 가지고 있던가 ApplicationContext에 값을 집어넣어둔 것이 Bean이다.
+
+HOW? : bean을 container에 넣어줄까?
+
+1. @ComponentScan을 활용하는 방법
+2. 직접 bean을 등
 
 
 
