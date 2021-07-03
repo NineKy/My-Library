@@ -1,6 +1,6 @@
 # Spring이란?
 
-### Spring Framework?
+### 록Spring Framework?
 
 Spring Framework은 전자정부 표준 프레임워크로, 개발할 때 설계의 기본이 되는 구조를 제공하는 서비스이다.
 
@@ -66,7 +66,7 @@ spring에서 말하는 bean은 Spring IoC 컨테이너가 관리하는 자바 �
 HOW? : bean을 container에 넣어줄까?
 
 1. @ComponentScan을 활용하는 방법
-2. 직접 bean을 등
+2. 직접 bean을 등록
 
 
 
