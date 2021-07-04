@@ -1,6 +1,6 @@
 # Spring이란?
 
-### 록Spring Framework?
+### Spring Framework?
 
 Spring Framework은 전자정부 표준 프레임워크로, 개발할 때 설계의 기본이 되는 구조를 제공하는 서비스이다.
 
@@ -9,6 +9,8 @@ Spring은 Light Weight Java Application Framework이다. 즉, App 구조로써 �
 
 
 ### Spring의 특징
+
+=&gt; spring에는 크게 3가지의 특징이 있다. IoC, AOP, PSA가 있고 이 세 가지를 스프링의 트라이앵글이라는 개념으로 확립된다.
 
 #### POJO 방식의 프레임워크
 
@@ -27,6 +29,8 @@ POJO란 Plain Old Java Object로, 따로 인터페이스를 구현하거나 상�
 #### Aspect-Oriented Programming\(AOP\) : 관점 지향 프로그래밍
 
 여러 개에 거쳐 있는 기능들을 독립적으로 빼서 사용하는 것이 가능하다. 이를 통해서 재사용성을 보장받을 수 있다는 장점이 있다.
+
+-&gt; 프록시 패턴을 사용해서 많이 해결한다.\(프록시 패턴?\)
 
 
 
