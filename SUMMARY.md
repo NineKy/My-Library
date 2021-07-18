@@ -40,6 +40,7 @@
     * [Spring Data JPA](school_note/spring/spring-data-jpa.md)
     * [SpringBoot Security](school_note/spring/springboot-security.md)
     * [SpringBoot HATEOAS](school_note/spring/springboot-hateoas.md)
+* [공부 자료들](undefined.md)
 * [WS 온라인 자바 스터디](ws/README.md)
   * [Week1\(JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.\)](ws/week1.md)
   * [Week2\(자바 데이터 타입, 변수 그리고 배열\)](ws/week2.md)
