@@ -1,3 +1,7 @@
+---
+description: 꾸준하게 아침에 출근해서 하는중!
+---
+
 # Git Branch
 
 ### Branch란? 여러 개발자들이 동시에 다양한 작업을 독립적으로 할 수 있게 만들어 주는 기능
@@ -19,7 +23,9 @@ git branch 이름
 
 git checkout 이름
 
-#### 브랜치 합치기
+
+
+### 브랜치 합치기
 
 **git merge**
 
@@ -53,6 +59,8 @@ git commit
 
 git merge bugFix
 
+
+
 #### git rebase
 
 rebase는 기본적으로 커밋을 모아서 복사한 뒤, 다른 곳에 떨구는 작업
@@ -83,9 +91,15 @@ git checkout bugFix
 
 git rebase main
 
-#### Commit tree에서 이동할 수 있는 여러가지 방법들
+
+
+### Commit tree에서 이동할 수 있는 여러가지 방법들
 
 HEAD란? : 현재 체크아웃된 커밋 = 현재 작업 중인 커밋\(가장 최근 커밋을 가리키고 있음\)
 
 일반적으로 HEAD는 브랜치의 이름을 가리키고 있고, 커밋을 하게 되면 상태가 바뀌게 되고 이는 HEAD를 통해서 확인이 가능
+
+
+
+
 
