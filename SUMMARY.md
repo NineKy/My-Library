@@ -13,6 +13,7 @@
   * [TDD](undefined-2/tdd.md)
   * [Redis을 이용한 캐시](undefined-2/redis.md)
   * [Thymeleaf](undefined-2/thymeleaf.md)
+  * [정리가 필요한 자료들](undefined-2/undefined.md)
 * [VISION\_스터디](vision_study/README.md)
   * [SQL 공부](vision_study/sql/README.md)
     * [SQL의 기본 개념](vision_study/sql/sql.md)
