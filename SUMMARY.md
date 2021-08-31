@@ -144,6 +144,7 @@
     * [소수 구하기\(1929\)](baekjoon/math_2/1929.md)
     * [베르트와 공존\(4948\)](baekjoon/math_2/4948.md)
   * [재귀](baekjoon/undefined-1/README.md)
+    * [하노이 탑 이동 순서\(11729\)](baekjoon/undefined-1/11729.md)
     * [피보나치 수 5\(10870\)](baekjoon/undefined-1/5-10870.md)
     * [별 찍기\(2447\)](baekjoon/undefined-1/2447.md)
   * [브루트 포스](baekjoon/brute-force/README.md)
