@@ -107,3 +107,108 @@ public class Main{
 
 [백준](https://www.acmicpc.net/problem/9663)
 
+
+
+## 2번째 시도
+
+```java
+import java.util.*;
+import java.io.*;
+public class Main{
+    static int n, sum=0;
+    static int[][] arr;
+    static boolean[][] visited;
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        
+        //퀸의 위치를 기억하기 위한 배열
+        arr = new int[n][n];
+        //퀸이 지나갈 수 있는 곳을 기억하기 위한 배열
+        visited = new boolean[n][n];
+        
+        //깊이우선탐색
+        dfs(0);
+        System.out.println(sum);
+    }
+    
+    public static void dfn(int cnt){
+        //만약 찾고있는 깊이가 한계까지 도달한다면 결과값 ++
+        if(cnt == n){
+            sum++;
+            return;
+        }
+        
+        for(int i=0; i<n; i++){
+            //여기서부터는 기존 dfs의 구현과 유사하다
+            
+            //일단 만약 체크를 했던 장소라면 넘어가고
+            if(visited[cnt][i])
+                continue;
+            
+            //해당 위치에 들렀다고 체크하고
+            visited[cnt][i] = true;
+            //체크를 했으니까 퀸의 위치또한 저장해두고 진행
+            arr[cnt][i] = 1;
+            //퀸이 움직일 수 있는 곳을 모두 체크
+            QueenMove(cnt, i);
+            
+            //재귀를 통해서 다음 dfs로 진행
+            dfs(cnt+1);
+            //만약 깊이가 끝까지 진행되었다면, return을 했을테지만 그냥 진행이 되었다면 여기까지 올 수 있음
+            //여기까지 도달했다는 의미는 퀸의 배치를 완료했다는 의미이다.
+            //다시 원상복구를 해줘야한다.
+            
+            //체스판을 초기화 시키고
+            for(int j=0; j<n; j++){
+                for(int k=0; k<n; k++){
+                    visited[j][k] = false;
+                }
+            }
+            //퀸을 빼주고
+            arr[cnt][i] = 0;
+            
+            //이전에 두었던 퀸의 위치를 복원시켜준다
+            for(int j=0; j<n; j++){
+                for(int k=0; k<n; k++){
+                    if(arr[j][k] == 1){
+                        QueenMove(j, k);
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    //좌표를 생각하는게 반대이다..!
+    public static void QueenMove(int x, int y){
+        //세로로 움직이면서 확인
+        for(int i=x; i<n; i++){
+            if(!visited[i][y])
+                visited[i][y] = true;
+        }
+        
+        //왼쪽 아래 대각선으로 확인
+        for(int i=x, j=y; i<n&&j<n; i++, j++){
+            if(!visited[i][j])
+                visited[i][j] = true;
+        }
+        
+        //오른쪽 아래 대각선으로 확인
+        for(int i=x, j=y; i<n&&j>=0; i++, j--){
+            if(!visited[i][j])
+                visited[i][j] = true;
+        }
+    }
+}
+
+```
+
+dfs의 구조를 조금씩은 알게되어가고 있어서 다행이면 다행이다..!
+
+하지만 어려워서 쉽게 해결하지 못했던 문제이다...
+
+
+
+
+
