@@ -110,5 +110,27 @@ SELECT NAME, DATETIME FROM ANIMAL_INS order by ANIMAL_ID desc
 
 
 
+## 이름이 있는 동물의 아이디
+
+동물 보호소에 들어온 동물 중, 이름이 있는 동물의 ID를 조회하는 SQL 문을 작성해주세요. 단, ID는 오름차순 정렬되어야 합니다.
+
+```sql
+SELECT ANIMAL_ID FROM ANIMAL_INS WHERE NAME is not null;
+```
+
+
+
+## 아픈 동물 찾기
+
+동물 보호소에 들어온 동물 중 아픈 동물[1](https://programmers.co.kr/learn/courses/30/lessons/59036#fn1)의 아이디와 이름을 조회하는 SQL 문을 작성해주세요. 이때 결과는 아이디 순으로 조회해주세요.
+
+```sql
+SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION="Sick";
+```
+
+
+
+
+
 
 
