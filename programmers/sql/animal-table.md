@@ -1,4 +1,8 @@
-# Animal Table
+---
+description: MySQL version
+---
+
+# Animal Table - MySQL
 
 ## 모든 레코드 조회하기
 
@@ -130,7 +134,73 @@ SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION="Sick";
 
 
 
+## 어린 동물 찾기
 
+동물 보호소에 들어온 동물 중 젊은 동물[1](https://programmers.co.kr/learn/courses/30/lessons/59037#fn1)의 아이디와 이름을 조회하는 SQL 문을 작성해주세요. 이때 결과는 아이디 순으로 조회해주세요
+
+```sql
+-- 코드를 입력하세요
+SELECT ANIMAL_ID, NAME FROM ANIMAL_INS WHERE INTAKE_CONDITION != 'Aged'
+```
+
+
+
+## 동물의 아이디와 이름
+
+동물 보호소에 들어온 모든 동물의 아이디와 이름을 ANIMAL\_ID순으로 조회하는 SQL문을 작성해주세요. SQL을 실행하면 다음과 같이 출력되어야 합니다.
+
+
+
+```sql
+-- 코드를 입력하세요
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+```
+
+
+
+## 여러 기준으로 정렬하기
+
+동물 보호소에 들어온 모든 동물의 아이디와 이름, 보호 시작일을 이름 순으로 조회하는 SQL문을 작성해주세요. 단, 이름이 같은 동물 중에서는 보호를 나중에 시작한 동물을 먼저 보여줘야 합니다.
+
+```sql
+-- 코드를 입력하세요
+SELECT ANIMAL_ID, NAME, DATETIME
+FROM ANIMAL_INS
+ORDER BY NAME, DATETIME desc
+
+
+```
+
+와 뭔가 두 번째의 정렬 방법은 그냥 정렬하는 다음에 같이 적어주는 것 이였는데 실제로 맞았다..!
+
+-&gt; 여러 기준으로 정렬하기 위해서는 order by 뒤에다가 계속 작성합시다!
+
+
+
+## 상위 n개 레코드
+
+동물 보호소에 가장 먼저 들어온 동물의 이름을 조회하는 SQL 문을 작성해주세요.
+
+```sql
+-- 코드를 입력하세요
+SELECT NAME 
+FROM ANIMAL_INS
+ORDER BY DATETIME
+LIMIT 1
+```
+
+아하 지정된 범위만큼 선택해서 출력하고 싶다면 사용하는 키워드는 LIMIT이다
+
+추가적인 예시로
+
+```sql
+...
+...
+LIMIT 3, 7 
+```
+
+이렇게 작성하게 된다면 조회한 값들 중에서 3번째 부터 7번까지의 정보를 추출할 수 있다!
 
 
 
