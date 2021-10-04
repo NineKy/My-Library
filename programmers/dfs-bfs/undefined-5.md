@@ -99,3 +99,38 @@ class Solution {
 
 이렇게 점화식을 만들었고, 종료시점은 index을 기준으로 만약 끝까지 모든 노드를 순회했다면\(==numbers.length\) 종료하게 되어있고, 그때의 총 계산 값이 입력받은 target과 같다면, 계산을 1더해준다.
 
+
+
+## 2번째 시도
+
+그렇게 어렵지 않은걸? 2단계라 그런가 ㅋㅋㄹㅋㅋ
+
+```java
+class Solution {
+    int answer = 0;
+    public int solution(int[] numbers, int target) {  
+        fn(numbers, target, 0, 0);
+        return answer;
+    }
+    
+    public void fn(int[] numbers, int target, int depth, int sum){
+        if(depth == numbers.length){
+            if(sum == target){
+                answer++;
+            }
+            return;
+        }
+        
+        fn(numbers, target, depth+1, sum + numbers[depth]);
+        fn(numbers, target, depth+1, sum - numbers[depth]);
+        
+    }
+}
+```
+
+
+
+
+
+
+

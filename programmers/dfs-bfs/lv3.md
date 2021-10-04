@@ -79,3 +79,44 @@ class Solution {
 }
 ```
 
+
+
+
+
+## 2번째 시도
+
+시도 자체는 진행이 잘 되어가고 있었는데, 네트워크의 갯수를 찾는 과정에서 잘 모르겠어서 고생을 좀 했다... 결국은 답을 찾아봤는데, 
+
+접근 하는 방향을 같다고 볼 수 있었다. 세로를 중심으로 연속된 것들이 같은 숫자를 가리키면 연결되게 하는 방식 -&gt; 기존에 본인은 2차원 배열으로 visited을 가지고 검사를 진행했었는데, 하나의 배열을 가지고 진행을 해보았다. 각 컴퓨터를 나타내는 방식이다
+
+그래서 만약 방문 체크를 하지 않았으면서, 컴퓨터끼리의 방향은 가있다면 다음 재귀로 넘어가는 방식으로 구현을 해두었다. 뭔가 아쉽다. 다 온거같은데 실패해서 너무 아쉬웠다.
+
+```java
+class Solution {
+    boolean[] visited;
+    int answer = 0;
+    public int solution(int n, int[][] computers) {
+        visited = new boolean[n];
+        for(int i=0; i<n; i++){
+            if(!visited[i]){
+                fn(n, computers, i);
+                answer++;
+            }
+        }
+        return answer;
+    }
+    
+    public void fn(int n, int[][] computers, int depth){
+        
+        for(int i=0; i<n; i++){
+            visited[depth] = true;
+            if(!visited[i] && computers[depth][i] == 1){
+                fn(n, computers, i);
+            }
+        }
+    }
+}
+```
+
+
+
