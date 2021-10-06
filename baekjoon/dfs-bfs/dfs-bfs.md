@@ -2,7 +2,7 @@
 description: 'https://www.acmicpc.net/problem/1260'
 ---
 
-# DFS와 BFS
+# DFS와 BFS\(1260\)
 
 ### 문제
 
