@@ -91,7 +91,7 @@ public class Main{
         //이부분은 검색해봤더니 for문 안에 변수를 2개를 넣어서 해본사람이 많았다!!
         //위로 대각선 검사해주고,
         for (int i=x, j=y; i>=0&&j>=0; i--, j--) {
-            if(visited[i][j] == true)
+            if(visited[i][j] == tru1e)
                 return false;
         }
         //아래로 대각선 검사해주고,
