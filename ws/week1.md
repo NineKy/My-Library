@@ -61,7 +61,7 @@
 
 ## JVM의 구성요소
 
-![](<../.gitbook/assets/java1 (1).png>)
+![](../.gitbook/assets/java1.png)
 
 ## JDK과 JRE의 차이
 

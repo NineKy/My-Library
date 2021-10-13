@@ -86,7 +86,7 @@ public class Main {
 
 ![](<../.gitbook/assets/cp1 (2).png>)
 
-![](<../.gitbook/assets/cp2 (1).png>)
+![](../.gitbook/assets/cp2.png)
 
 ![](../.gitbook/assets/cp3.png)
 

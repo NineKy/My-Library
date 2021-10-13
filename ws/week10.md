@@ -128,7 +128,7 @@ th.start();
 
 스레드의 상태는 총 6가지이며 JVM에 의해서 관리된다
 
-![](../.gitbook/assets/스레드상태변이도.jpg)
+![](../.gitbook/assets/.jpg.jpeg)
 
 * NEW : 스레드가 생성되었지만 아직 실행할 준비가 되지 않은 상태이다. start() 메소드가 호출되면 RUNNABLE 상태가 된다
 * RUNNABLE : 스레드가 현재 실행되고 있거나 실행 준비되어 스케쥴링을 기다리는 상태

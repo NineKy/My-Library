@@ -50,7 +50,7 @@
   * ^ - XOR - 둘 중 하나는 1이고 다른 하나가 0인경우만 1
   * \~ - NOR - 비트를 거꾸로
 
-![](<../.gitbook/assets/bit_oper (1).png>)
+![](../.gitbook/assets/bit_oper.png)
 
 ## 관계연산자
 
