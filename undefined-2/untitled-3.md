@@ -36,7 +36,7 @@
 
 API를 통해서 request가 들어오게 되면 Service Layer에서 받아서 Core Layer에 들어가서 처리해주는 구조
 
-![](../.gitbook/assets/richardson-microservices-part1-2\_microservices-architecture.png)
+![](../.gitbook/assets/Richardson-microservices-part1-2\_microservices-architecture.png)
 
 출처 : [https://www.nginx.com/blog/introduction-to-microservices/](https://www.nginx.com/blog/introduction-to-microservices/)
 
@@ -54,6 +54,6 @@ API를 통해서 request가 들어오게 되면 Service Layer에서 받아서 Co
 
 한눈에 알아보기 쉬운 그림
 
-![](../.gitbook/assets/richardson-microservices-part1-1\_monolithic-architecture.png)
+![](../.gitbook/assets/Richardson-microservices-part1-1\_monolithic-architecture.png)
 
 출처 : [https://www.nginx.com/blog/introduction-to-microservices/](https://www.nginx.com/blog/introduction-to-microservices/)

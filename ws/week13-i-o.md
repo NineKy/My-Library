@@ -101,9 +101,9 @@ System.err 객체는 표준 에러 출력 장치를 의미한다. 오류가 발�
 
 System.err 는 PrintStream 클래스 타입으로 System.out을 사용하는 방법과 같다.
 
-![](../.gitbook/assets/system.png)
+![](../.gitbook/assets/System.png)
 
-![](../.gitbook/assets/system1.png)
+![](../.gitbook/assets/System1.png)
 
 ## 파일 읽고 쓰기
 
