@@ -1,4 +1,4 @@
-# Week7\(패키지\)
+# Week7(패키지)
 
 ## package 키워드
 
@@ -8,7 +8,7 @@
 
 ![](../.gitbook/assets/package1.jpg)
 
-jdk는 개발자에게 많은 클래스 파일들을 패키지 형태로 제공한다 =&gt; 이 패키지들은 rt.jar 압축 파일로 제공된다
+jdk는 개발자에게 많은 클래스 파일들을 패키지 형태로 제공한다 => 이 패키지들은 rt.jar 압축 파일로 제공된다
 
 자바에서 제공하는 기본 패키지 : 자바 API라고 부르며 jdk를 설치한 디렉토리 밑의 rt.jar파일에 담겨 있다
 
@@ -16,17 +16,17 @@ jdk는 개발자에게 많은 클래스 파일들을 패키지 형태로 제공�
 
 자주 사용되는 패키지
 
-* java.lang : 기본적인 클래스와 인터페이스를 제공하고, 자동으로 import 되어있다\(import는 다음에서 설명\)
+* java.lang : 기본적인 클래스와 인터페이스를 제공하고, 자동으로 import 되어있다(import는 다음에서 설명)
   * Object클래스 : 모든 클래스에 강제로 상속되고, Object만이 아무 클래스도 상속받지 않는 유일한 클래스로 계층 구조 상 최상위 클래스이다
-    * boolean equals\(Object obj\) : obj가 가리키는 객체와 현재 객체를 비교하여 같으면 true리턴
-    * String toString\(\) : 현 객체에 대한 문자열 표현을 리턴
+    * boolean equals(Object obj) : obj가 가리키는 객체와 현재 객체를 비교하여 같으면 true리턴
+    * String toString() : 현 객체에 대한 문자열 표현을 리턴
   * String클래스 : 문자열을 나타낸다
-    * char charAt\(int index\) : index 인덱스에 있는 문자열 리턴
-    * int compareTo\(String anotherString\) : 두 스트링을 사전 순으로 비교하여 두 스트링이 같으면 0리턴
-    * String concat\(String str\) : 현재 스트링 뒤에 str 스트링을 덧붙인 새로운 스트링 리턴
-    * int length\(\) : 스트링의 길이 리턴
-    * String split\(String regex\) : 정규식에 일치하는 부분을 중심으로 스트링을 분리, 분리된 스트링들을 배열로 저장하여 리턴
-    * String trim\(\) : 스트링 앞뒤의 공백 문자들을 제거한 스트링을 리턴
+    * char charAt(int index) : index 인덱스에 있는 문자열 리턴
+    * int compareTo(String anotherString) : 두 스트링을 사전 순으로 비교하여 두 스트링이 같으면 0리턴
+    * String concat(String str) : 현재 스트링 뒤에 str 스트링을 덧붙인 새로운 스트링 리턴
+    * int length() : 스트링의 길이 리턴
+    * String split(String regex) : 정규식에 일치하는 부분을 중심으로 스트링을 분리, 분리된 스트링들을 배열로 저장하여 리턴
+    * String trim() : 스트링 앞뒤의 공백 문자들을 제거한 스트링을 리턴
   * Math클래스 : 기본적인 산술연산을 제공하며, 멤버 메소드는 static타입
 * java.util : 날짜, 시간, 벡터, 해쉬맴 등 다양한 유틸리티 클래스와 인터페이스를 제공
 * java.io : 키보드, 모니터, 파일 등의 입/출력 하는 클래스와 인터페이스를 제공
@@ -36,10 +36,10 @@ jdk는 개발자에게 많은 클래스 파일들을 패키지 형태로 제공�
 
 * java : 자바 기본 패키지
 * javax : 자바 확장 패키지
-* org : 비영리단체\(오픈소스\)의 패키지
-* com : 영리단체\(회사\)의 패키지
+* org : 비영리단체(오픈소스)의 패키지
+* com : 영리단체(회사)의 패키지
 * 패키지의 이름은 소문자
-* 자바의 예약어\(string, for, switch 등\)은 불가능하다
+* 자바의 예약어(string, for, switch 등)은 불가능하다
 
 ## import 키워드
 
@@ -84,20 +84,18 @@ public class Main {
   * 환경변수의 이름을 CLASSPATH으로 해서 클래스패스의 위치를 넣어주면 jvm이 이것을 참조해서 클래스를 로드할 수 있게 된다
   * 환경변수를 지정해두면 -classpath옵션을 사용하지 않아도 괜찮다 하지만 os가 변경되면 사라지는 점이 있다
 
-![](../.gitbook/assets/cp1%20%282%29.png)
+![](<../.gitbook/assets/cp1 (2).png>)
 
-![](../.gitbook/assets/cp2.png)
+![](<../.gitbook/assets/cp2 (1).png>)
 
 ![](../.gitbook/assets/cp3.png)
 
 * 방법2 : java -classpath 옵션
   * 옵션의 맨 앞에는 ' . '이 있으며 이는 java 명령어가 실행되어 실행할 클래스를 찾을 때 현재 디렉토리를 우선적으로 찾도록 지시한다
-  * 그 뒤의 경로들은 ' : '을 기준으로 나누어서 찾게 된다 \( 윈도우에서는 ' ; '\)
+  * 그 뒤의 경로들은 ' : '을 기준으로 나누어서 찾게 된다 ( 윈도우에서는 ' ; ')
   * 따로 실행시에만 -classpath옵션으로 사용가능
 
-![](../.gitbook/assets/cp4%20%281%29.png)
-
-
+![](<../.gitbook/assets/cp4 (1).png>)
 
 ## 접근 지정자
 
@@ -113,4 +111,3 @@ public class Main {
 명품 JAVA PROGRAMMING - 황기태
 
 [https://jjunbbang.tistory.com/8](https://jjunbbang.tistory.com/8)
-

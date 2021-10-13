@@ -1,9 +1,9 @@
-# Week11\(Enum\)
+# Week11(Enum)
 
 ## Enum이란?
 
 * 열거체라고 해서 enumeration type이다.
-* 클래스처럼 보이게 하는 상수 
+* 클래스처럼 보이게 하는 상수
   * 상수이기 때문에 equals함수가 아닌 '=='로 비교가 가능하다!!
 * 서로 관련 있는 상수들을 모아 심볼릭한 명칭의 집합으로 정의한 것
 * Enum 클래스형을 기반으로 한 클래스형 선언
@@ -30,15 +30,15 @@
 
 ![](../.gitbook/assets/enum2.png)
 
-Enum으로 정의할 때 사용한 이름\(subject\) 을 String이나 int와 같은 타입으로 두고 사용
+Enum으로 정의할 때 사용한 이름(subject) 을 String이나 int와 같은 타입으로 두고 사용
 
-  2. 클래스 안에서 선언하기
+1. 클래스 안에서 선언하기
 
 ![](../.gitbook/assets/enum3.png)
 
 필요할때 enum 키워드를 사용해서 원하는 요소들을 집어넣어주고 사용
 
-  3. 클래스 밖에서 선언하기
+1. 클래스 밖에서 선언하기
 
 ![](../.gitbook/assets/enum4.png)
 
@@ -52,25 +52,25 @@ Enum으로 정의할 때 사용한 이름\(subject\) 을 String이나 int와 같
 
 ## enum이 제공하는 메소드
 
-* values\(\) : 모든 enum의 요소들을 배열으로 생성
+* values() : 모든 enum의 요소들을 배열으로 생성
   * values함수를 이용해서 enum의 요소들을 모두 출력하는 예시
 
-![](../.gitbook/assets/enum7%20%282%29.png)
+![](<../.gitbook/assets/enum7 (3).png>)
 
 ![](../.gitbook/assets/enum8.png)
 
-* valueOf\(\) : 문자열로 enum 요소의 이름을 찾아서 요소의 이름을 리턴
+* valueOf() : 문자열로 enum 요소의 이름을 찾아서 요소의 이름을 리턴
 
 ![](../.gitbook/assets/enum9.png)
 
 ![](../.gitbook/assets/enum10.png)
 
-* name\(\) : 호출된 값의 이름을 String으로 리턴
-* ordinal\(\) : 해당 값이 enum이 정의된 순서를 정수값으로 리턴
-  * 이것은 언제  다른 사람들이 사용할 수도 있기 떄문에 사용을 덜 한다
-  * \(심지어 찾아보니까 Most programmer들은 사용하지 않는다고 주석으로도 적혀있었다!\)
-* compareTo\(E o \) : enum과 지정된 객체의 순서를 비교, 지정된 객체보다 작은 경우, 음의 정수, 동일하면 0, 크면 양의 정수 리턴
-* equals\(Object other\) : 지정된 객체가 enum 정수와 같은경우, true를 리턴
+* name() : 호출된 값의 이름을 String으로 리턴
+* ordinal() : 해당 값이 enum이 정의된 순서를 정수값으로 리턴
+  * 이것은 언제 다른 사람들이 사용할 수도 있기 떄문에 사용을 덜 한다
+  * (심지어 찾아보니까 Most programmer들은 사용하지 않는다고 주석으로도 적혀있었다!)
+* compareTo(E o ) : enum과 지정된 객체의 순서를 비교, 지정된 객체보다 작은 경우, 음의 정수, 동일하면 0, 크면 양의 정수 리턴
+* equals(Object other) : 지정된 객체가 enum 정수와 같은경우, true를 리턴
 
 ## java.lang.Enum
 
@@ -82,13 +82,13 @@ Enum 클래스에는 열거체를 조작하기 위한 다양한 메소드가 있
 
 유일한 생성자
 
-protected Enum\(String name, int ordinal\) : 유일한 생성자로 프로그래머는 이 생성자를 호출할 수 없음
+protected Enum(String name, int ordinal) : 유일한 생성자로 프로그래머는 이 생성자를 호출할 수 없음
 
 열거형 선언에 대한 응답으로 컴파일러에서 내보낸 코드를 사용
 
 ## EnumSet
 
-java.util에 존재하며, class EnumSet&gt;이렇게 선언하면서 사용한다
+java.util에 존재하며, class EnumSet>이렇게 선언하면서 사용한다
 
 EnumSet은 열거형 유형과 함게 사용하기 위한 set구현체이다.
 
@@ -105,7 +105,7 @@ EnumSet은 동기화되지 않는다. 여러 스레드가 동시에 열거형 �
 
 Type Safety
 
-tip\) 값을 매기고 순서를 정할때는 1,2,3... 이렇게 가는게아니라 10,20,30 이렇게 순서를 매기면 편하다! =&gt; 사이에 값을 추가할 일이 생길것이기 때문에!
+tip) 값을 매기고 순서를 정할때는 1,2,3... 이렇게 가는게아니라 10,20,30 이렇게 순서를 매기면 편하다! => 사이에 값을 추가할 일이 생길것이기 때문에!
 
 ### 참고
 
@@ -116,4 +116,3 @@ tip\) 값을 매기고 순서를 정할때는 1,2,3... 이렇게 가는게아니
 [https://limkydev.tistory.com/66](https://limkydev.tistory.com/66)
 
 [https://parkadd.tistory.com/50](https://parkadd.tistory.com/50)
-

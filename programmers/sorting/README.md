@@ -1,8 +1,6 @@
-# 정렬\(Sorting\)
+# 정렬(Sorting)
 
 자주 나오기도하고, 필수적인 문제!
-
-
 
 Java
 
@@ -32,8 +30,6 @@ arr.contains(1); //list안에 1이 있는지 true/false
 arr.indexOf(1); //1이 있는 index값 반환
 ```
 
-
-
 ### Array.sort VS Collections.sort
 
 ```java
@@ -62,10 +58,7 @@ Collections.sort(list);
 //내림차순
 Collections.reverse(list);
 
-
 ```
-
-
 
 ### Comparator로 비교하기
 
@@ -83,6 +76,3 @@ Collections.sort(비교하는 리스트, new Comparator<비교타입>(){
 ```
 
 일단은 Collections.sort형태를 사용하고, 중요한건 사용자함수를 Comparator안에서 compare함수를 통해서 계산을 해준다
-
-
-
