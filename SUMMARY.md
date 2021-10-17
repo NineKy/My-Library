@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome To Kyu's Wiki](README.md)
+* [Welcome To Kyu's Library](README.md)
 * [인턴](undefined-2/README.md)
   * [Gradle](undefined-2/untitled-8.md)
   * [Stream, Optional, 람다식](undefined-2/untitled-6.md)
