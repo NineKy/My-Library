@@ -271,3 +271,8 @@
   * [Day 10](undefined-1/day-10.md)
   * [Day 11](undefined-1/day-11.md)
   * [Day 12](undefined-1/day-12.md)
+  * [Day 13](undefined-1/day-13.md)
+  * [Day 14](undefined-1/day-14.md)
+  * [Day 15](undefined-1/day-15.md)
+  * [Day 16](undefined-1/day-16.md)
+  * [Day 17](undefined-1/day-17.md)
