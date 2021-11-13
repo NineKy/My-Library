@@ -8,7 +8,7 @@ description: 나의 기록장
 
 
 
-www.kyudo97.gitbook.io
+kyudo97.gitbook.io
 
 
 
