@@ -230,6 +230,7 @@
     * [숫자 문자열과 영단어](programmers/lv1-4/undefined-9.md)
     * [이상한 문자 만들기](programmers/lv1-4/undefined-11.md)
     * [없는 숫자 더하기](programmers/lv1-4/undefined-13.md)
+    * [문자열 내림차순으로 배치하기](programmers/lv1-4/undefined-14.md)
   * [Lv2](programmers/lv2/README.md)
     * [행렬의 곱셈](programmers/lv2/undefined-9.md)
     * [영어 끝말잇기](programmers/lv2/undefined-8.md)
