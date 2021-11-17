@@ -237,6 +237,8 @@
     * [자연수 뒤집어 배열로 만들기](programmers/lv1-4/undefined-18.md)
     * [신규 아이디 추천](programmers/lv1-4/undefined-19.md)
     * [비밀지도](programmers/lv1-4/undefined-20.md)
+    * [크레인 인형뽑기 게임](programmers/lv1-4/undefined-21.md)
+    * [실패율](programmers/lv1-4/undefined-22.md)
   * [Lv2](programmers/lv2/README.md)
     * [행렬의 곱셈](programmers/lv2/undefined-9.md)
     * [영어 끝말잇기](programmers/lv2/undefined-8.md)
