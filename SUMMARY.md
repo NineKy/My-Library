@@ -256,6 +256,8 @@
     * [최소값 만들기](programmers/lv2/undefined-6.md)
     * [숫자의 표현](programmers/lv2/undefined-7.md)
     * [JadenCase 문자열 만들기](programmers/lv2/jadencase.md)
+    * [오픈채팅방](programmers/lv2/undefined-10.md)
+    * [영어 끝말잇기](programmers/lv2/undefined-11.md)
   * [완전탐색](programmers/undefined-4/README.md)
     * [모의고사(Lv1)](programmers/undefined-4/undefined-1.md)
     * [카펫(Lv2)](programmers/undefined-4/undefined-9.md)
