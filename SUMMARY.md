@@ -262,6 +262,8 @@
     * [멀쩡한 사각형](programmers/lv2/undefined-12.md)
     * [올바른 괄호](programmers/lv2/undefined-13.md)
     * [위장](programmers/lv2/undefined-14.md)
+    * [기능개발](programmers/lv2/undefined-15.md)
+    * [더 맵게](programmers/lv2/undefined-16.md)
   * [완전탐색](programmers/undefined-4/README.md)
     * [모의고사(Lv1)](programmers/undefined-4/undefined-1.md)
     * [카펫(Lv2)](programmers/undefined-4/undefined-9.md)
