@@ -236,3 +236,85 @@ public class TestHistory {
 1. null값은 허용하지 않는다.
 2. 유일해야한다.
 3. 변해선 안된다.
+
+
+
+
+
+#### 필드와 컬럼의 매핑
+
+필드와 컬럼을 매핑하는 애노테이션
+
+* @Column
+* @Enumerated
+* @Temporal
+* @Lob
+* @Transient
+* @Access
+
+
+
+@Column은 개게 필드를 테이블 컬럼에 매핑하는 방식이다.
+
+속성
+
+* name : 필드와 매핑할 테이블의 컬럼 이름
+* insertable : 엔티티 저장 시, 이 필드도 같이 저장한다. false로 설정하면 이 필드는 데이터베이스에 저장하지 않음 → false옵션은 읽기 전용일 때 사용(거의 사용X)
+* updatable : 엔티티 수정 시, 이 필드도 같이 수정한다. false로 설정하면 이 필드는 데이터베이스에서 수정하지 않음 → false옵션은 읽기 전용일 때 사용(거의 사용X)
+* table : 하나의 엔티티를 두 개 이상의 테이블에 매핑할 떄 사용
+* nullable : null 값의 허용 여부를 설정한다. false로 설정 시, DDL 생성 시 not null 제약조건이 붙음
+  * 자바 기본 타입(int, long 등)에 @Column을 설정해주지 않는다면 not null이 붙어서 ddl이 생성됨
+  * 객체타입(integer 등)에 @Column을 설정하지 않는다면 nullable로 ddl이 생성됨
+  * 그래서 자바 기본 타입에 @Column을 설정해주면 nullable로 ddl이 생성된다는 것!
+* unique : @Table의 uniqueConstraint와 같지만 한 컬럼에 간단히 유니크 제약 조건을 걸 때 사용한다.
+* columnDefinistion : 데이터 베이스에서 컬럼의 정보를 직접 줄 수 있다 - 알아서 필드의 자바 타입과 데이터 베이스의 특징을 통해서 잘 설정된다!
+* length : 문자 길이 제약조건, String 타입에서만 사용하고 default값은 255
+* precision, scale : BigDecimal타입에서 사용하고 precision은 소수점을 포함한 모든 자리수를, scale은 소수의 자리수를 표시한다. 이 두 타입은 정말 특별한 경우에만 사용한다.
+
+
+
+@Enumerated
+
+이 애노테이션을 사용해서 편리하게 enum을 매핑할 수 있다.
+
+EnumType.ORDINAL - enum에 정의된 값이 아니라 정의된 순서가 데이터 베이스에 저장된다.장점으로는 순서가 저장되기 때문에 데이터의 크기가 아주 작다는 점이지만 단점은 이미 저장된 enum의 순서를 바꿀 수 없다는 점이다.
+
+EnumType.STRING - enum에 정의된 값 자체가 데이터 베이스에 저장된다. 장점은 enum에 값이 추가되거나 enum이 수정되어도 안전하다는 점이지만 단점은 데이터 베이스에 저장되는 데이터의 크기가 크다는 점이다.
+
+
+
+@Temporal
+
+이 애노테이션을 사용해서 날짜 타입(java.util.Date, java.util.Calendar)를 매핑할 때 사용
+
+속성
+
+* [TemporalType.DATE](http://temporaltype.date) - 데이터 베이스 date 타입과 매핑(2021-12-28)
+* TemporalType.TIME - 데이터 베이스 time 타입과 매핑(21:47:34)
+* TemporalType.TIMESTAMP - 날짜와 시간, 데이터 베이스 timestamp 타입과 매핑(2021-12-28 21:48:53)
+
+
+
+@Lob
+
+이 애노테이션을 사용해서 BLOB, CLOB와 매핑
+
+
+
+@Transient
+
+이 애노테이션이 붙어 있는 필드는 매핑하지 않는다. 그래서 데이터 베이스에 저장하지 않고 그냥 객체에서만 사용하고 싶은 필드에 붙힌다.
+
+
+
+@Access
+
+JPA가 엔티티 데이터에 접근하는 방식을 지정
+
+* 필드 접근 : AccessType.FIELD로 지정해서 필드에 직접 접근하고 필드 접근 권한이 private이어도 접근할 수 있다.
+* 프로퍼티 접근 : AccessType.PROPERTY로 지정하고 Getter를 사용
+
+
+
+실습도 슬쩍 해보자!
+
