@@ -310,4 +310,5 @@
 * [JPA 책](jpa/README.md)
   * [프로젝트 세팅 및 기본설정](jpa/undefined.md)
   * [영속성 관리 개념](jpa/undefined-1.md)
-  * [엔티티 매핑](jpa/undefined-2.md)
+  * [엔티티 매핑](jpa/undefined-2/README.md)
+    * [실습 예제](jpa/undefined-2/undefined.md)
