@@ -69,3 +69,112 @@ Team
 예를 들면 참조를 사용하는 객체는 get을 사용해서 값을 가져오지만 테이블은 조인을 사용해서 가져온다
 
 객체의 참조는 단방향으로 볼 수 있지만 외래키를 사용하는 테이블의 연관관계를 양방향이라서 A JOIN B가 가능하면 B JOIN A 이렇게 사용할 수 있다.
+
+
+
+
+
+#### 순수한 객체 연관관계
+
+객체 단위에서 사용하는 걸 보자
+
+```java
+@Data
+public class Member{
+	private String id;
+	private String username;
+
+	private Team team;
+}
+
+@Data
+public class Team{
+	private String id;
+	private String name;
+}
+```
+
+이렇게 값들이 있다면 member에서 team을 연동해서 사용하는 방법은
+
+```java
+Member mem = new Member();
+Team team = mem.getTeam();
+```
+
+요렇게 사용하게 된다. 이렇게 객체를 참조해서 연관관계를 사용하는 것을 **객체 그래프 탐색** 이라고 한다
+
+#### 테이블 연관관계
+
+SQL단위(데이터베이스) 에서 회원과 팀 관계를 형성하는 것을 확인해보자
+
+```sql
+CREATE TABLE MEMBER(
+	MEMBER_ID VARCHAR(255) NOT NULL,
+	TEAM_ID VARCHAR(255),
+	USERNAME VARCHAR(255),
+	PRIMARY KEY (MEMBER_ID)
+);
+
+CREATE TABLE TEAM(
+	TEAM_ID VARCHAR(255) NOT NULL,
+	NAME VARCHAR(255),
+	PRIMARY KEY (TEAM_ID)
+);
+
+ALTER TABLE MEMBER ADD CONSTRAINT FK_MEMBER_TEAM 
+FOREIGN KEY (TEAM_ID) REFERENCES TEAM
+```
+
+이렇게 member table을 생성하고, team table을 생성하고 foreign key의 등록을 통해서 연관관계를 맺어주는데 데이터 베이스에서는 이것을 **조인**이라고 부른다
+
+#### 객체 관계 매핑
+
+자 이렇게 귀찮게 서로서로 해줘야하는 부분을 제외하고 한 번에 할 수 있는 방법이 있다
+
+```java
+@Data
+@Entity
+public class Member {
+
+    @Id
+    @Column(name = "MEMBER_ID")
+    private Long id;
+
+    private String username;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
+}
+```
+
+```java
+@Data
+@Entity
+public class Team {
+    @Id
+    @Column(name = "TEAM_ID")
+    private String id;
+
+    private String name;
+}
+```
+
+이제 연관관계를 맺었는데 사용한 애노테이션은 @ManyToOne 그리고 @JoinColumn을 사용했다.
+
+* @ManyToOne : 이름 그대로 다대일 이라는 관계를 나타내는 매핑 정보이다. 회원과 팀은 다대일 관계이고, 연관관계를 매핑할 때 이렇게 다중성을 나타내는 애노테이션을 필수로 붙혀줘야 한다.
+  * optional : false로 설정하면 연관된 엔티티가 항상 있어야 한다
+  * fetch : fetch 전략을 설정요건 이후에 자세하게 다룬다
+    * @ManyToOne = FetchType.EAGER
+    * @OneToMany = FetchType.LAZY
+  * cascade : 영속성 전이 기능을 사용 이후에 자세하게 다룸
+  * targetEntity : 연관된 엔티티의 타입 정보를 설정(처음봄=거의안씀)
+* @JoinColumn : 조인 컬럼은 외래 키를 매핑할 때 사용한다. 여러가지 속성들도 있다
+  * name : 이 속성은 매핑할 외래 키 이름을 지정해주는 단계이다. 생략가능하긴하다 - 기본값은 필드명\_참조하는 테이블의 기본 키 컬럼명
+  * referencedColumnName : 외래 키가 참조하는 대상 테이블의 컬럼명 - 참조하는 테이블의 기본키 컬럼명
+  * foreignKey(DDL) : 외래 키 제약조건을 직접 지정할 수 있다. 이 속성은 테이블을 생성할 때만 사용
+  * unique, nullable, insertable, updatable, columnDefinition, table 이 있는데 이런건 @Column 애노테이션과 같음
+
+
+
