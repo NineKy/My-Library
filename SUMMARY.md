@@ -312,5 +312,6 @@
   * [영속성 관리 개념](jpa/undefined-1.md)
   * [엔티티 매핑](jpa/undefined-2/README.md)
     * [실습 예제](jpa/undefined-2/undefined.md)
-  * [연관관계 매핑 기초](jpa/undefined-3.md)
+  * [연관관계 매핑 기초](jpa/undefined-3/README.md)
+    * [실습 예제](jpa/undefined-3/undefined.md)
 * [SQL](sql.md)
