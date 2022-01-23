@@ -314,4 +314,5 @@
     * [실습 예제](jpa/undefined-2/undefined.md)
   * [연관관계 매핑 기초](jpa/undefined-3/README.md)
     * [실습 예제](jpa/undefined-3/undefined.md)
-* [SQL](sql.md)
+* [SQL](sql/README.md)
+  * [Revising the Select Query](sql/revising-the-select-query.md)
