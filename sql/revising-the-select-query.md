@@ -76,11 +76,52 @@ The **STATION** table is described as follows:
 
 where **LAT\_N** is the northern latitude and **LONG\_W** is the western longitude.
 
-For example, if there are three records in the table with **CITY** values 'New York', 'New York', 'Bengalaru', there are 2 different city names: 'New York' and 'Bengalaru'. The query returns , because .
-
 ```sql
 SELECT COUNT(city) - COUNT(DISTINCT city) FROM station;
 ```
+
+
+
+
+
+#### Weather Observation Station 5
+
+Query the two cities in **STATION** with the shortest and longest _CITY_ names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.&#x20;
+
+
+
+**Sample Input**
+
+For example, **CITY** has four entries: **DEF, ABC, PQRS** and **WXY**.
+
+**Sample Output**
+
+```
+ABC 3
+PQRS 4
+```
+
+요놈은 생각하기 좀 힘들었다.. 내일 다시 곱씹어보자..!
+
+```sql
+SELECT CITY, LENGTH(CITY)
+FROM (
+    SELECT CITY, LENGTH(CITY)
+    FROM STATION
+    ORDER BY LENGTH(CITY), CITY
+)
+WHERE ROWNUM=1;
+
+SELECT CITY, LENGTH(CITY)
+FROM (
+    SELECT CITY, LENGTH(CITY)
+    FROM STATION
+    ORDER BY LENGTH(CITY) DESC, CITY
+)
+WHERE ROWNUM=1;
+```
+
+
 
 
 
