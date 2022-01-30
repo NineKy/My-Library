@@ -101,7 +101,7 @@ ABC 3
 PQRS 4
 ```
 
-요놈은 생각하기 좀 힘들었다.. 내일 다시 곱씹어보자..!
+요놈은 생각하기 좀 힘들었다.. 내일 다시 곱씹어보자..! -> 1.30:킹만하쥬?
 
 ```sql
 SELECT CITY, LENGTH(CITY)
@@ -119,6 +119,129 @@ FROM (
     ORDER BY LENGTH(CITY) DESC, CITY
 )
 WHERE ROWNUM=1;
+```
+
+
+
+#### Weather Observation Station 6
+
+Query the list of _CITY_ names starting with vowels (i.e., `a`, `e`, `i`, `o`, or `u`) from **STATION**. Your result _cannot_ contain duplicates.
+
+DISTINCT로 하나만 출력되게 하고, WHERE 절에서 LIKE을 사용하고 OR조건을 사용해서 찾는 방식
+
+정규표현식을 사용해서도 가능하구나 정도? ->[https://yongku.tistory.com/entry/HackerRank-Weather-Observation-Station-6-오라클Oracle](https://yongku.tistory.com/entry/HackerRank-Weather-Observation-Station-6-%EC%98%A4%EB%9D%BC%ED%81%B4Oracle)에서 알게되었음&#x20;
+
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE (
+    CITY LIKE 'A%' OR
+    CITY LIKE 'E%' OR
+    CITY LIKE 'I%' OR
+    CITY LIKE 'O%' OR
+    CITY LIKE 'U%'
+);
+
+
+
+SELECT DISTINCT CITY
+FROM STATION
+WHERE (
+    REGEXP_LIKE(CITY, '^A|^E|^I|^O|^U')
+);
+```
+
+
+
+#### Weather Observation Station 7
+
+Query the list of _CITY_ names ending with vowels (a, e, i, o, u) from **STATION**. Your result _cannot_ contain duplicates.
+
+위 문제와 같은 맥락이다. 밑에 방식도 매우 흥미로웠다..! sql을 짤라서 비교하는 방식도 있다는 것이..!
+
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE(
+    CITY LIKE '%a' OR
+    CITY LIKE '%e' OR
+    CITY LIKE '%i' OR
+    CITY LIKE '%o' OR
+    CITY LIKE '%u' 
+);
+
+---------------------------------------------------------------------------
+
+SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY, LENGTH(CITY), LENGTH(CITY)) 
+    IN ('a','e','i','o','u');
+    
+---------------------------------------------------------------------------
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY REGEXP '[aeiou]$';
+
+```
+
+
+
+#### Weather Observation Station 8
+
+Query the list of _CITY_ names from **STATION** which have vowels (i.e., _a_, _e_, _i_, _o_, and _u_) as both their first _and_ last characters. Your result cannot contain duplicates.
+
+음.. 그렇게 어렵지 않게 푸니까 이렇게 나오는데 어떻게 더 간단하게 할 수 있을까를 생각해보자
+
+```sql
+SELECT DISTINCT CITY
+FROM (
+    SELECT CITY
+    FROM STATION
+    WHERE (
+        CITY LIKE 'A%' OR
+        CITY LIKE 'E%' OR
+        CITY LIKE 'I%' OR
+        CITY LIKE 'O%' OR
+        CITY LIKE 'U%'
+    )
+)
+WHERE (
+    CITY LIKE '%a' OR
+    CITY LIKE '%e' OR
+    CITY LIKE '%i' OR
+    CITY LIKE '%o' OR
+    CITY LIKE '%u'
+);
+
+---------------------------------------------------------------------------
+SELECT DISTINCT CITY
+FROM STATION
+'^[aeiou]*[aeiou]$'
+```
+
+
+
+#### Weather Observation Station 9
+
+Query the list of _CITY_ names from **STATION** that _do not start_ with vowels. Your result cannot contain duplicates.
+
+위의 쿼리는 할만한디... 문제는 밑에 쪽 쿼리다 -> 정규 표현식을 사용하는 방법을 조금 더 알아보
+
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE NOT (
+    CITY LIKE 'A%' OR
+    CITY LIKE 'E%' OR
+    CITY LIKE 'O%' OR
+    CITY LIKE 'I%' OR
+    CITY LIKE 'U%'
+);
+
+---------------------------------------------------------------------------
+SELECT DISTINCT CITY
+FROM STATION
+WHERE NOT REGEXP_LIKE(CITY, '^[AEIOU]');
 ```
 
 
