@@ -246,5 +246,58 @@ WHERE NOT REGEXP_LIKE(CITY, '^[AEIOU]');
 
 
 
+#### Weather Observation Station 10
+
+Query the list of _CITY_ names from **STATION** that _do not end_ with vowels. Your result cannot contain duplicates.
+
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE NOT REGEXP_LIKE(CITY, '[aeiou]$');
+```
+
+시작에 대한 정규식을 사용하는 방법은 ^\[무슨알파벳\~] 이렇게 사용하고
+
+끝나는 것에 대한 정규식을 사용하는 방법은 \[무슨알파벳\~]$ 이렇게 사용한다!
+
+
+
+
+
+#### Weather Observation Station 11
+
+Query the list of _CITY_ names from **STATION** that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.
+
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE 
+    NOT REGEXP_LIKE(CITY, '^[AEIOU]') 
+    OR
+    NOT REGEXP_LIKE(CITY, '[aeiou]$');
+    
+```
+
+
+
+
+
+#### Weather Observation Station 12
+
+Query the list of _CITY_ names from **STATION** that _do not start_ with vowels and _do not end_ with vowels. Your result cannot contain duplicates.
+
+```sql
+SELECT DISTINCT CITY
+FROM STATION
+WHERE 
+    NOT REGEXP_LIKE(CITY, '^[AEIOU]') 
+    AND
+    NOT REGEXP_LIKE(CITY, '[aeiou]$');
+```
+
+
+
+
+
 
 
