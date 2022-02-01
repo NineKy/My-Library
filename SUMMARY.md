@@ -317,3 +317,4 @@
   * [다양한 연관관계 매핑](jpa/undefined-4.md)
 * [SQL](sql/README.md)
   * [Revising the Select Query](sql/revising-the-select-query.md)
+  * [Basic Select](sql/basic-select.md)
