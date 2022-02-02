@@ -318,3 +318,4 @@
 * [SQL](sql/README.md)
   * [Revising the Select Query](sql/revising-the-select-query.md)
   * [Basic Select](sql/basic-select.md)
+  * [Advanced Select](sql/advanced-select.md)
