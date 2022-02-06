@@ -317,6 +317,7 @@
   * [다양한 연관관계 매핑](jpa/undefined-4/README.md)
     * [다대일, 일대다 관계](jpa/undefined-4/undefined.md)
     * [일대일, 다대다 관계](jpa/undefined-4/undefined-1.md)
+    * [실습 예제](jpa/undefined-4/undefined-2.md)
 * [SQL](sql/README.md)
   * [Revising the Select Query](sql/revising-the-select-query.md)
   * [Basic Select](sql/basic-select.md)
