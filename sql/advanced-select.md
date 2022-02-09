@@ -44,6 +44,34 @@ CASE 뒤에 switch에서 검사할 항목이 무엇인지 적어주고, WHEN에�
 
 
 
+#### The PADS
+
+[https://www.hackerrank.com/challenges/the-pads/problem?isFullScreen=true\&h\_r=next-challenge\&h\_v=zen](https://www.hackerrank.com/challenges/the-pads/problem?isFullScreen=true\&h\_r=next-challenge\&h\_v=zen)
+
+뭔가 영어를 너무 쏼라쏼라 여서... 번역기를 사용해서 진행
+
+1. OCCUPATIONS의 모든 이름을 알파벳 순으로 나열하고, 나열할 때 각 직업의 첫 글자를 괄호로 묶어서 출력하라
+2. OCCUPATIONS에서 나온 각 직업의 갯수를 'There are a total of \[숫자] \[직업]s' 이 포맷으로 출력하라
+
+```sql
+SELECT NAME || '(' || SUBSTR(OCCUPATION, 1, 1) || ')'
+FROM OCCUPATIONS
+ORDER BY NAME;
+
+SELECT 'There are a total of ' || COUNT(OCCUPATION) || ' ' || LOWER(OCCUPATION) || 's.'
+FROM OCCUPATIONS
+GROUP BY OCCUPATION
+ORDER BY COUNT(NAME), OCCUPATION;
+```
+
+막혔던 부분은 SELECT 문에서 문자열을 더하는 것이였는데...&#x20;
+
+SQL에서는 문자열 + 은 ||로 표현한다는 것을 알게되었다...!
+
+COUNT, UPPER, LOWER, SUBSTR는 기존에 했던게 기억나더라
+
+
+
 
 
 
