@@ -325,3 +325,4 @@
   * [Revising the Select Query](sql/revising-the-select-query.md)
   * [Basic Select](sql/basic-select.md)
   * [Advanced Select](sql/advanced-select.md)
+  * [Basic Select 2](sql/basic-select-2.md)
