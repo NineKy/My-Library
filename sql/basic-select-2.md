@@ -107,6 +107,56 @@ FROM CITY;
 
 
 
+#### The Blunder
+
+{% embed url="https://www.hackerrank.com/challenges/the-blunder/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
+
+음.. 돈을 작성해서 넣고 있었는데, 0키가 안먹는걸 다 기입하고 나서 깨닳았다. 그래서 원본의 평균 - 0을 뺀 숫자들의 평 균을 계산하고 정수로 반올림해라
+
+```sql
+SELECT CEIL(AVG(SALARY) - AVG(REPLACE(SALARY, 0, '')))
+FROM EMPLOYEES;
+```
+
+오우야....&#x20;
+
+CEIL : 어제했던 TRUNC이 자르는 역할, 즉 버림이였다면 ceil은 정수로 반올림해주는 함수인데 여기서 중요한건 소수점 첫째 자리에서 올림하는 함수로 원하는 자리수를 매길 수 없다는 단점이 있다
+
+REPLACE : 특정 문자열을 치환하거나 제거하기 위해서 사용
+
+* REPLACE(컬럼, 찾을문자, 변환할문자)
+
+
+
+#### Top Earners
+
+{% embed url="https://www.hackerrank.com/challenges/earnings-of-employees/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
+
+직ㅇ 직원  ㅇㅁㅇㄹㄹdnj
+
+월급 \* 월수 하면 현재까지 받은 임금파악하고 가장 높은 임금을 출력하고 그 임금을 받는 사람의 수를 출력
+
+```sql
+SELECT *
+FROM(
+    SELECT MONTHS*SALARY, COUNT(MONTHS*SALARY) 
+    FROM EMPLOYEE
+    GROUP BY MONTHS*SALARY
+    ORDER BY MONTHS*SALARY DESC
+)
+WHERE ROWNUM=1;
+```
+
+아침에 출근해서 꼭 복습하기!
+
+
+
+
+
+
+
+
+
 
 
 
