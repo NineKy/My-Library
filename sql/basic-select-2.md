@@ -120,7 +120,7 @@ FROM EMPLOYEES;
 
 오우야....&#x20;
 
-CEIL : 어제했던 TRUNC이 자르는 역할, 즉 버림이였다면 ceil은 정수로 반올림해주는 함수인데 여기서 중요한건 소수점 첫째 자리에서 올림하는 함수로 원하는 자리수를 매길 수 없다는 단점이 있다
+CEIL : 어제했던 TRUNC이 자르는 역할, 즉 버림이였다면 ceil은 정수로 올림해주는 함수인데 여기서 중요한건 소수점 첫째 자리에서 올림하는 함수로 원하는 자리수를 매길 수 없다는 단점이 있다
 
 REPLACE : 특정 문자열을 치환하거나 제거하기 위해서 사용
 
@@ -157,11 +157,84 @@ WHERE ROWNUM=1;
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-2/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
-LAT\_N을 다 더하고 &#x20;
+LAT\__N을 다 더하고, LONG\_W을 다 더하고 소수점 2째점 까지 나오도록 출력하라_
+
+```sql
+SELECT ROUND(SUM(LAT_N), 2), ROUND(SUM(LONG_W), 2)
+FROM STATION
+```
+
+ROUND 함수는 정수의 반올림을 해주는 함수이고,&#x20;
+
+ROUND(원하는 값, 몇자리까지 남을건지)
+
+요런 식으로 사용할 수 있다
 
 
 
 
+
+#### Weather Observation Station 13
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-13/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
+
+38.7880\<LAT\_N<137.2345 사이에 있는 값들의 합 구하고 4자리 수로 잘라라
+
+```sql
+SELECT TRUNC(SUM(LAT_N), 4)
+FROM STATION
+WHERE LAT_N > 38.7880 AND LAT_N < 137.2345;
+```
+
+
+
+
+
+#### Weather Observation Station 14
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-14/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
+
+LAT\_N 항목에서 137.2345보다 작은 것들 중에서 가장 큰 수를 4자리수까지 잘라
+
+```sql
+SELECT *
+FROM (
+    SELECT TRUNC(LAT_N, 4)
+    FROM STATION
+    WHERE LAT_N < 137.2345
+    ORDER BY LAT_N DESC
+)
+WHERE ROWNUM=1;
+```
+
+
+
+
+
+#### Weather Observation Station 15
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-15/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
+
+LAT_N이 137.2345보다 작은 것들 중에 가장 큰 수의 LONG\_W를 4자리로 반올림해서 출력하라_
+
+```sql
+SELECT *
+FROM (
+    SELECT ROUND(LONG_W, 4)
+    FROM STATION
+    WHERE LAT_N < 137.2345
+    ORDER BY LAT_N DESC
+)
+WHERE ROWNUM=1;
+```
+
+
+
+
+
+#### _Weather Observation Station 16_
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-16/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
 
 
