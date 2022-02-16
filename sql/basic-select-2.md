@@ -132,7 +132,7 @@ REPLACE : 특정 문자열을 치환하거나 제거하기 위해서 사용
 
 {% embed url="https://www.hackerrank.com/challenges/earnings-of-employees/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
-직ㅇ 직원  ㅇㅁㅇㄹㄹdnj
+직원&#x20;
 
 월급 \* 월수 하면 현재까지 받은 임금파악하고 가장 높은 임금을 출력하고 그 임금을 받는 사람의 수를 출력
 
@@ -150,6 +150,14 @@ WHERE ROWNUM=1;
 아침에 출근해서 꼭 복습하기!
 
 
+
+
+
+#### Weather Observation Station 2
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-2/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
+
+LAT\_N을 다 더하고 &#x20;
 
 
 
