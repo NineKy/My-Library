@@ -236,6 +236,55 @@ WHERE ROWNUM=1;
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-16/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
+Query the smallest _Northern Latitude_ (_LAT\_N_) from **STATION** that is greater than . Round your answer to  decimal places.
+
+```sql
+SELECT ROUND(MIN(LAT_N), 4)
+FROM STATION
+WHERE LAT_N>38.7780;
+```
+
+
+
+
+
+#### Weather Observation Station 17
+
+Query the Western Longitude (LONG_W) where the smallest Northern Latitude(LAT\_N) in STATION is greater than 38.7780. Round your answer to 4 decimal places._
+
+```sql
+SELECT *
+FROM(
+    SELECT ROUND(LONG_W, 4)
+    FROM STATION
+    WHERE LAT_N > 38.7780
+    ORDER BY LAT_N
+)
+WHERE ROWNUM=1;
+```
+
+
+
+
+
+#### Weather Observation Station 18
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-18/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
+
+맨해탄 거리 - |a-c| + |b-d|로 구하고 소수점 4자리까지만 출력하라
+
+```sql
+SELECT ROUND(
+    ABS(MIN(LAT_N)-MAX(LAT_N)) + 
+    ABS(MIN(LONG_W)-MAX(LONG_W))
+, 4)
+FROM STATION;
+```
+
+절대값을 표현해주는 함수는 ABS를 사용해서 절대값을 표현한다.
+
+
+
 
 
 
