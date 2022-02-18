@@ -321,6 +321,7 @@
   * [고급 매핑](jpa/undefined-5/README.md)
     * [상속 관계 매핑](jpa/undefined-5/undefined.md)
     * [@MappedSuperclass](jpa/undefined-5/mappedsuperclass.md)
+    * [복합 키와 식별 관계 매핑](jpa/undefined-5/undefined-1.md)
 * [SQL](sql/README.md)
   * [Revising the Select Query](sql/revising-the-select-query.md)
   * [Basic Select](sql/basic-select.md)
