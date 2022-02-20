@@ -323,6 +323,8 @@
     * [@MappedSuperclass](jpa/undefined-5/mappedsuperclass.md)
     * [복합 키와 식별 관계 매핑](jpa/undefined-5/undefined-1.md)
     * [조인 테이블](jpa/undefined-5/undefined-2.md)
+  * [프록시와 연관관계 관리](jpa/undefined-6/README.md)
+    * [프록시](jpa/undefined-6/undefined.md)
 * [SQL](sql/README.md)
   * [Revising the Select Query](sql/revising-the-select-query.md)
   * [Basic Select](sql/basic-select.md)
