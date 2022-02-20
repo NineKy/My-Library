@@ -1,6 +1,6 @@
 # Basic Select 2
 
-#### Revising Aggregations - The Count Function
+### Revising Aggregations - The Count Function
 
 [https://www.hackerrank.com/challenges/revising-aggregations-the-count-function/problem?isFullScreen=true](https://www.hackerrank.com/challenges/revising-aggregations-the-count-function/problem?isFullScreen=true)
 
@@ -23,7 +23,7 @@ WHERE POPULATION>100000;
 
 
 
-#### Revising Aggregations - The Sum Function
+### Revising Aggregations - The Sum Function
 
 [https://www.hackerrank.com/challenges/revising-aggregations-sum/problem?isFullScreen=true\&h\_r=next-challenge\&h\_v=zen](https://www.hackerrank.com/challenges/revising-aggregations-sum/problem?isFullScreen=true\&h\_r=next-challenge\&h\_v=zen)
 
@@ -39,7 +39,7 @@ WHERE DISTRICT = 'California';
 
 
 
-#### Revising Aggregations - Averages
+### Revising Aggregations - Averages
 
 {% embed url="https://www.hackerrank.com/challenges/revising-aggregations-the-average-function/problem?h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -55,7 +55,7 @@ WHERE District='California';
 
 
 
-#### Average Population
+### Average Population
 
 {% embed url="https://www.hackerrank.com/challenges/average-population/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -76,7 +76,7 @@ TRUNC 함수는 날짜나 숫자를 자르는데 사용하는 함수이다.
 
 
 
-#### Japan Population
+### Japan Population
 
 {% embed url="https://www.hackerrank.com/challenges/japan-population/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -92,7 +92,7 @@ WHERE COUNTRYCODE = 'JPN';
 
 
 
-#### Population Density Difference
+### Population Density Difference
 
 {% embed url="https://www.hackerrank.com/challenges/population-density-difference/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -107,7 +107,7 @@ FROM CITY;
 
 
 
-#### The Blunder
+### The Blunder
 
 {% embed url="https://www.hackerrank.com/challenges/the-blunder/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -128,7 +128,7 @@ REPLACE : 특정 문자열을 치환하거나 제거하기 위해서 사용
 
 
 
-#### Top Earners
+### Top Earners
 
 {% embed url="https://www.hackerrank.com/challenges/earnings-of-employees/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -153,7 +153,7 @@ WHERE ROWNUM=1;
 
 
 
-#### Weather Observation Station 2
+### Weather Observation Station 2
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-2/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=true" %}
 
@@ -174,7 +174,7 @@ ROUND(원하는 값, 몇자리까지 남을건지)
 
 
 
-#### Weather Observation Station 13
+### Weather Observation Station 13
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-13/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
@@ -190,7 +190,7 @@ WHERE LAT_N > 38.7880 AND LAT_N < 137.2345;
 
 
 
-#### Weather Observation Station 14
+### Weather Observation Station 14
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-14/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
@@ -211,7 +211,7 @@ WHERE ROWNUM=1;
 
 
 
-#### Weather Observation Station 15
+### Weather Observation Station 15
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-15/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
@@ -232,7 +232,7 @@ WHERE ROWNUM=1;
 
 
 
-#### _Weather Observation Station 16_
+### _Weather Observation Station 16_
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-16/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
@@ -248,7 +248,7 @@ WHERE LAT_N>38.7780;
 
 
 
-#### Weather Observation Station 17
+### Weather Observation Station 17
 
 Query the Western Longitude (LONG_W) where the smallest Northern Latitude(LAT\_N) in STATION is greater than 38.7780. Round your answer to 4 decimal places._
 
@@ -267,7 +267,7 @@ WHERE ROWNUM=1;
 
 
 
-#### Weather Observation Station 18
+### Weather Observation Station 18
 
 {% embed url="https://www.hackerrank.com/challenges/weather-observation-station-18/problem?h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_r=next-challenge&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&h_v=zen&isFullScreen=false" %}
 
@@ -282,6 +282,59 @@ FROM STATION;
 ```
 
 절대값을 표현해주는 함수는 ABS를 사용해서 절대값을 표현한다.
+
+
+
+
+
+### Weather Observation 19
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-19/problem?isFullScreen=true" %}
+
+Euclidean Distance = sqrt( (a-b)^2 +(c-d)^2 )로 구하고 소수점 4자 까지만 출력
+
+```sql
+SELECT ROUND(
+    SQRT(
+        POWER(MIN(LAT_N) - MAX(LAT_N), 2) +
+        POWER(MIN(LONG_W) - MAX(LONG_W), 2)
+    )
+, 4)
+FROM STATION;
+```
+
+SQRT(필드)를 통해서 루트를 매겨주는 함수
+
+POWER(필드, 숫자)를 통해서 필드를 숫자만큼 지수 처리해주는 함수
+
+
+
+
+
+### Weather Observation 20
+
+{% embed url="https://www.hackerrank.com/challenges/weather-observation-station-20/problem?h_r=next-challenge&h_v=zen&isFullScreen=true" %}
+
+LAT\_N의 중앙값을 소수점 4자리 까지만 출력
+
+```sql
+SELECT ROUND(
+    MEDIAN(LAT_N), 4
+)
+FROM STATION;
+```
+
+오라클에서는 중앙값을 처리해주는 MEDIAN 함수가 존재
+
+
+
+
+
+
+
+
+
+
 
 
 
