@@ -332,3 +332,5 @@
   * [Basic Select](sql/basic-select.md)
   * [Advanced Select](sql/advanced-select.md)
   * [Basic Select 2](sql/basic-select-2.md)
+* [SQL 첫걸음(책)](sql_book/README.md)
+  * [테스트용](sql_book/테스트용.md)
