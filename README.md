@@ -1,16 +1,12 @@
----
-description: 나의 기록장
----
-
-# Library of Kyu9
+# **Library of Kyu9**
 
 ## 공부를 하는 과정에서 기록해야할 것들, 공부해왔던 것들을 저장해두는 장소!!
 
 
 
-[내 노트](https://kyudo97.gitbook.io/myrecords/)
+[Current Address](https://kyudo97.gitbook.io/myrecords/)
 
-[깃 레포 ](https://github.com/kyu9/MyBook)
+[Repository](https://github.com/kyu9/MyBook)
 
 
 
@@ -18,7 +14,7 @@ description: 나의 기록장
 
 웹에서 직접 사용하는 것이 아니라 에디터에서 직접 수정하고 올리는 방법
 
-따로 이름이나 정해줘야하는 것은 없지만 중요한건 SUMMARY.md 파일에서 
+따로 이름이나 정해줘야하는 것은 없지만 중요한건 SUMMARY.md 파일에서
 
 트리형을 구성해줘야 실제 웹 페이지에서도 구분되서 잘 보인다는점..!
 
