@@ -331,6 +331,7 @@
     * [임베디드 타입](jpa/undefined-7/undefined.md)
     * [값 타입과 불변 객체](jpa/undefined-7/undefined-1.md)
     * [값 타입의 비교, 컬렉션](jpa/undefined-7/undefined-2.md)
+  * [객체지향 쿼리 언어](jpa/undefined-8.md)
 * [SQL](sql/README.md)
   * [Revising the Select Query](sql/revising-the-select-query.md)
   * [Basic Select](sql/basic-select.md)
