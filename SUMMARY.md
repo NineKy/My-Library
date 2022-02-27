@@ -339,3 +339,4 @@
 * [SQL 첫걸음(책)](sql\_book/README.md)
   * [Day1](sql\_book/day1.md)
   * [Day 2](sql\_book/day-2.md)
+  * [Day 3](sql\_book/day-3.md)
