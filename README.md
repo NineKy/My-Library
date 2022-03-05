@@ -5,16 +5,16 @@
 공부를 하고, 정리를 하는 과정은 일종의 복습이라고 생각하고 실제로 그냥 넘어가는 것과 간단하게 정리하는 것의 차이는 있다고 생각하기 때문에 열심히 정리해보도록 하자!
 
 <br><br><br>
-프로젝트 레포 주소 : [Repository](https://github.com/kyu9/MyBook)
+[프로젝트 레포 주소](https://github.com/kyu9/MyBook)<br>
 현재 주소 : https://kyudo97.gitbook.io/myrecords/
 
 <br>
 
-**현재 진행 중인 공부목록**
-SQL 첫걸음 책
-JPA프로그램 책
-이펙티브 자바 책
-코틀린 유튜브, 프로젝트 공부시작
+**현재 진행 중인 공부목록 -> 항상 화이팅**<br>
+SQL 첫걸음 책<br>
+JPA프로그램 책<br>
+이펙티브 자바 책<br>
+코틀린 유튜브, 프로젝트<br>
 
 ### My Index
 * [인턴](Intern_Study/README.md)
