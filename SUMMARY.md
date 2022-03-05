@@ -309,7 +309,7 @@
   * [Day 17](SpringBoot_AWS_Book/day-17.md)
 * [JPA 책](Java_ORM_JPA_Book/README.md)
   * [프로젝트 세팅 및 기본설정](Java_ORM_JPA_Book/ProjectSetting.md)
-  * [영속성 관리 개념](Java_ORM_JPA_Book/영속성 관리 개념.md)
+  * [영속성 관리 개념](Java_ORM_JPA_Book/영속성_관리_개념.md)
   * [엔티티 매핑](Java_ORM_JPA_Book/ch2/README.md)
     * [실습 예제](Java_ORM_JPA_Book/ch2/undefined.md)
   * [연관관계 매핑 기초](Java_ORM_JPA_Book/ch3/README.md)
