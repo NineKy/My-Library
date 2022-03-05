@@ -333,6 +333,7 @@
     * [값 타입의 비교, 컬렉션](Java_ORM_JPA_Book/ch7/undefined-2.md)
   * [객체지향 쿼리 언어](Java_ORM_JPA_Book/ch10/객체지향쿼리언어.md)
     * [JPQL part1](Java_ORM_JPA_Book/ch10/JPQL.md)
+    * [JPQL part2](Java_ORM_JPA_Book/ch10/JPQL-2.md)
 * [SQL](SQL_Example/README.md)
   * [Revising the Select Query](SQL_Example/revising-the-select-query.md)
   * [Basic Select](SQL_Example/basic-select.md)
@@ -346,3 +347,4 @@
   * [Day 5](sql\_book/day-5.md)
   * [Day 6](sql\_book/day-6.md)
   * [Day 7](sql\_book/day-7.md)
+  * [Day 8](sql\_book/day-8.md)
