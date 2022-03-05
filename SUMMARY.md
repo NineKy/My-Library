@@ -348,3 +348,4 @@
   * [Day 6](sql\_book/day-6.md)
   * [Day 7](sql\_book/day-7.md)
   * [Day 8](sql\_book/day-8.md)
+  * [Day 9](sql\_book/day-9.md)
