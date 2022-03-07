@@ -18,7 +18,8 @@ SELECT 행 FROM 테이블 WHERE 조건식 ORDER BY 행1, 행2
 예시로 sample32 테이블을 보자
 <br>
 
-![img.png](images/10-1.png){: width="100%" height="100%"}
+[//]: # (![img.png]&#40;images/10-1.png&#41;)
+<img src="images/10-1.png" width="100%" height="100%">
 <br>
 슬쩍 보면 a, b 모두 숫자인데, a를 기준으로해서 값들을 정렬해보려고 한다<br>
 그러면 일단 order by a를 붙혀보자<br>
