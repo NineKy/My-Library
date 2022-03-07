@@ -37,4 +37,4 @@ insert into country values('Argentina' ,'Buenos aires', 'America');
 
  테이블생성, 레코드삽입  
 
-
+<br><br><br><br><br><br><br><br><br><br>

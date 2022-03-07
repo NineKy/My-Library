@@ -10,5 +10,8 @@ coverY: 0
 
 실습과정은
 
-{% embed url="https://github.com/kyu9/jojo-spring-boot" %}
+"https://github.com/kyu9/jojo-spring-boot"
 
+에 저장
+
+<br><br><br><br><br><br><br><br><br><br>
