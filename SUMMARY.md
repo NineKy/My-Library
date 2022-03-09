@@ -334,6 +334,7 @@
   * [객체지향 쿼리 언어](Java_ORM_JPA_Book/ch10/객체지향쿼리언어.md)
     * [JPQL part1](Java_ORM_JPA_Book/ch10/JPQL.md)
     * [JPQL part2](Java_ORM_JPA_Book/ch10/JPQL-2.md)
+    * [JPQL part3](Java_ORM_JPA_Book/ch10/JPQL-3.md)
 * [SQL](SQL_Example/README.md)
   * [Revising the Select Query](SQL_Example/revising-the-select-query.md)
   * [Basic Select](SQL_Example/basic-select.md)
