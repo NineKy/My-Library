@@ -337,6 +337,7 @@
     * [JPQL part3](Java_ORM_JPA_Book/ch10/JPQL-3.md)
     * [QueryDSL](Java_ORM_JPA_Book/ch10/QueryDSL.md)
     * [NativeSQL](Java_ORM_JPA_Book/ch10/NativeSQL.md)
+    * [객체지향 쿼리 심화](Java_ORM_JPA_Book/ch10/ObjectiveQueryHard.md)
 * [SQL](SQL_Example/README.md)
   * [Revising the Select Query](SQL_Example/revising-the-select-query.md)
   * [Basic Select](SQL_Example/basic-select.md)
