@@ -3,6 +3,8 @@
 https://spring.io/guides/tutorials/spring-boot-kotlin/ <br>
 공식으로 제공해주고 있는 기본 SpringBoot + Gradle + Kotlin + Spring JPA로 구성 <br>
 
+하는건 일단 깃에 올리면서 하는게 맞는듯 : https://github.com/kyu9/JPA-Book-Practice
+
 프로젝트의 설정에서 <br>
 groupId : 프로젝트 그룹명
 artifactId : 프로젝트를 식별하는 아이디
