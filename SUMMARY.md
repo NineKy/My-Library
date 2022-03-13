@@ -338,6 +338,7 @@
     * [QueryDSL](Java_ORM_JPA_Book/ch10/QueryDSL.md)
     * [NativeSQL](Java_ORM_JPA_Book/ch10/NativeSQL.md)
     * [객체지향 쿼리 심화](Java_ORM_JPA_Book/ch10/ObjectiveQueryHard.md)
+  * [응용 애플리케이션](Java_ORM_JPA_Book/ch11/application.md)
 * [SQL](SQL_Example/README.md)
   * [Revising the Select Query](SQL_Example/revising-the-select-query.md)
   * [Basic Select](SQL_Example/basic-select.md)
@@ -357,3 +358,4 @@
   * [Day 11](sql\_book/day-11.md)
   * [Day 12](sql\_book/day-12.md)
   * [Day 13](sql\_book/day-13.md)
+  * [Day 14](sql\_book/day-14.md)
