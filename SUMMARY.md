@@ -362,3 +362,4 @@
   * [Day 14](sql\_book/day-14.md)
   * [Day 15](sql\_book/day-15.md)
   * [Day 16](sql\_book/day-16.md)
+  * [Day 17](sql\_book/day-17.md)
