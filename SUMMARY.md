@@ -341,7 +341,8 @@
   * [응용 애플리케이션](Java_ORM_JPA_Book/ch11/application.md)
     * [엔티티 설정](Java_ORM_JPA_Book/ch11/application_entity.md)
 * [Oracle](Oracle/README.md)
-  * 
+  * [Oracle 기본](Oracle/OracleBasic.md)
+  * [Oracle 심화](Oracle/OracleIntermid.md)
 * [SQL_연습](SQL_Example/README.md)
   * [Revising the Select Query](SQL_Example/revising-the-select-query.md)
   * [Basic Select](SQL_Example/basic-select.md)
