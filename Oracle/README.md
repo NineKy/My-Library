@@ -5,8 +5,8 @@
 회사에서 정리해둬야 하지만... 일하기 바쁘기 때문에 시간날 때 정리해서 가져가던가 하자!
 
 구성으로는 이렇게 2개로 나눴고 <br>
-[오라클 기본](OracleBasic.md) <br>
-[오라클 심화](OracleIntermid.md) <br>
+[오라클 기본](https://kyudo97.gitbook.io/library/oracle/oraclebasic) <br>
+[오라클 심화](https://kyudo97.gitbook.io/library/oracle/oracleintermid) <br>
 <br><br>
 
 모든 내용은 본인의 뇌 + [오라클DATABASE 11g와 함께하는 SQL과 PL/SQL](https://book.naver.com/bookdb/book_detail.nhn?bid=6595198) + 구글링 
