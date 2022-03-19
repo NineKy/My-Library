@@ -112,7 +112,7 @@ LOB(Large OBject) : LOB란 2GB를 초과하는 큰 대용량의 데이터를 저
 
 # 테이블 설계
 테이블의 정의는 DDL(Data Definition Language)를 사용하고 그 종류로는 CREATE, ALTER, DROP 이 있다 <br>
-##CREATE
+## CREATE
 테이블을 생성하는데는 CREATE 이라는 예약어를 사용하고 <br>
 ```sql
 CREATE 테이블이름 (
@@ -143,7 +143,7 @@ fk는 일단 테이블간의 관계를 정의할때 사용되며 관계를 정�
 CREATE TABLE 테이블명 AS SELECT * FROM 변경하려는테이블명 WHERE 1=2;<br>
 <br><br><br>
 
-##ALTER
+## ALTER
 테이블을 생성하고 난 뒤에는 ALTER를 통해서 테이블을 조작하는 것이 가능하다 <br>
 ALTER를 해주면 내부에 들어가있는 데이터인 '열'에 해당하는 데이터들은 그대로 존재하고 테이블의 구조만 변경된다 <br>
 변경할 수 있는 것들은 이런게 있다 <br>
@@ -246,14 +246,96 @@ SELECT * FROM SG_Score
 일단은 뭐 알고나 있자 <br>
 <br><br><br>
 
+## INSERT
+insert문을 한 번 실행할 때마다 한 행에 데이터가 저장된다. 그래도 이것의 사용은 이렇게 한다<br>
+INSERT INTO 테이블[(컬럼, 컬럼2, ...)] VALUES (값, 값 ...); <br>
+주의사항은 이러하다 <br>
+- 컬럼명과 입력하는 값의 수와 데이터타입은 반드시 동일해야 함
+- 기본 키와 NotNull으로 설정되어 있는 컬럼은 반드시 넣어줘야 한다 
+- 컬럼명이 생략되면 테이블에 존재하는 모든 컬럼을 작성해줘야 한다 
+- 입력하지 않은 컬럼의 값은 기본적으로는 null이 들어가지만 default값이 있으면 default값이 들어감 
+<br><br>
 
+만약 insert 시, 오류가 발생하면 이하의 항목들을 확인해보자
+- 컬럼명과 입력하는 값의 수가 동일하지 않을 때
+- 컬럼명과 데이터 타입이 동일하지 않을 때
+- 기본 키와 not null컬럼의 값이 입력되지 않았을 때
+- 기본키가 중복된 데이터나 null값을 입력할 때
+- 외부 키 컬럼의 값이 차조하는 테이블의 기본 키 값이 아닐 때
+- 고유 키 제약조건이 지정 컬럼에 중복된 데이터가 들어갈 때
+- 입력 값이 컬럼의 크기를 초과할 때
+<br><br>
 
+#### 서브쿼 리가 있는 INSERT 문
+서브 쿼리가 있는 insert문은 기존 테이블의 모든 데이터 또는 일부분을 다른 테이블에 동일하게 복사하는 경우에 유용하다 <br>
+주의사항으로는 
+- insert 문의 컬럼 수와 select 절의 컬럼 수가 반드시 동일
+- insert 문의 컬럼과 select 절의 컬럼의 데이터 타입은 반드시 동일
+- select 절에 기술된 컬럼이 insert에 기술된 컬럼의 순서대로 값에 저장
+
+<br><br><br>
+
+## UPDATE
+이것은 테이블에 저장된 각 행들의 컬럼들을 변경하는데 사용 <br>
+UPDATE 테이블 SET 컬럼=바꿀값 [WHERE 조건]; <br>
+<br><br><br>
+
+## DELETE
+테이블에 저장된 각 행을 삭제하는 방법이고 단일로도 삭제 가능하고 전체 행을 삭제하는 것도 가능 <br>
+DELETE FROM 테이블 [WHERE 조건]; <br>
+만약 WHERE절을 따로 언급해주지 않는다면 **모든 행을 삭제**하고 WHERE절이 있다면 해당 절에 만족하는 행만 삭제함 <br>
+<br>
+이외에도 TRUNCATE TABLE을 사용해서 테이블에 존재하는 모든 행을 삭제할 수 있다 테이블을 싹 비우는데에는 DELETE보다는 좋지만 <br>
+TRUNCATE을 통해서 삭제된 행(데이터)들은 복구될 수 없다는 단점이 존재한다 <br>
+<br><br><br>
+
+## MERGE
+MERGE문은 테이블의 구조가 동일한 두 개 이상의 테이블이나 뷰, 서브 쿼리로부터 데이터를 비교하여 하나의 데이터를 병합하는 방식으로, 오라클에서만 제공해주는 명령어다 <br>
+이 명령어는 결국 입력과 수정을 동시에 작업할 수 있는 명령어이다 <br>
+```sql
+MERGE INTO 테이블A
+  USING [ 테이블 B | 뷰 | 서브쿼리 ]
+  ON [ 조건 ]
+  WHEN MATCHED THEN UPDATE SET ...
+  WHEN NOT MATCHED THEN INSERT INTO .... VALUES ...;
+```
+- 테이블A : 대상 테이블명
+- USING : 원본 테이블이나 뷰 또는 서브 쿼리를 적음
+- 조건 : 원본 테이블이나 대상 테이블에 대한 조건을 비교하여 만족하면 UPDATE/DELETE, 만족하지 않으면 INSERT
+- WHEN MATCHED : 조건이 만족하는 경우 실행할 UPDATE문이나 DELETE문을 작성
+- WHEN NOT MATCHED : 조건이 만족하지 않을 경우 실행할 INSERT문을 작성
+
+![img.png](img.png) <br>
+예시를 보자 <br>
+Course_Temp 테이블에 새로 개설된 과목과 변경된 과목을 이용하여 Course 테이블에 병합하라
+```sql
+MERGE INTO Course C
+      USING Course_Temp T
+      ON ( C.Course_ID = T.Course_ID )
+WHEN MATCHED THEN
+      UPDATE
+      SET C.Title = T.Title, C.Course_Fees = T.Course_Fees
+WHEN NOT MATCHED THEN
+      INSERT
+      ( Course_ID, Title, C_Number, Professor_ID, Course_Fees) 
+      VALUES
+      ( T.Course_ID, T.Title, T.C_Number, T.Professor_ID, T.Course_Fees);      
+```
+일단은 이렇게 사용한다~ 라고 알아두고 실제로 사용할 때 보충해서 적어두자 <br>
+<br><br><br>
+
+## 트랜잭션 제어 명령
+오라클 디비에서는 데이터 변경 작업이 즉각적으로 반영되지 않는다 시간을 두고 변경 작업을 디비에 적용하는데, <br>
+이를 관리하는 단위가 트랜잭션이다 <br>
+트랜잭션이란 테이블에 대해서 행을 추가하거나 컬럼 값 수정 또는 행의 삭제에 의해서 변경되는 작업의 단위 / 변경작업을 할 수 있도록 사용자에게 할당된 기간 <br>
+여기서 나오는 명령어는 2개가 있다 <br>
+- COMMIT : 테이블에 대한 트랜잭션 영역의 변경 작업을 영구히 저장
+- ROLLBACK : 테이블에 대한 트랜잭션 영억의 변경 작업을 삭제
+<br>
 
 
 
 기타 함수 - DECODE, NVL-NVL2, TO_DATE, TO_CHAR, CASE-WHEN
-
-인덱스
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 tips
