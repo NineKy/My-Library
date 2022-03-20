@@ -208,7 +208,15 @@ DML(Data Manipulation Language)라는 데이터 조작어를 사용해서 진행
 - DELETE : 행 삭제
 - MERGE : 두 개 이상의 테이블 데이터를 하나의 테이블로 병합
 
-<br><br><br>
+<br>
+
+DUAL 테이블 <br>
+
+오라클에서 제공해주는 테이블이고, 원하는 함수의 계산 결과값을 확인할 때 사용 <br>
+
+굳이 함수를 테스트하기 위해서 테이블을 만들어서 테스트하는 것이 아니라 dual테이블을 사용해서 함수 값을 리턴받는 것이 가능하다! <br>
+
+<br><br>
 
 ## SELECT
 
@@ -371,7 +379,7 @@ WHEN NOT MATCHED THEN
       INSERT
       ( Course_ID, Title, C_Number, Professor_ID, Course_Fees) 
       VALUES
-      ( T.Course_ID, T.Title, T.C_Number, T.Professor_ID, T.Course_Fees);  
+      ( T.Course_ID, T.Title, T.C_Number, T.Professor_ID, T.Course_Fees);
 ```
 
 일단은 이렇게 사용한다~ 라고 알아두고 실제로 사용할 때 보충해서 적어두자 <br>
@@ -444,9 +452,8 @@ SQL 에는 데이터 조작을 위한 다양한 SQL 함수를 제공하고 있�
 
 TO_DATE(문자형 데이터, '날짜형 변환형식')로 사용하고
 
-가장 풀로 사용하는건 'YYYY-MM-DD HH24:MI:SS' 이 형식에서 수정하고 더 찾아서 사용하자<br>
-
-<br><br>
+가장 풀로 사용하는건 'YYYY-MM-DD HH24:MI:SS' 이 형식에서 수정하고 더 찾아서 사용하자
+<br>
 
 #### 문자형으로 변환하는 TO_CHAR()
 
@@ -455,10 +462,12 @@ TO_DATE(문자형 데이터, '날짜형 변환형식')로 사용하고
 TO_CHAR(날짜형 데이터, '날짜형 변환형식') 이렇게 사용
 
 추가로 TO_CHAR(숫자형 데이터, '숫자형 변환형식') 이렇게 숫자형 데이터를 문자형 데이터로 수정하는 것이 가능하다
+<br>
 
 #### 숫자형으로 변환하는 TO_NUMBER()
 
 이건 문자열 데이터를 숫자형 데이터로 수정하는 방식이다
+<br>
 
 ## NULL 관련 함수
 
@@ -467,10 +476,13 @@ TO_CHAR(날짜형 데이터, '날짜형 변환형식') 이렇게 사용
 - NULLIF(expr1, expr2) : expr1==expr2 ? null : expr1
 - LANVL(조건) : 조건이 참이면 거짓을 리턴, 거짓이면 참 리턴
 - COALESCE(expr1, expr2, expr3, ...) : expr1이 null이 아니면 expr1을 리턴, null이면 expr2이 null인지 비교해서 쭉쭉 뒤로 나감
+  <br>
 
 ## 기타 함수
 
 #### DECODE(expr, 비교값1, 리턴값1, 비교값2, 리턴값2, 비교값N, 리턴값N) : expr이 비교값이면 리턴값을 리턴
+
+<br>
 
 #### CASE-WHEN
 
@@ -490,14 +502,56 @@ END
 
 함수를 사용해서 데이터를 원하는 형태로 변환하는 경우도 있지만 <br>
 
-여러가지 조건에 따라서 데이터를 다양하게 변환할 때 사용하고 2가지 방법으로 작성해볼 수 있음
+여러가지 조건에 따라서 데이터를 다양하게 변환할 때 사용하고 2가지 방법으로 작성해볼 수 있음 <br>
+<br><br><br>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+## 고급 SQL 함수
+
+#### GROUP BY절과 그룹 함수
+
+테이블의 전체 데이터를 특정 데이터 기준으로 그룹화하는 것이 GROUP BY <br>
+GROUP BY절은 FROM절에 기술된 테이블의 컬럼들을 이용해서 그룹화할 컬럼명을 기술하고 컬럼의 데이터를 그룹화해서 중간 결과 테이블을 생성한다 <br>
+HAVING 절을 사용해서 GROUP BY절에 대해서 검색 조건을 지정한다 <br>
+<br>
+
+#### 그룹함수
+
+그룹함수는 복수 행을 처리해서 오직 한 행의 결과 값을 반환한다 <br>
+
+- count() : 테이블의 행의 수를 리턴
+- MAX() : 컬럼 값에서 최대 수를 리턴
+- MIN() : 컬럼 값에서 최소 수를 리턴
+- SUM() : 컬럼 값의 합계를 리턴
+- AVG() : 컬럼 값의 평균 리턴
+- STDDEV() : 컬럼 값의 표준편차를 리턴
+- VARIANCE() : 컬럼 값의 분산을 리턴
+
+고려사항으로는
+
+- 컬럼의 null값은 계산에서 제외
+- 행의 수와 관계없이 단 하나의 행만을 반환
+- 그룹 함수는 단일 컬럼과 함께 사용할 수 없음
+- WHERE절을 사용하면 검색조건이 참이 되는 행에 대해서 계산
+  <br><br>
+
+ROLLUP, CUBE 를 사용하면 그룹 조건에 따라 그룹별 합계를 계산해서 출력할 수 있음 <br>
+ROLLUP : 그룹핑 컬럼의 그룹별 합계 정보를 출력하는데 그 순서는 a,b,c가 있다면 -> abc, ab, a, 전체 순으로 조합결과를 반환 <br>
+CUBE : 그룹핑된 컬럼의 가능한 모든 조합에 대한 합계정보를 출력 <br>
+<br>
+
+**그룹핑 함수 : 이 함수들은 연산기능은 없고, 출력 결과에 대한 사용자의 이해를 위하여 사용된다** <br>
+GROUPING(expr) : expr이 ROLLUP 또는 CUBE 연산에 사용이 되었는지를 보여주는 함수
+- expr은 GROUP BY절에 기술된 컬럼의 하나와 반드시 일치되어야 한다 
+- expr은 컬럼의 값이 모든 조합의 집합에서 null로 나타나면 1을 반환하고 아니면 0을 반환
+<br>
+
+GROUPING_ID(expr, ...) : ROLLUP, CUBE, GROUPING() 함수와 함께 사용하여 expr이 연산의 사용 유무에 따라 0, 1을 반환
+<br><br>
+
+GROUP_ID() : 지정된 GROUP BY 결과로부터 중복된 그룹을 구별하며, 질의 결과에서 중복된 GROUPING을 필터링하는데 유용하며 유일한 중복 그룹을 식별하기 위해서 오라클 숫자를 반환한다 <br>
+<br><br>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 tips
 오라클에서는 ""(빈문자열)을 null로 처리..! 빈값을 "'로 넘겨줄 때 null로 나오는거 주의하자
-
-DUAL 테이블
-
-오라클에서 제공해주는 테이블이고, 원하는 함수의 계산 결과값을 확인할 때 사용
-
-굳이 함수를 테스트하기 위해서 테이블을 만들어서 테스트하는 것이 아니라 dual테이블을 사용해서 함수 값을 리턴받는 것이 가능하다!
