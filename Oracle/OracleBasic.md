@@ -210,11 +210,12 @@ DML(Data Manipulation Language)라는 데이터 조작어를 사용해서 진행
 
 <br>
 
-DUAL 테이블 <br>
+**DUAL 테이블**<br>
 
-오라클에서 제공해주는 테이블이고, 원하는 함수의 계산 결과값을 확인할 때 사용 <br>
-
-굳이 함수를 테스트하기 위해서 테이블을 만들어서 테스트하는 것이 아니라 dual테이블을 사용해서 함수 값을 리턴받는 것이 가능하다! <br>
+오라클에서 제공해주는 테이블이고, 원하는 함수의 계산 결과값을 확인할 때 사용<br>
+어떠한 것들 테스트해보고 싶을 때, 예시로는 함수를 테스트하기 위해서 테이블을 만들어서 테스트하는 것이 아니라 <br>
+dual테이블을 사용해서 함수 값을 리턴받는 것이 가능하다! <br>
+말 그대로 테스트용 더미 테이블이라고 생각하면 된다<br>
 
 <br><br>
 
@@ -316,9 +317,10 @@ INSERT INTO 테이블[(컬럼, 컬럼2, ...)] VALUES (값, 값 ...); <br>
 - 외부 키 컬럼의 값이 차조하는 테이블의 기본 키 값이 아닐 때
 - 고유 키 제약조건이 지정 컬럼에 중복된 데이터가 들어갈 때
 - 입력 값이 컬럼의 크기를 초과할 때
+- 오라클에서는 ""(빈문자열)을 null로 처리..! 빈값을 "'로 넘겨줄 때 null로 나오는거 주의
   <br><br>
 
-#### 서브쿼 리가 있는 INSERT 문
+#### 서브쿼리가 있는 INSERT 문
 
 서브 쿼리가 있는 insert문은 기존 테이블의 모든 데이터 또는 일부분을 다른 테이블에 동일하게 복사하는 경우에 유용하다 <br>
 주의사항으로는
@@ -549,9 +551,246 @@ GROUPING_ID(expr, ...) : ROLLUP, CUBE, GROUPING() 함수와 함께 사용하여 
 <br><br>
 
 GROUP_ID() : 지정된 GROUP BY 결과로부터 중복된 그룹을 구별하며, 질의 결과에서 중복된 GROUPING을 필터링하는데 유용하며 유일한 중복 그룹을 식별하기 위해서 오라클 숫자를 반환한다 <br>
+<br><br><br>
+
+# 조인
+조인이란 어떤 값의 공통된 집합을 공유하는 둘 이상의 테이블로부터 행을 검색하는 것 <br>
+조인을 하기 위해서는 SELECT문의 FROM절에 적어도 두 개 이상의 테이블이 존재해야하고, WHERE절에 하나 이상의 조인 조건이 있어야 한다 <br>
+<br>
+SELECT문의 FROM절에 테이블이나 뷰 등이 두 개 이상이 기술되고, 조인조건이나 출력할 컬럼 등을 기술하는 WHERE절이나 SELECT절 등에서 각 테이블에 사용된 동일한 컬럼명이 구분되어야 함 <br>
+```sql
+SELECT 테이블1.컬럼1, 컬럼2, 리터럴, 함수 ...
+FROM 테이블1, 테이블2, 뷰1, ...
+WHERE 테이블1.컬럼1 연산 테이블2.컬럼1 ...
+GROUP BY 테이블1.컬럼1, 컬럼2 ...
+HAVING 검색조건
+ORDER BY 테이블1.컬럼1 ...
+```
+<br>컬럼을 구분하기 위해서 테이블.컬럼 이렇게 기술하고 테이블명에 별명을 사용하면 더욱 쉽게 단순화할 수 있다 <br>
+각 테이블의 공통된 행일 때 부속 질의어는 서브 쿼리에 사영하는 테이블의 컬럼을 출력하지 못하지만 조인은 FROM절에 기술한 테이블의 컬럼들은 언제든 출력가능 <br>
+하지만 조인하는데 있어서 2개 이상의 테이블을 정의하는데, 각 테이블이나 뷰에서 같은 이름의 컬럼이 존재하고 있다면 테이블명.컬럼명 이렇게 지정해주지 않으면 <br>
+'ORA-00918: 열의 정의가 애매합니다' 라는 에러가 나오기 떄문에 컬럼명에 주의하자 <br><br> 
+<br>
+**조인의 종류로는**
+- 카티션 프로덕트(Cartesian Product)
+- 등가 조인(equi join)
+- 외부 조인(outer join)
+- 자가 조인(self join)
+- 비등가 조인(non-equi join)
+- 안티 조인(anti join)
+- 세미 조인(semi join)
+<br>
+
+## 카티션 프로덕트
+카티션 프로덕트는 크로스 조인, 교차조인이라고도 불리우고 SELECT문의 WHERE절에 조인조건이 생략된 것이다 크로스 조인이라는 것의 의미는 <br>
+조인하려는 테이블의 모든 행을 곱한만큼의 수를 출력하는 것이다 즉, 조인하는 것의 모든 경우 수를 만드는 것이다 <br>
+사용하는 방법으로는 CROSS JOIN이라는 키워드를 사용하면 된다 <br>
+```sql
+SELECT 테이블명.컬럼명, 컬럼명, ...
+FROM 테이블명1 CROSS JOIN 테이블명2
+```
+<br><br>
+## 등가조인
+등가조인이란 두 개 이상의 테이블로부터 행을 검색할 때, 한 테이블에 있는 하나 이상의 컬럼 값이 다른 테이블에 있는 하나 이상의 컬럼 값과 같을 때 참이 되고, 참이 될 때 행의 컬럼 값을 조합하여 출력하는 조인이다 <br>
+등가조인은 내부조인(inner join)이나 단순조인(simple join)이라고도 불리우고 가장 많이(?) 사용되는 조인 방식이고 방법으로는 
+- WHERE절을 이용한 방법
+- NATURAL JOIN 키워드를 이용한 방법
+- JOIN-USING 키워드를 이용한 방법
+
+이렇게 있다 <br>
+<br>
+**WHERE를 이용**
+등가조인은 SELECT문을 WHERE절에서 조인조건으로 '=' 관계연산자를 사용한다 <br>
+```sql
+테이블명1.컬럼명 = 테이블2.컬럼명
+-------------------------
+SELECT P.Professor_ID, Name, Position, Title, C_Number
+FROM Professor P, Course C
+WHERE P.Professor_ID = C.Professor_ID
+ORDER BY P.Professor_ID;
+```
+조인조건은 단순하게 WHERE절에서 테이블1.컬럼 = 테이블2.컬럼 이렇게 작성해주면 두 테이블의 컬럼값이 공통된 행에 대해서 출력해준다 <br>
+<br><br>
+
+**NATURAL JOIN를 이용**
+표준문법으로 등가조인은 WHERE절을 생략하고 FROM절에 NATURAL JOIN 키워드를 사용할 수 있다 <br>
+FROM절에서 NATURAL JOIN키워드를 사용하면 자동으로 테이블간의 모든 컬럼을 대상으로 공통 컬럼을 조사해서 내부적으로 조인을 생성 <br>
+단, SELECT 절에 공통 컬럼은 테이블의 별명을 붙이지 않으며 NATURAL JOIN 키워드에 사용된 컬럼은 식별자를 가질 수 없다 <br>
+```sql
+SELECT 테이블명.컬럼명, 컬럼명 ...
+FROM 테이블1 NATURAL JOIN 테이블2
+-------------------------
+SELECT Professor_ID, Name, Position, Title, C_Number
+FROM Professor NATURAL JOIN Course
+ORDER BY Professor_ID;
+```
+여기서 두 테이블간의 공통 컬럼이 기술되지 않더라도 Course 테이블의 Professor_ID와 Professor테이블의 Professor_ID가 된다<br>
+<br><br>
+
+**JOIN~USING를 이용**
+NATURAL JOIN은 모든 컬럼을 대상으로 공통컬럼을 찾아서 그 공통 컬럼으로 조인을 진행하기 때문에 속도가 느리다는 단점이 존재 <br>
+JOIN~USING 키워드는 두 테이블간의 조인조건에 해당하는 공통 컬럼명을 ()안에 넣어줘서 바로 조인을 진행해서 속도가 빨라진다 <br>
+```sql
+SELECT 테이블명.컬럼명, 컬럼명 ...
+FROM 테이블명1 JOIN 테이블명2 USING (공통컬럼명)
+...
+----------------------------------
+SELECT Professor_ID, Name, Position, Title, C_Number
+FROM Professor JOIN Course USING (Professor_ID)
+ORDER BY Professor_ID;
+```
+<br><br><br>
+
+## 외부조인
+외부조인은 테이블간의 공통된 행과 공통되지 않은 테이블의 행들을 모두 출력한다. 외부조인은 어디 테이블에서 공통되지 않은 테이블을 출력할 것인지를 정하는데 있어서 left outer join, right outer join으로 나누어지게 된다 <br>
+그리고 외부조인을 작성하는 방법은
+- WHERE절의 등가조인 조건에 (+)을 기술한다
+  - left outer join은 등가조인 WHERE절 조인조건의 오른쪽에 (+) 작성
+  - right outer join은 등가조인 WHERE절 조인조건의 왼쪽에 (+) 작성
+- OUTER JOIN ~ ON ~ 키워드로 기술한다
+  - left outer join은 LEFT OUTER JOIN ~ ON ~
+  - right outer join은 RIGHT OUTER JOIN ~ ON ~
+  - 전체 outer join은 FULL OTER JOIN ~ ON ~
+```sql
+SELECT 테이블명.컬럼명, 컬럼명
+FROM 테이블1 [LEFT | RIGHT | FULL] OUTER JOIN 테이블명2 ON 조인조건
+....
+```
+조인조건은 공통 컬럼의 테이블1.컬럼 = 테이블2.컬럼 이렇게 작성 <br>
+<br><br>
+
+#### WHERE절에 LEFT OUTER JOIN 
+left outer join은 등가조인의 WHERE절 조인조건에서 오른쪽 위치에 (+)을 작성하면되고 <br>
+예시로 테이블1, 테이블2를 조인하게 되면 왼쪽에 해당하는 테이블1의 모든 행 + 테이블1,2의 공통된 행 이렇게를 뽑아온다 <br>
+```sql
+SELECT P.Professor_ID, Name, Position, Title, C_Number
+FROM Professor P, Course C
+WHERE P.Professor_ID = C.Professor_ID (+)
+ORDER BY P.Professor_ID;
+```
+<br><br>
+
+#### WHERE절에 RIGHT OUTER JOIN
+right outer join은 등가조인의 WHERE절 조인조건에서 왼쪽 위치에 (+)을 넣어서 공통된 행과 테이블2의 공통되지 않은 행들을 출력 <br>
+위의 left outer join과는 반대로 오른쪽에 해당하는 테이블2의 모든 행 + 테이블1, 2의 공통된 행 이렇게를 추출 <br>
+```sql
+SELECT P.Professor_ID, Name, Position, Title, C_Number
+FROM Professor P, Course C
+WHERE P.Professor_ID(+), C.Professor_ID
+ORDER BY P.Professor_ID;
+```
+<br><br>
+
+#### OUTER JOIN 키워드를 사용한 left outer join
+left outer join은 FROM절에 '테이블1 LEFT OUTER JOIN 테이블2 ON 조인조건' 이렇게 작성하고 만약에 값이 null을 가지고 있어도 다 출력 <br>
+```sql
+SELECT P.Professor_ID, Name, Position, Title, C_Number
+FROM Professor P LEFT OUTER JOIN Course C 
+  ON P.Professor_ID = C.Professor_ID
+ORDER BY P.Professor_ID;
+```
+<br><br>
+
+#### OUTER JOIN 키워드를 사용한 right outer join
+위에서 이야기했던 outer join 키워드로 거는 것과 동일하다 <br>
+```sql
+SELECT P.Professor_ID, Name, Position, Title, C_Number
+FROM Professor P RIGHT OUTER JOIN Course C 
+  ON P.Professor_ID = C.Professor_ID
+ORDER BY P.Professor_ID;
+```
+<br><br>
+
+#### OUTER JOIN 키워드를 사용한 전체 외부 조인
+FULL OUTER JOIN은 표준문법에서만 지원하고 FROM절에 '테이블1 FULL OUTER JOIN 테이블2 ON 조인조건' 키워드로 기술하고 조인조건에 만족하는 공통 행과 조인조건에 만족하지 않은 테이블1과 테이블2의컬럼 값이 null인 경우에도 출력 <br>
+결국 테이블1만 있는거 + 테이블1, 2 공통으로 있는거 + 테이블2만 있는거 이렇게 다 가져온다는 의미 <br>
+```sql
+SELECT P.Professor_ID, Name, Position, Title, C_Number
+FROM Professor P FULL OUTER JOIN Course C
+  ON P.Professor_ID = C.Professor_ID
+ORDER BY P.Professor_ID;
+```
+<br><br><br>
+
+## 자기조인(SELF JOIN)
+SELF JOIN이란 순환적 관계 모델링에 의해 표현되는 테이블이고 그 의미는 테이블이 자신의 기본 키를 참조하는 외부 키를 가지고 있을 때 사용된다는 것이다 <br>
+그리고 자기 조인은 FROM 절에 종일한 테이블을 두 번 적고 별명으로 구분해서 조인한다 <br>
+그 방법으로는 
+- FROM에 '테이블명 별명1, 테이블명 별명2'을 적어주고, WHERE에 조인조건을 기술
+- FROM에 '테이블명 별명1 JOIN 테이블명 별명2 ON 조인조건'
+- FROM에 '테이블명 별명1 INNER JOIN 테이블명 별명2 ON 조인조건'
+<br><br>
+
+#### WHERE절을 이용한 자기조인
+```sql
+SELECT T1.Professor_ID, T1.Name||' '||T1.Position "교수명"
+    T1.Dept_ID, T1.Duty, T2.Name||' '||T2.duty "관리자명"
+FROM Professor T1, ProfessorT2
+WHERE T1.Mgr = T2.Professor_ID
+ORDER BY T1.Dept_ID, T1.Professor_ID;
+```
+<br><br>
+
+#### JOIN~ON~ 을 이용한 자기조인
+```sql
+SELECT T1.Professor_ID, T1.Name ||' '|| T1.Position "교수명",
+  T1.Dept_ID, T1.Duty, T2.Name||' ' ||T2.duty "관리자명"
+FROM Professor T1 JOIN Professor_ID
+ORDER BY T1.Dept_ID, T1.Professor_ID;
+```
+<br><br>
+
+#### INNER JOIN 을 이용한 자기조인
+```sql
+SELECT T1.Professor_ID, T1.Name ||' '|| T1.Position "교수명",
+  T1.Dept_ID, T1.Duty, T2.Name||' '|| T2.Duty "관리자명"
+FROM Professor T1 INNER JOIN Professor T2
+  ON T1.Mgr = T2.Professor_ID
+ORDER BY T1.Dept_ID, T1.Professor_ID;
+```
+<br><br>
+
+## 기타 조인
+#### 비등가 조인
+비등가 조인이랑 조인 조건에서 =(등호)가 아닌 <, >와 같은 관계 연산자나 BETWEEN~AND~등과 같은 연산자를 사용한 조인 방법이다 <br>
+
+#### 서브 쿼리를 이용한 조인
+서브 쿼리를 이용한 조인 방법으로는 세미조인과 안티조인이 존재한다 <br>
+- 세미 조인(semi join)은 EXISTS와 IN 연산자의 효율적인 처리를 위한 조인
+- 안티 조인(anti join)은 메인 쿼리의 컬럼 값이 서브 쿼리의 반환 값을 만족하지 않는 행들을 반환 
 <br><br>
 
 
+## 집합연산자
+각 쿼리 결과 행에 대한 집합 연산을 할때 사용하는 집합 연산자
+- UNION, UNION ALL : 각 집합의 합을 반환하는 합집합이고 UNION ALL은 모든 원소를 포함한 합집합
+- INTERSECT : 각 집합의 공통된 행을 반환하는 교집합
+- MINUS : 한 집합에서 다른 집합을 뺀 행을 반환하는 차집합
+<br>
+
+주의사항으로는
+- 각 SELECT문은 ORDER BY 절을 포함하지 않기 때문에 전체 결과 행에 대한 ORDER BY 절을 포함할수는 없다
+- 첫 번째 SELECT문의 컬럼 수와 두 번째 SELECT문의 컬럼 수가 반드시 같아야 함
+- 첫 번째 SELECT문의 컬럼과 두 번째 SELECT문의 컬럼의 데이터타입이 같아야 함
+- 전체 결과 행에 대한 ORDER BY 절은 컬럼명보다 순서번호를 사용
+<br><br>
+
+예시로 보면 <br>
+A = {1, 3, 5, 7, 9} <br>
+B = {1, 2, 3, 4} <br>
+UNION = {1, 2, 3, 4, 5, 7, 9} <br>
+UNION ALL = {1, 1, 2, 3, 3, 4, 5, 7, 9} <br>
+INTERSECT = {1, 3} <br>
+A MINUS B = {5, 7, 9} <br>
+B MINUS A = {2, 4} <br>
+
+
+
+
+
+
+
+
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-tips
-오라클에서는 ""(빈문자열)을 null로 처리..! 빈값을 "'로 넘겨줄 때 null로 나오는거 주의하자
+
