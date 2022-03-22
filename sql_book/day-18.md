@@ -40,4 +40,31 @@ DISTINCT의 반대 예약어로는 ALL이 있다 디폴트값이기도 하기 �
 <br><br><br>
 
 
+# COUNT 이외의 집계함수
+집계함수에는 count 이외에도 SUM, AVG, MIN, MAX함수가 존재한다 <br>
+<br><br>
+
+## SUM으로 합계 구하기
+SUM이라는 집계함수는 집합의 합계를 구해주는 함수이다 <br>
+![img.png](images/18-3.png) <br>
+이렇게 sample51이라는 테이블에서의 quantity라는 행의 숫자를 더한 값이 나온다는 것을 확인 가능 <br>
+SUM 함수을 사용할 수 있는 값은 오직 수치형 뿐이다. 문자열이나 날짜형으로는 합계를 구할 수 없다 <br>
+사진을 보면 알겠지만 count함수와 같이 null값은 무시하고 제거한 뒤에 합계를 내고 있는 것을 볼 수 있다 <br>
+<br><br><br>
+
+## AVG로 평균내기
+위에서 sum으로 합을 낸 것을 가지고 평균을 구할 수 있다 <br>
+물론 단순하게 sum(quantity)/count(quantity) 이렇게 수식으로 표현해서 평균을 볼 수도 있지만 <br>
+AVG라는 함수를 사용하면 어렵지 않게 평균을 구할 수 있음 <br>
+![img_1.png](images/18-4.png)<br>
+avg라는 집계함수도 null을 무시하고 진행한다. 만약에 null을 0으로 간주해서 진행하고 싶다면 CASE문으로 null을 0으로 한번 변환하고 사용해야함 <br>
+![img_2.png](images/18-5.png)<br>
+<br><br><br>
+
+## MIN, MAX으로 최솟값, 최댓값 구하기
+MIN, MAX는 이름 그대로 최솟값, 최대값을 도출해주는 함수이다 <br>
+그래서 확인해봐야하는 부분은 문자열이나 날씨시간형에서도 사용할 수 있다는 점! 그리고 null값은 여전히 무시한다는 점! <br>
+<br><br><br>
+
+
 <br><br><br><br><br><br><br><br><br><br>
