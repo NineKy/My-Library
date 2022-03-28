@@ -51,7 +51,7 @@ CREATE TABLE 테이블명 (
 )
 ```
 열은 열에 붙히는 이름이고 자료형은 INTEGER, VARCHAR등으로 작성해주고 원하는 DEFAULT값을 설정해주고, NULL을 허용해줄 것인지를 추가해줌 <br>
-![img.png](img.png) <br>
+![img.png](images/23-1.png) <br>
 열명 자료형 [DEFAULT 기본값] [NULL | NOT NULL] <br>
 이렇게 열을 정의해나가면 된다 <br>
 <br><br><br>
@@ -72,7 +72,7 @@ ALTER TABLE 명령을 사용해서 처리할 수 있는 것 -> 열 추가/삭제
 #### 열 추가
 열을 추가하는 방법은 ALTER TABLE 테이블명 ADD 열정의 <br>
 CREATE 할때처럼 똑같이 열 정의를 해주면 된다 <br>
-![img_1.png](img_1.png) <br>
+![img_1.png](images/23-2.png) <br>
 하지만 이렇게 alter table add로 추가할때 만약 기존에 데이터 행이 존재하고 있으면 모두 기본값으로된다 <br>
 하지만 not null 제약이 걸린 열을 추가할 때는 기본값으로 지정해야 한다 <br>
 <br>
@@ -80,17 +80,17 @@ CREATE 할때처럼 똑같이 열 정의를 해주면 된다 <br>
 #### 열 속성 변경
 MODIFTY라는 키워드를 사용해서 진행한다 <br>
 CREATE처럼, ADD 처럼 작성하되, 열 이름은 변경할수는 없지만 자료형, 기본값, NOT NULL제약 등의 속성 변경 가능 <br>
-![img_2.png](img_2.png) <br>
+![img_2.png](images/23-3.png) <br>
 만약 변경하려는 값의 데이터 행이 존재하고 있는 경우에는 속성 변경에 따라서 데이터가 변경된다 <br>
 만약 변경할 수 없는 데이터가 있거나 에러가 나면 ALTER 명령 자체가 취소된다 <br>
 <br>
 열 이름 변경은 ALTER CHANGE를 사용해서 변경된다 <br>
 하지만 ORACLE같은 경우에는 RENAME TO 키워드를 사용한다는 점을 기억하자 <br>
-![img_3.png](img_3.png)<br>
+![img_3.png](images/23-4.png)<br>
 newcol 이라는 열 명을 c로 변경하느 모습 <br>
 <br>
 열 삭제는 ALTER DROP 을 사용해서 변경한다 <br>
-![img_4.png](img_4.png) <br>
+![img_4.png](images/23-5.png) <br>
 c를 삭제한 모습 <br>
 <br><br><br>
 
