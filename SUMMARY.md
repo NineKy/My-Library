@@ -370,3 +370,4 @@
   * [Day 19](sql\_book/day-19.md)
   * [Day 20](sql\_book/day-20.md)
   * [Day 21](sql\_book/day-21.md)
+  * [Day 22](sql\_book/day-22.md)
