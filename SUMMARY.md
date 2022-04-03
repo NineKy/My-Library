@@ -340,6 +340,8 @@
     * [객체지향 쿼리 심화](Java_ORM_JPA_Book/ch10/ObjectiveQueryHard.md)
   * [응용 애플리케이션](Java_ORM_JPA_Book/ch11/application.md)
     * [엔티티 설정](Java_ORM_JPA_Book/ch11/application_entity.md)
+  * [스프링 데이터 JPA](Java_ORM_JPA_Book/ch12/SpringDataJPA.md)
+    * [공통 인터페이스](Java_ORM_JPA_Book/ch12/공통인터페이스.md)
 * [Oracle](Oracle/README.md)
   * [Oracle 기본](Oracle/OracleBasic.md)
   * [Oracle 심화](Oracle/OracleIntermid.md)
