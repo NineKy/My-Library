@@ -376,3 +376,4 @@
   * [Day 23](sql\_book/day-23.md)
   * [Day 24](sql\_book/day-24.md)
   * [Day 25](sql\_book/day-25.md)
+  * [Day 26](sql\_book/day-26.md)
