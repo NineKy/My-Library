@@ -3,7 +3,7 @@
 <br><br>
 
 [인프런 링크](https://www.inflearn.com/course/이펙티브-자바-1/dashboard)
-<br><br>
+<br><br><br><br><br>
 
 ## 목차 -> 나중에 파일 만들게 되면 링크 걸자
 - 생성자 대신 정적 팩터리 메서드를 고려하라
@@ -21,4 +21,4 @@
 - clone 재정의는 주의해서 진행하라
 - Comparable을 구현할지 고민하라
 
-    
+<br><br><br><br><br><br><br><br><br><br>
