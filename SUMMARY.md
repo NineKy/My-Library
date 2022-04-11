@@ -380,3 +380,6 @@
   * [Day 27](sql\_book/day-27.md)
   * [Day 28](sql\_book/day-28.md)
   * [Day 29](sql\_book/day-29.md)
+* [더 자바 코드를 조작하는 다양한 방법](The_Java_Manipulation/README.md)
+* [더 자바, 애플리케이션을 테스트하는 다양한 방법](The_Java_TDD/README.md)
+* [이펙티브 자바](Effective_Java/README.md)
