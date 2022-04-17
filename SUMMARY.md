@@ -383,5 +383,6 @@
   * [Day 30](sql\_book/day-30.md)
 * [더 자바 코드를 조작하는 다양한 방법](The_Java_Manipulation/README.md)
   * [JVM 이해하기](The_Java_Manipulation/JVM_이해하기.md)
+  * [바이트코드 조작](The_Java_Manipulation/바이트코드조작.md)
 * [더 자바, 애플리케이션을 테스트하는 다양한 방법](The_Java_TDD/README.md)
 * [이펙티브 자바](Effective_Java/README.md)
