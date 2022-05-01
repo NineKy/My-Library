@@ -385,5 +385,6 @@
   * [JVM 이해하기](The_Java_Manipulation/JVM_이해하기.md)
   * [바이트코드 조작](The_Java_Manipulation/바이트코드조작.md)
   * [리플렉션](The_Java_Manipulation/리플렉션.md)
+  * [다이나믹 프록시](The_Java_Manipulation/다이나믹프록시.md)
 * [더 자바, 애플리케이션을 테스트하는 다양한 방법](The_Java_TDD/README.md)
 * [이펙티브 자바](Effective_Java/README.md)
