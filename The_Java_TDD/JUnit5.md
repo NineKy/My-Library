@@ -7,6 +7,7 @@ JUnit Platform : JVM에서 테스트 프레임워크를 돌릴 수 있도록 도
 <br><br>
 
 ## 단순한 문법과 테스트 코드의 구성 실습
+[https://github.com/kyu9/KDD/tree/master/src/test/java/me/kdshim/kdd_j](https://github.com/kyu9/KDD/tree/master/src/test/java/me/kdshim/kdd_j) <br>
 문법을 사용해보기 위해서 단순하게 함수들, 애노테이션들을 사용해보자 <br>
 근데 대충 이름만봐도 감이 오는 것들이라서 다행이다 <br>
 
@@ -31,8 +32,24 @@ JUnit Platform : JVM에서 테스트 프레임워크를 돌릴 수 있도록 도
 - assertTimeout
 - assumeTrue
 - assumingThat
-
+- @TestMethodOrder(MethodOrder.OrderAnnotation.class) -> OrderAnnotation, Alphanumeric, Random
+  - @Order(숫자)
+- @ExtendsWith
+- @RegisterExtension
+- @TestInstance(TestInstance.LifeCycle.PER_CLASS)
 
 <br><br><br>
+## 갑자기 퀴즈도 있네...
+틀린거 (FIXME)는 다시 기억해두자
+
+    //QUIZ
+    //1. @DisplayName
+    //2. junit platform
+    //3. @Tag
+    //4. assertAll
+    //FIXME 5. METHOD 뭐시기... -> RetentionPolicy.RUNTIME 이야 이거 들었던건데 까먹었네...
+    //6. @ExtendsWith, ServiceLoader, @RegisterExtension
+    //7. PER_CLASS, OrderAnnotation
+    //FIXME 8. ???? -> @ParameterizedTest, @AggregateWith
 
 <br><br><br><br><br><br><br><br><br><br>

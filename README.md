@@ -23,7 +23,7 @@ JPA프로그램 책<br>
 The Java 8(인강) <br>
 
 ### My Index
-* [인턴](Intern_Study/README.md)
+* [인턴](Web_Study/README.md)
 * [VISION\_스터디](vision\_study/README.md)
 * [학교 노트](school\_note/README.md)
 * [공부 자료들](undefined.md)
