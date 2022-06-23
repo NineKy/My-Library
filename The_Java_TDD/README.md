@@ -11,7 +11,7 @@
 <br>
 
 
-fullTest(전체 테스트 하는 gralde script도 만들어보자)
+fullTest(전체 테스트 하는 gralde script도 만들어보자) -> 성공! 요건 jacoco가 키포인트였다!
 
 [인프런 링크](https://www.inflearn.com/course/the-java-application-test/dashboard)
 <br><br><br><br><br>
@@ -20,8 +20,8 @@ fullTest(전체 테스트 하는 gralde script도 만들어보자)
 - [JUnit5](JUnit5.md)
 - [Mockito](Mockito.md)
 - [도커와 테스트](TestContainer.md)
-- 성능 테스트
-- 운영 이슈 테스트
-- 아키텍처 테스트
+- [성능 테스트](ApplicationTest.md)
+- [운영 이슈 테스트](ApplicationTest.md)
+- [아키텍처 테스트](ApplicationTest.md)
 
 <br><br><br><br><br><br><br><br><br><br>
