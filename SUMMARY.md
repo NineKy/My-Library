@@ -390,4 +390,7 @@
 * [더 자바, 애플리케이션을 테스트하는 다양한 방법](The_Java_TDD/README.md)
   * [JUnit5](The_Java_TDD/JUnit5.md)
   * [Mockito](The_Java_TDD/Mockito.md)
+  * [도커와 테스트](The_Java_TDD/TestContainer.md)
+  * [성능, 운영이슈, 아키텍처 테스트](The_Java_TDD/ApplicationTest.md)
 * [이펙티브 자바](Effective_Java/README.md)
+  * [생성자 대신 정적 팩토리 메소드를 고려하라](Effective_Java/EJ_item1.md)

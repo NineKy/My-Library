@@ -20,8 +20,6 @@ fullTest(전체 테스트 하는 gralde script도 만들어보자) -> 성공! �
 - [JUnit5](JUnit5.md)
 - [Mockito](Mockito.md)
 - [도커와 테스트](TestContainer.md)
-- [성능 테스트](ApplicationTest.md)
-- [운영 이슈 테스트](ApplicationTest.md)
-- [아키텍처 테스트](ApplicationTest.md)
+- [성능, 운영이슈, 아키텍처 테스트](ApplicationTest.md)
 
 <br><br><br><br><br><br><br><br><br><br>
