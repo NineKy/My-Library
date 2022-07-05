@@ -394,3 +394,5 @@
   * [성능, 운영이슈, 아키텍처 테스트](The_Java_TDD/ApplicationTest.md)
 * [이펙티브 자바](Effective_Java/README.md)
   * [생성자 대신 정적 팩토리 메소드를 고려하라](Effective_Java/EJ_item1.md)
+  * [생성자에 매개변수가 많다면 빌더를 고려하라](Effective_Java/EJ_item2.md)
+  * [생성자나 열거타입으로 싱글턴임을 보증하라](Effective_Java/EJ_item3.md)
