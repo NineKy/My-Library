@@ -142,3 +142,66 @@ public static void main(String[] args) {
 <br><br><br>
 
 
+그래서 -> 빌더 패턴을 통해서 단점을 보완하는 것이 가능하다 <br>
+기존까지의 경우는 생각해보면 새로운 필드가 추가되거나 필드가 아주 많은 경우에는 생성자로 구현해둔 상황에서는 정말 건드려야하는 부분이 많다 <br>
+<br>
+
+장점으로는  <br>
+첫 번째로는 원하는 필드로만 객체를 생성하는 것이 가능하다는 점이다 <br>
+만약 생성자를 사용한다고 가정하면 원하는 필드로만 이루어진 생성자를 따로 만들어서 적용해야 한다 <br>
+이러한 경우는 정말 너무 귀찮기도하다, 필드가 생기면 그 필드를 가진 생성자도 새로 만들어야하기 때문이다 <br>
+두 번째로는 가독성이다 <br>
+빌더 패턴의 특징으로는 메소드 체이닝을 통해서 객체를 생성한다는 점이다 <br>
+메소드 체이닝을 비교하기 좋은 예시는 자바빈즈 패턴을 예시로 볼 수 있다 <br>
+필드가 많으면 모든 필드에 대나 각각 setter을 통하거나 모든 필드를 가진 생성자를 통해서만 생성할 수 밖에 없다 <br>
+생성자는 그래도 나은 거 같긴 한데 세터는 어떻게 보면 좀 복잡하다고 볼 수 있다 <br>
+
+<br>
+예시를 한 번 보자 이렇게 다양하게 객체를 만들 수 있다 <br>
+
+```java
+public static void main(String[] args) {
+        Teeth teeth = new Teeth();
+        teeth.setFirst("THIS IS FIRST");
+        teeth.setSecond("THIS IS SECOND");
+        teeth.setThird("THIS IS THIRD");
+        teeth.setFourth("THIS IS FOURTH");
+        teeth.setFifth("THIS IS FIFTH");
+        
+        Teeth teeth2 = new Teeth("THIS IS FIRST", "THIS IS SECOND", "THIS IS THIRD", "THIS IS FOURTH", "THIS IS FIFITH");
+        
+        Teeth teeth3 = Teeth.builder() 
+                .first("THIS IS FIRST")
+                .second("THIS IS SECOND")
+                .third("THIS IS THIRD")
+                .fourth("THIS IS FOURTH")
+                .fifth("THIS IS FIFTH")
+                .build();
+    }
+```
+
+이렇게만 사용할 수 있는 것도 좋은 방식이다 참고해서 객체 생성하면 좋을 것 같다 <br>
+위에 계층형 빌더도 있다 -> 위 예시에서는 애노테이션을 사용해서 빌더를 생성했지만 이외에도 직접 구현하는 방법도 있다 <br>
+상속관계에 있는 객체에서 빌더 패턴을 구현한다고 할 때 부모 클래스에서 타입에 구애받지 않게 빌더를 구현한다면 자식클래스에서도 사용할 수 있다는 내용이다 <br>
+<br>
+
+책에서 나온 키워드 <br>
+Serialize -> 직렬화, DeSerialize -> 역직렬화 라고 한다 <br>
+뭔지 대충은 알고 있지만 정확한 개념으로는 객체를 어딘가에 저장할 때 객체 그대로 저장했다가 가져올 때 그 객체 그대로 가져오는 것을 보장해주는 개념이다 <br>
+implementation Serializable을 통해서 적용이 가능하며 이것은 데이터간의 통신이나 디비와의 통신등에 적용되면 좋다 <br>
+
+
+<br><br>
+checkedException, unCheckedException -> 이 두 예외 타입에 대해서 고민해보자 <br>
+우선 RunTimeException을 먼저 봐야한다 여기서 RunTimeException이란, 컴파일러에서 잡아주지 않는, 로직상에서 나오는 에러이다 <br> 
+checkedException은 RunTimeException을 상속하지 않는 케이스이다 그리고 uncheckedException이 RunTimeException을 상속한 케이스이다 <br>
+그럼 checkedException은 에러가 나면 무조건 로직이 깨지기 때문에 try-catch을 통해서 잡아줘야만 하며 그 메소드에 명시를 해줘야 한다 <br>
+반대로 unCheckedException은 굳이 명시를 해주지 않아도 괜찮기도 하고 안전하게 에러가 나면 바로 롤백을 통해서 안전하게 처리해준다 <br>
+그래서 토이에서도 현재 런타임예외를 상속받는 커스텀 예외를 만들어서 따로 부담 없이 예외를 던도록 처리를 해둔 상황이다 <br>
+
+<br><br>
+가변인수 -> 오.. 난 진짜 처음본다... 자바 1.5부터 나왔던 기능이라고하네요 그리고 printf 와같은 메소드에서 사용한다는 것 <br>
+
+가변인수는 파라미터를 받는데 있어서 매개변수의 숫자를 동적으로 지정해주는 방식을 의미한다 <br>
+이렇게 되면 각 파라미터에 대한 생성자가 있다는 가정 하에, 원하는 매개변수 숫자만큼 넣어서 객체를 생성하는 것이 가능하다 <br>
+그럼 맨 처음에 나왔었던 다양한 생성자에 대한 복잡함을 그나마 줄여서 사용할 수 있다는 것이 장점인 것 같다
