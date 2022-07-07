@@ -396,3 +396,5 @@
   * [item1 - 생성자 대신 정적 팩토리 메소드를 고려하라](Effective_Java/EJ_item1.md)
   * [item2 - 생성자에 매개변수가 많다면 빌더를 고려하라](Effective_Java/EJ_item2.md)
   * [item3 - 생성자나 열거타입으로 싱글턴임을 보증하라](Effective_Java/EJ_item3.md)
+  * [item4 - 인스턴스화를 막기 위해선 private 생성자를 사용하라](Effective_Java/EJ_item4.md)
+  * [item5 - 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](Effective_Java/EJ_item5.md)
