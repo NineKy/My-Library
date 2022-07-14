@@ -46,4 +46,29 @@ ScheduledExcutorService.scheduleAtFixedRate() 을 통해서 원하는 시간 마
 그래서 이건 또 Week Reference 을 통하면 그나마 쉽게 처리하는 것이 가능하다 <br>
 <br><br><br>
 
+### NullPointerException <br>
+<br>
+nullpointerexception 이 발생하는 이유는 우선, 메소드에서 null 이 발생하기 때문이랑, null 체크를 하지 않았기에 발생한다 <br>
+가장 많이 보이는 nullPointException 은 equals() 메소드를 활용할 때 발생하는 것 같다 -> 물론 많은 null point exception 을 본 것은 아니지만 적은 경험 내에서는 equals()에서
+가장 많이 발생했던 것 같다 <br>
+여기에서 좋은 점으로는 null point exception 이 발생했을 때, 어디에서 발생하는지 파악하는 것이 쉬워서 잡는 것도 편한 편이다 <br>
+처리하는 방법도 그냥 단순하게 equals으로 비교하는 대상이 null 인지 검증하는 그러한 단순한 작업이다 <br>
+이외에도 다른 방법으로는 Exception 을 던져주던가, null 을 리턴하도록 하던가, optional 을 리턴하는 방법이 있다 <br>
+optional은 자바8부터 사용할 수 있으며, 요놈은 ifPresent()나 isEmpty() 와 같은 메소드를 통해서 원하는 작업등을 사용해서 진행하는 것이 가능하다 <br>
+optional은 null safe 하게 만들어주는 좋은 타입이지만 어찌되었든 한 번 감싸준 객체이기 때문에 primitive 타입보다는 무겁다는 특징이 존재한다 <br>
+또한 사용할 때 메소드의 리턴타입으로는 사용하기 좋지만 매개변수와 같은 곳에서 받아서 사용하기에는 뭔가 이상하기도 하면서, 파라미터 또한 검증해야하는 귀찮음이 생긴다는 점도 기억하자 <br>
+그것 이외에도 optional 로 list나 set와 같은 collection은 감쌀 필요가 없다 -> 이것은 list나 set에는 비어있는지를 검증하는 메소드가 이미 존재하고 있기 때문에 굳이 필요하지 않다는 점이다 <br>
+그리고 primitive 타입을 optional로 감싸고 싶다면 OptionalInt, OptionalLong 과 같이 이미 제공되는 것들이 있기 때문에 참고 <br>
+
+
+WeekHashMap -> soft reference, strong reference, week reference, phantom reference <br>
+<br>
+더 이상 사용하지 않는 객체를 수거해가는 과정에서 위에서 이야기 한 것 처럼, 해당 키가 참조하는 value가 더 이상 존재하지 않는 것으로 확인되면 자동으로 수거해주는 그런 타입이다 <br>
+<br>
+
+
+
+ScheduledThreadPoolExecutor <br>
+
+
 
