@@ -400,3 +400,5 @@
   * [item5 - 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](Effective_Java/EJ_item5.md)
   * [item6 - 불필요한 객체 생성을 피하라](Effective_Java/EJ_item6.md)
   * [item7 - 다 쓴 객체 참조를 해제하라](Effective_Java/EJ_item7.md)
+  * [item8 - finalizer와 cleaner 사용을 피하라](Effective_Java/EJ_item8.md)
+  * [item9 - try-finally 보다 try-with-resources을 사용하라](Effective_Java/EJ_item9.md)
