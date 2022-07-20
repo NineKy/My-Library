@@ -48,10 +48,10 @@ ScheduledExcutorService.scheduleAtFixedRate() 을 통해서 원하는 시간 마
 
 ### NullPointerException <br>
 <br>
-nullpointerexception 이 발생하는 이유는 우선, 메소드에서 null 이 발생하기 때문이랑, null 체크를 하지 않았기에 발생한다 <br>
-가장 많이 보이는 nullPointException 은 equals() 메소드를 활용할 때 발생하는 것 같다 -> 물론 많은 null point exception 을 본 것은 아니지만 적은 경험 내에서는 equals()에서
+NullPointException 이 발생하는 이유는 우선, 메소드에서 null 이 발생하기 때문이랑, null 체크를 하지 않았기에 발생한다 <br>
+가장 많이 보이는 NullPointException 은 equals() 메소드를 활용할 때 발생하는 것 같다 -> 물론 많은 null point exception 을 본 것은 아니지만 적은 경험 내에서는 equals()에서
 가장 많이 발생했던 것 같다 <br>
-여기에서 좋은 점으로는 null point exception 이 발생했을 때, 어디에서 발생하는지 파악하는 것이 쉬워서 잡는 것도 편한 편이다 <br>
+여기에서 좋은 점으로는 npe 이 발생했을 때, 어디에서 발생하는지 파악하는 것이 쉬워서 잡는 것도 편한 편이다 <br>
 처리하는 방법도 그냥 단순하게 equals으로 비교하는 대상이 null 인지 검증하는 그러한 단순한 작업이다 <br>
 이외에도 다른 방법으로는 Exception 을 던져주던가, null 을 리턴하도록 하던가, optional 을 리턴하는 방법이 있다 <br>
 optional은 자바8부터 사용할 수 있으며, 요놈은 ifPresent()나 isEmpty() 와 같은 메소드를 통해서 원하는 작업등을 사용해서 진행하는 것이 가능하다 <br>
@@ -64,11 +64,42 @@ optional은 null safe 하게 만들어주는 좋은 타입이지만 어찌되었
 WeekHashMap -> soft reference, strong reference, week reference, phantom reference <br>
 <br>
 더 이상 사용하지 않는 객체를 수거해가는 과정에서 위에서 이야기 한 것 처럼, 해당 키가 참조하는 value가 더 이상 존재하지 않는 것으로 확인되면 자동으로 수거해주는 그런 타입이다 <br>
+<br><br>
+
+
+### ScheduledThreadPoolExecutor 
+Thread 는 Runnable 을 시작으로 Executor, ExecutorService 이렇게 구성이 되어있다 <br>
+그렇기 때문에 우리는 ExecutorService 사용해서 Runnable, Callable 을 구현해서 스레드를 사용하곤 한다 <br>
 <br>
 
+기본적으로 new Thread(new Task()) 이렇게 선언해서 메인 스레드 이외의 스레드가 만들어진다. 그리고 해당 내부에 어떠한 작업은 Runnable 을 implement 하는 Task 클래스를 새로 만들고, 
+Run 함수를 오버라이딩을 통해서 새로운 스레드에서 어떠한 작업을 할 것인지를 구현하고 thread.start() 을 통해서 스레드를 시작한다고 볼 수 있다 <br>
+<br>
 
+근데 스레드를 생성하는 것은 컴퓨터에 그만큼 부하를 준다는 점이다 -> 물론 필요가 있다면 사용하는 것이 맞지만 <br>
+항상 성능면을 고려하면서 개발하는 것이 중요한 만큼 단순하게 스레드를 생성하는 것 이외에 스레드의 수를 조절할 수 있는 방법들이 있다 <br>
+그래서 스레드를 100개 만드는 것 보다는 수를 적게 사용하면서, 해당 작업들을 비동기적으로 수행할 수 있는 방법이 ThreadPool 이다 <br>
+ThreadPool에도 여러가지 종류가 있다 <br>
+첫 번째로는 ExecutorService service = Executors.newFixedThreadPool(숫자) 요놈이다 <br>
+이름만 봐도 조금은 보이겠지만 Fixed 이다. 어떠한 작업을 하든 input 값으로 설정한 숫자 만큼만을 가지고 스레드 작업을 수행하겠다는 의미이다 <br>
+즉, 위의 예시인 100개의 스레드를 만들어서 각각 작업하는 것이 아닌 오직 10개의 스레드로만 어떻게든 작업을 수행하는 것이다 물론 그렇게 진행하게 되면 조금의 딜레이는 감수해야 하지만 그만큼 적은 리소스를 사용하는 것이다 <br>
+그리고 Thread 에서 하는 것 처럼 new Task() 으로 해서 사용하는 것이 아닌 submit() 을 통해서 사용한다 <br>
+두 번째로는 ExecutorService service = Executors.newCachedThreadPool() 이 있다 <br>
+이건 우선적으로 이미 생성되어있고 놀고 있는 스레드를 선택해서 사용하는 방식이다. 만약 스레드가 없다면 새롭게 스레드를 만들어서 사용하는 방식이다 <br>
+이 방식은 단 하나의 큐를 가지고 처리하는 방식이기 때문에 무한정으로 스레드를 생성할 수도 있는 그러한 문제가 있을 수 있다. 사용하기 위해서는 어느정도 알고, 고민하고 사용하자 <br>
+세 번째로는 ExecutorService service = Executors.newSingleThreadExecutor() 가 있다 <br>
+요건 사용하게 되면 오직 단 하나만의 스레드를 가지고 작업을 수행하게 된다. 물론 이것도 필요에 의해서 사용하면 좋을 것 같다 <br>
+마지막으로는 ExecutorService service = Executors.newScheduledThreadPool(숫자) 이 있다 <br>
+이것도 위의 fixed 와 같이 원하는 갯수의 스레드 만큼 생성하는 것이 가능하다 특징으로는 원하는 시간이나 주기에 원하는 작업을 새로운 스레드에서 진행하는 것이 가능한? 그러한 스레드 풀로 보인다 <br>
+<br><br>
 
-ScheduledThreadPoolExecutor <br>
+종류는 이렇게 볼 수 있고, 스레드를 사용하는데 있어서 내부의 구현 함수에도 종류가 2가지 있다 <br>
+처음 언급한 Runnable 은 단순하게 스레드가 수행만 을 진행하는 그러한 함수이다 <br>
+그렇기 떄문에 만약 작업한 값을 리턴받고 싶다면 Runnable을 implement 받는 것이 아니라 Callable<리턴타입> 으로 내부에서의 작업을 리턴받는 것이 가능하다 <br>
+submit 을 통해서 작업을 수행하고, .get()을 통해서 리턴한 값을 받아서 사용하는 것이 가능하다 <br>
+<br>
 
+그냥 이렇게 단순하게 사용하는 것이 가능하니까 필요하면 더 공부해서 사용해보자!! <br>
+<br><br>
 
-
+<br><br><br><br><br><br><br><br><br><br>
