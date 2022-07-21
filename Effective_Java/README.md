@@ -15,7 +15,7 @@
 - [다 쓴 객체 참조를 해제하라](EJ_item7.md)
 - [finalizer, cleaner 사용을 피하라](EJ_item8.md)
 - [try-finally 보다 try-with-resource를 사용하라](EJ_item9.md)
-- equals는 일반 규약을 지켜 재정의하라
+- [equals는 일반 규약을 지켜 재정의하라](EJ_item10.md)
 - equals를 재정의하려거든 hashCode도 재정의하라
 - toString을 항상 재정의하라
 - clone 재정의는 주의해서 진행하라
