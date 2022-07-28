@@ -34,6 +34,12 @@ The Java 8(인강) <br>
 * [JPA 책](Java_ORM_JPA_Book/README.md)
 * [SQL 첫걸음(책)](sql\_book/README.md)
 * [SQL](SQL_Example/README.md)
+* [Effective_Java 강의](Effective_Java/README.md)
+* [JPA](Java_ORM_JPA_Book/README.md)
+* [Oracle 기본개념](Oracle/README.md)
+* [더 자바 강의](The_Java_Manipulation/README.md)
+* [JUnit](The_Java_TDD/README.md)
+* [SQL 첫걸음](sql_book/README.md)
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br>
