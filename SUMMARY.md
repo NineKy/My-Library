@@ -403,3 +403,4 @@
   * [item8 - finalizer와 cleaner 사용을 피하라](Effective_Java/EJ_item8.md)
   * [item9 - try-finally 보다 try-with-resources을 사용하라](Effective_Java/EJ_item9.md)
   * [item10 - equals는 일반 규약을 지켜 재정의하라](Effective_Java/EJ_item10.md)
+  * [item11 - equals을 재정의하려면 hashCode도 재정의하라](Effective_Java/EJ_item11.md)
