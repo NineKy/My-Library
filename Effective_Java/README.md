@@ -17,7 +17,7 @@
 - [try-finally 보다 try-with-resource를 사용하라](EJ_item9.md)
 - [equals는 일반 규약을 지켜 재정의하라](EJ_item10.md)
 - [equals를 재정의하려거든 hashCode도 재정의하라](EJ_item11.md)
-- toString을 항상 재정의하라
+- [toString을 항상 재정의하라](EJ_item12.md)
 - clone 재정의는 주의해서 진행하라
 - Comparable을 구현할지 고민하라
 
