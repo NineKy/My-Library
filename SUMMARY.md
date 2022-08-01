@@ -405,3 +405,4 @@
   * [item10 - equals는 일반 규약을 지켜 재정의하라](Effective_Java/EJ_item10.md)
   * [item11 - equals을 재정의하려면 hashCode도 재정의하라](Effective_Java/EJ_item11.md)
   * [item12 - toString을 항상 재정의하라](Effective_Java/EJ_item12.md)
+  * [item13 - clone 재정의는 주의해서 진행하라](Effective_Java/EJ_item13.md)
