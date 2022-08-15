@@ -19,6 +19,6 @@
 - [equals를 재정의하려거든 hashCode도 재정의하라](EJ_item11.md)
 - [toString을 항상 재정의하라](EJ_item12.md)
 - [clone 재정의는 주의해서 진행하라](EJ_item13.md)
-- Comparable을 구현할지 고민하라
+- [Comparable을 구현할지 고민하라](EJ_item14.md)
 
 <br><br><br><br><br><br><br><br><br><br>
