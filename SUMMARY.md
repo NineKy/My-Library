@@ -15,6 +15,8 @@
   * [Thymeleaf](Web_Study/thymeleaf.md)
   * [정리가 필요한 자료들](Web_Study/undefined.md)
   * [SpringBoot Management](Web_Study/springboot-management.md)
+* [코틀린](kotlin/README.md)
+  * 
 * [VISION\_스터디](vision\_study/README.md)
   * [SQL 공부](vision\_study/sql/README.md)
     * [SQL의 기본 개념](vision\_study/sql/sql.md)
@@ -54,7 +56,7 @@
     * [Spring Data JPA](school\_note/spring/spring-data-jpa.md)
     * [SpringBoot Security](school\_note/spring/springboot-security.md)
     * [SpringBoot HATEOAS](school\_note/spring/springboot-hateoas.md)
-* [공부 자료들](undefined.md)
+* [공부 자료들](Study_Resources.md)
 * [WS 온라인 자바 스터디](WhiteShip_Java_Study/README.md)
   * [Week1(JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가.)](WhiteShip_Java_Study/week1.md)
   * [Week2(자바 데이터 타입, 변수 그리고 배열)](WhiteShip_Java_Study/week2.md)

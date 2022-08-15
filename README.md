@@ -23,7 +23,7 @@ _개발, 공부하면서 본인 뇌에 정리하는 듯이 정리하는 내 도�
 * [인턴](Web_Study/README.md)
 * [VISION\_스터디](vision\_study/README.md)
 * [학교 노트](school\_note/README.md)
-* [공부 자료들](undefined.md)
+* [공부 자료들](Study_Resources.md)
 * [WS 온라인 자바 스터디](WhiteShip_Java_Study/README.md)
 * [백준문제](baekjoon/README.md)
 * [프로그래머스 문제](programmers/README.md)
