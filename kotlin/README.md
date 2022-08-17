@@ -10,6 +10,7 @@ Kotlin in Action 책을 구입해서 찬찬히 볼 예정 <br>
 
 ## 목차
 - [코틀린의 특징](kotlin_feature.md)
+- [코틀린의 기초](ch2.md)
 
 
 

@@ -17,6 +17,7 @@
   * [SpringBoot Management](Web_Study/springboot-management.md)
 * [코틀린](kotlin/README.md)
   * [코틀린의 특징](kotlin/kotlin_feature.md)
+  * [코틀린의 기초](kotlin/ch2.md)
 * [VISION\_스터디](vision\_study/README.md)
   * [SQL 공부](vision\_study/sql/README.md)
     * [SQL의 기본 개념](vision\_study/sql/sql.md)
