@@ -133,3 +133,76 @@ fun personTest(){
 이렇게 사용할 수 있다 따로 getter를 구현하지 않고도 객체.필드명 을 통해서 게터를 사용하는 것이 가능하다 <br>
 만약에 기본적으로 제공해주는 것들이 아닌 새로 구현하고 싶다면 자바에서 필드 구현하는 것 처럼 구현해주면 된다 <br>
 대신 주의할 점으로는 커스텀해서 만든 변수는 get() 함수를 다시 구현해줘야하는 점을 기억하자 <br>
+<br><br>
+
+Enum, When <br>
+when 이라는 키워드는 자바에서의 switch 문을 대신하지만 더 좋은 방식이라고 한다 <br>
+<br>
+
+일단 Enum 먼저 한번 보자 
+```kotlin
+enum class Color(val x: Int, val y: Int, val z: Int) {
+    RED(1, 1, 1),
+    ORANGE(2, 2, 2),
+    YELLOW(3, 3, 3),
+    GREEN(4, 4, 4),
+    BLUE(5, 5, 5),
+    NAVY(6, 6, 6),
+    PURPLE(7, 7, 7)
+    ;
+
+    fun getRgb() = x + y + z
+}
+
+
+fun colorTest(){
+        println(Color.BLUE.getRgb()) //15
+    }
+```
+enum의 사용법 자체는 자바에서 사용하는 것과 크게 다르지는 않다. 하지만 특징으로 보면, 코틀린인데도 ;을 사용해서 마무리해주는 것을 볼 수 있다 <br>
+이렇게 enum 클래스 안에서는 메소드를 정의할 때 반드시 상수목록이 끝나는 곳에 ;을 통해서 구분을 지어주어야 한다 <br>
+<br>
+이제는 그럼 enum을 각 조건에 맞게 다른 값을 처리하고 싶을 것이다! 물론 switch문의 대신인 when을 설명하기 위한 것이다.. <br>
+when 이라는 키워드도 if와 같이 값을 만들어내는 식이다. 따라서 식이 본문인 함수에 when을 바로 사용하는 것이 가능 <br>
+사용하는 방법은 이와 같다 <br>
+```kotlin
+fun whenTest(color: Color){
+        when(color){
+            Color.RED -> "I'm Red"
+            Color.ORANGE -> "I'm Orange"
+            Color.YELLOW -> "I'm Yellow"
+            Color.GREEN -> "I'm Green"
+            Color.BLUE -> "I'm Blue"
+            Color.NAVY -> "I'm Navy"
+            Color.PURPLE -> "I'm Purple"
+        }
+    }
+```
+참고로 enum은 import을 통해서 빼내고 사용해도 된다 <br>
+역시 switch와 비슷하고 같은 역할을 하는 것 같은데, 다른 점으로는 역시 break 키워드가 없다는 점이다 <br>
+그리고 추가로 콤마를 사용해서 여러개에 대한 분기를 처리하는 것이 가능하다는 점이 특징이다 <br>
+<br>
+
+switch보다 좋은 점으로는 일단 분기조건을 거는데 있어서 임의의 객체를 허용한다 <br>
+```kotlin
+fun mixTest(c1: Color, c2: Color){
+        when(setOf(c1, c2)){
+            setOf(Color.RED, Color.YELLOW) -> Color.ORANGE
+            setOf(Color.YELLOW, Color.BLUE) -> Color.GREEN
+            else -> throw Exception("MIX ERROR!")
+        }
+    }
+```
+이런식으로 사용할 수도 있으며, setOf 이라는 타입을 통해서 식을 통해서 비교하는 것이 가능하다 <br>
+setOf은 내부의 값이 순서나 그런것들은 중요하지 않고 내부에 무엇이 있는지만이 중요한 그러한 컬랙션을 만드는 메소드이다 <br>
+이렇게 setOf 사용한건 equals 통해서 비교한 방식이고, <br>
+```kotlin
+fun mixTestVER2(c1: Color, c2: Color){
+        when{
+            c1.x==c2.x && c1.y==c2.y -> "x is same with y"
+            c1.x==c2.x && c1.z==c2.z -> "z is same with z"
+            else -> throw Exception("no matched")
+        }
+    }
+```
+이렇게 switch의 변형문처럼이 아닌, 인자가 없는 방식으로 사용할 수 있다 -> 하지만 인자가 없는 방식은 항상 boolean을 가지고 진행하는 과정에서만 사용할 수 있다 <br>
