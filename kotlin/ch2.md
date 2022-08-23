@@ -110,9 +110,6 @@ public class Person{
 }
 ```
 이러한 자바의 클래스와 코틀린을 비교해보자 <br>
-```kotlin
-
-```
 <br><br>
 
 클래스, 즉 객체는 자신이 가지고 있는 객체들이나 해당 객체를 사용할때 직접 사용하지 않고 항상 접근자 메소드를 사용한다 <br>
@@ -206,3 +203,56 @@ fun mixTestVER2(c1: Color, c2: Color){
     }
 ```
 이렇게 switch의 변형문처럼이 아닌, 인자가 없는 방식으로 사용할 수 있다 -> 하지만 인자가 없는 방식은 항상 boolean을 가지고 진행하는 과정에서만 사용할 수 있다 <br>
+<br>
+
+스마트 캐스트라는 방식도 존재한다! <br>
+코틀린에서 is 이라는 키워드는 자바에서의 instanceof 와 유사하다. 자바에서 instanceof 을 사용해서 변수 타입을 확인하고 직접 (변수)을 통해서 캐스팅을 수동으로 해주었다 <br>
+근데 코틀린에서는 컴파일러가 대신 캐스팅을 해준다 -> 어떤 변수가 원하는 타입인지 is 을 통해서 타입을 검사해주고 나면 알아서 컴파일러가 원래 그 타입인 것 처럼 캐스팅 해주고 이것을 스마트 캐스팅이라고 부른다 <br>
+<br>
+
+while, for <br>
+요 두놈은 자바와 매우 유사하게 사용된다 일단 while은 정말 동일하고, for 문은 for-each 형태만 존재한다 <br>
+for 는 형태는 같지만 살짝의 차이를 볼 수 있다 <br>
+```kotlin
+    fun divid(x: Int, y: Int) =
+        when {
+            x / y == 0 -> "배수"
+            else -> "배수가아님"
+        }
+    
+    fun dividTest() {
+        for(i in 1..6){
+            divid(6, i)
+        }
+    }
+```
+이렇게 for를 만들어줄때는 일단 i 같은 것도 자동으로 만드는 것과 답게 따로 타입같은건 없다 그리고 범위 같은 부분은 시작..끝 이렇게 점 2개를 통해서 구현한다 <br>
+약간 forEach 의 형태를 따라가고 있으면서, 뒤에 범위 지정하는 부분에서 살짝 다른점이 있는 것 같다 <br>
+여기서 범위를 지정하는 것에서 사용할 수 있는 식이 하나 있다 고건 바로 in 이라는 키워드이다 <br>
+in 을 사용하면 어떠한 값이 범위에 속하는지를 검사하는 것이 가능하고 !in 을 통해서 어떤 값이 없는지도 볼 수 있다 <br>
+```kotlin
+fun inTest(){
+        println(5 in 0..9) //true
+        println("banana" in "apple".."carrot") //true
+    }
+```
+이렇게 사용해주는데 범위는 문자에만 속하지 않고 비교가 가능한 클래스, 즉 comparable 인터페이스를 구현한 클래스면 in 을 사용해서 비교하는 것이 가능하다 <br>
+<br><br>
+
+예외처리 <br>
+예외 처리 또한 자바와 비슷하다! 그래도 자바와의 가장 큰 차이는 throws 절이 코드에는 따로 없다는 점? <br>
+자바에서는 checked exception을 명시적으로 처리해줘야만 했다. 하지만 코틀린은 checked exception, unchecked exception을 따로 구별하지는 않는다 <br>
+함수가 던지는 예외를 지정하지 않고 발생한 예외를 잡는 것도 가능하고 잡지 않는 것도 가능하다 <br>
+추가로 코틀린 특징답게도 try문을 식으로도 사용하는 것이 가능하다 <br>
+```kotlin
+fun tryTest(){
+        val test = try{
+            String.format("asdf")
+        } catch (e: IllegalFormatException){
+            return
+        }
+    }
+```
+<br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br>
