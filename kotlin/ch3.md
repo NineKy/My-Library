@@ -98,4 +98,66 @@ split 함수라는 문자열을 배열로 찢어주는 함수에 이게 구분�
 상당히 긴 문자열을 표현하고 싶다면 사용하기 딱 좋다고 볼 수 있다 그래서 변수 같은 것을 사용하고 싶다면 조금은 귀찮다.. 이렇게 다양한 함수들이 존재하니 필요할 때 찾아서 사용하자 <br>
 <br><br><br>
 
-## 로컬 함수와 확장 
+## 로컬 함수와 확장
+코틀린에서는 함수에서 추출한 함수를 원함수 내부에 중첩시키는 것이 가능하다 <br>
+간단한 인자 검증 후 저장하는 함수에서 중복을 줄여가며 어떻게 하는지 보자 <br>
+처음으로 만든 함수는 이러하다
+```kotlin
+class User(val id: Int, val name: String, val address: String)
+
+    fun saveUser(user: User){
+        if(user.name.isEmpty()){
+            throw IllegalArgumentException("[${user.id}] : name is Empty!")
+        }
+
+        if(user.address.isEmpty()){
+            throw IllegalArgumentException("[${user.id}] : address is Empty!")
+        }
+
+        //userRepository.save(user);
+    }   
+```
+여기서 보면 모든 사용자 필드를 각각 검사를 진행하는데 어떻게 보면 중복이라고도 볼 수 있는 것 같다 <br>
+<br>
+
+이럴 때 검증 코드를 로컬 함수로 분리하면 중복을 없애는 동시에 코드 구조를 깔끔하게 할 수 있다 <br>
+그래서 이렇게 수정할 수 있다 <br>
+```kotlin
+fun saveUserVer2(user: User){
+        fun validate(user: User, value: String, fieldName: String){
+            if(value.isEmpty())
+                throw IllegalArgumentException("[${user.id}] : $fieldName is Empty!")
+        }
+        
+        validate(user, user.name, "name")
+        validate(user, user.address, "address")
+        
+        //userRepository.save(user)
+    }
+```
+요렇게 어떻게 보면 그냥 함수를 만들어서 빼는 방식이다. 근데 이렇게하면 검증 로직중복은 사라졌고 다른 필드에 대한 검증추가도 쉽게 할 수 있다 <br>
+그래도 여전히 남아있는 불편한 점은 결국은 로컬 함수에 각각의 필드를 넣어서 만들어야 한다는 점? 이다 <br>
+그래서 검증 로직을 User 클래스를 확장한 함수로 만드는 것이 가능하다 <br>
+```kotlin
+fun User.validateBeforeSave(){
+        fun validate(value: String, fieldName: String){
+            if(value.isEmpty()){
+                throw IllegalArgumentException("[${this.id}] : $fieldName is Empty!")
+            }
+        }
+        
+        validate(name, "name")
+        validate(address, "address")
+    }
+    
+    fun saveUser3(user: User){
+        user.validateBeforeSave()
+        
+        //userRepository.save(user)
+    }
+```
+이렇게 코드를 확장 함수로 뽑아내는 기법은 아주 유용하다 이렇게 확장 함수를 로컬 함수로 정의할 수 있다. User.validateBeforeSave를 saveUser 내부에 로컬 함수로 넣을 수 있다 <br>
+근데 한 단계 이상으로 함수를 중첩시키면 많이 복잡하기 때문에 일반적으로는 한 단계만 함수를 중첩해서 사용하곤 한다 <br>
+<br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br>
