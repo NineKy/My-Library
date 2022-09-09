@@ -13,7 +13,7 @@ Kotlin in Action 책을 구입해서 찬찬히 볼 예정 <br>
 - [코틀린의 기초](ch2.md)
 - [함수 정의와 호출](ch3.md)
 - [클래스, 객체, 인터페이스](ch4.md)
-
+- [람다 방식](ch5.md)
 
 
 <br><br><br><br><br><br><br><br><br><br>
