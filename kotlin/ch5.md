@@ -114,7 +114,94 @@ Sequence의 강점은 그 인터페이스 위에 구현된 연산이 계산을 �
 메소드 체이닝으로 연산을 막~~ 작업했을 때 일단 그냥 .filter.map~~ 이렇게만 해두면 계산작업이 진행되지 않고 아무런 작업이 없다가 toList을 붙혀주면 그제서야 최종결과를 반환해주는 것이다 <br>
 시퀀스는 자바에서의 스트림과 같다는 점만 기억하고 있자 <br>
 그리고 시퀀스를 만드는 방법은 asSequence()뿐만 아니라 generateSequence이라는 함수을 통해서도 만들 수 있다는 점 <br>
+<br><br><br>
+
+
+### 자바 함수형 인터페이스 활용
+원래 자바에서 어떠한 인터페이스를 사용하고자 하면, 내부에서 새로 구현하도록 ide에서 자동으로 함수 내부에 인자만 들어가야하는데 내부에 주루루루룩 override 해야하는 함수들을 보여준다 <br>
+코틀린에서는 무명 클래스 인스턴스 대신 람다를 넘길 수 있는데, 만약 인터페이스에서 내부 함수가 단 하나만 존재하는 경우에 그 함수에 넘기는 인자 -> 이러한 생김새로 람다방식으로 표현하는 것이 가능하다 <br>
+이러한 인터페이스를 함수형 인터페이스라고 하고 SAM(Single Abstract Method) 인터페이스라고도 부른다 <br>
+예시로 보면 이러하다 <br>
+```java
+//자바
+void postponeComputation(int delay, Runnable computation);
+
+//코틀린에서는 위에서의 람다를 이 함수에 넘길 수 있고, 코틀린 컴파일러는 자동으로 람다를 runnable 인스턴스로 변환해준다
+postponeComputation(1000) { println("This is Runnable") }
+```
+이렇게 실제로 컴파일러는 자동으로 그러한 무명 클래스와 인스턴스를 만들어준다 <br>
+이때 그 무명 클래스에 있는 유일한 추상 메소드를 구현할 때 람다 본문을 메소드 본문으로써 활용한다 <br>
+코틀린에서는 inline 키워드가 들어가 있는데 이 inline 함수는 람다식 내부의 실행문들을 컴파일 시, 람다를 호출하는 부분에 주입하는 방식이다 <br>
+이렇게 자동으로 컴파일러가 변환을 진행해주는데, 수동으로 해야 하는 경우가 존재한다 <br>
+<br>
+
+SAM 생성자는 람다를 함수형 인터페이스의 인스턴스로 변환할 수 있게 컴파일러가 자동으로 생성한 함수이다 <br>
+컴파일러가 자동으로 람다를 함수형 인터페이스 무명 클래스로 바꾸지 못하는 경우 SAM 생성자를 사용할 수 있다 <br>
+람다로 생성한 함수형 인터페이스 인스턴스를 변수로 저장해야 하는 경우에도 SAM 생성자를 사용하는 것이 가능하다 만약에 여러가지 객체에 동일한 인터페이스를 적용하고 싶다면
+함수형 인터페이스를 새롭게 객체에 구현해주고, 그 구현한 부분에서 각 객체에 대한 분기처리를 해주는 방식으로 적용할 수 있다 <br>
+```kotlin
+val listener = onClickListener{ view ->
+    val text = when (view.id) {
+        R.id.button1 -> "First Button"
+        R.id.button2 -> "Second Button"
+        else -> "No Button"
+    }
+    toast(text0
+}
+button1.setOnClickListener(listener)
+button2.setOnClickListener(listener)
+```
+뭐 각각 onClickListener를 구현하는 객체 선언을 통해 리스너를 구현할 수도 있지만 SAM 생성자를 쓰는 게 더 좋다 <br>
+뭐 이런식으로 수동으로도 작업하는 것도 가능하다는 점을 기억하자 <br>
 <br><br>
+
+### 수신 객체 지정 람다
+apply, with 함수는 수신 객체를 명시하지 않고 람다의 본문 안에서 다른 객체의 메소드를 호출할 수 있게 해준다 그리고 이것을 수신 객체 지정 람다라고 부른다 <br>
+<br>
+
+with 함수는 어떠한 객체의 이름을 반복하지 않고도 그 객체에 대한 다양한 연산을 수행할 수 잇도록 해주는 라이브러리 함수이다 <br>
+```kotlin
+fun alphabat(): String{
+        val result = StringBuilder()
+        for(letter in 'A'..'Z'){
+            result.append(letter)
+        }
+        result.append("\nNow I Know the Alphabat")
+        return result.toString()
+    }
+```
+여기서 보면 result를 매번 반복해서 사용했다 그래서 with을 통해서 다시 작성할 수 있다 <br>
+```kotlin
+fun alphabat(): String{
+        val result = StringBuilder()
+        return with(result){ //메소드를 호출하려는 수신 객체를 지정
+            for(letter in 'A'..'Z'){
+                this.append(letter) //this으로 명시해서 앞에서 지정한 수신 객체의 메소드를 호출
+            }
+            append("\nNow I know the alphabat") //this를 생략하고 메소드를 호출
+            return this.toString() //람다에서 값을 반환
+        }
+    }
+```
+아니면 val result = with(stringBuilder, {...}) 이렇게도 사용하는 것이 가능하다 <br>
+with 함수는 첫 번째 인자로 받은 객체를 두 번재 인자로 받은 람다의 수신객체로 만든다 <br>
+그래서 인자로 받은 람다 에서는 this 키워드를 통해서 사용하는 것이 가능했다 그리고 this을 사용하지 않고 그냥 명시해서 사용하는 것도 가능하다 <br>
+이렇게 with이 반환하는 값은 람다 코드를 실행한 결과이며 그 결과는 람다 식의 본문에 있는 마지막 식의 값이다 <br>
+<br><br>
+
+apply 함수는 람다의 결과가 결국 수신객체인 경우에 사용한다 <br>
+즉 apply는 항상 자기에게 전달된 수신 객체를 반환한다 요놈은 apply는 확장 함수로 정의되어 있어서 apply 수신 객체가 전달받은 람다의 수신객체가 된다 <br>
+위의 alphabat을 수정하면 <br>
+```kotlin
+fun alphabat() = StringBuilder().apply { 
+        for( letter in 'A'..'Z'){
+            append(letter)
+        }
+        append("\nNow i Know the alphabat")
+    }.toString()
+```
+이렇게 apply는 객체의 인스턴스를 만들면서 즉시 프로퍼티의 일부분을 초기화해야하는 경우에 유용하다 <br>
+자바에서는 빌더를 통해서 진행했었지만 코틀린에서는 기본적으로 지원해주기 때문에 apply를 활용하는 것이 가능하다 <br>
 
 
 
