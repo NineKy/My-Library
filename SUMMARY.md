@@ -21,6 +21,7 @@
   * [함수 정의와 호출](kotlin/ch3.md)
   * [클래스, 객체, 인터페이스](kotlin/ch4.md)
   * [람다 방식](kotlin/ch5.md)
+  * [코틀린 타입 시스템](kotlin/ch6.md)
 * [VISION\_스터디](vision\_study/README.md)
   * [SQL 공부](vision\_study/sql/README.md)
     * [SQL의 기본 개념](vision\_study/sql/sql.md)

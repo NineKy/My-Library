@@ -14,6 +14,7 @@ Kotlin in Action 책을 구입해서 찬찬히 볼 예정 <br>
 - [함수 정의와 호출](ch3.md)
 - [클래스, 객체, 인터페이스](ch4.md)
 - [람다 방식](ch5.md)
+- [코틀린 타입 시스템](ch6.md)
 
 
 <br><br><br><br><br><br><br><br><br><br>
