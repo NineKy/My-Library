@@ -155,3 +155,25 @@ unit은 모든 기능을 갖는 일반적인 타입이고, unit을 인자로도 
 컴파일러는 Nothing이 반환 타입인 함수가 정상종료되지 않는 것을 알고 분석하기 쉽게 찾는 것이 가능한 것이다 <br>
 <br><br>
 
+#### 컬렉션과 배열
+타입 인자의 널 가능성에 대해서는 간단하게 봤었지만 이건 타입 시스템 일관성을 지키기 위해 필수적으로 확인해야하는 사항이다 <br>
+컬렉션 안에 null 을 넣을 수 있는지에 대한 여부는 어떤 변수의 값이 널이 될 수 있는지 여부와 마찬가지로 중요하다 <br>
+리스트에서 null을 체크하기 위해서 타입에서 ?을 통해서 null을 허용하거나 허용하지 않거나 작업할 수 도 있으며, filterNotNull 을 통해서 컬렉션안에 널이 없다는 것을 확인하는 것 등 이렇게 진행할 수 있다 <br>
+코틀린에서의 컬렉션은 읽기 전용 컬렉션과 변경 가능 컬렉션이 존재한다 그래서 컬렉션을 생성할 때 방식이 다르다 <br>
+List <br> 
+-> 읽기전용타입은 listOf 을 통해서 만들고 사용하거나 조회하는 것이 가능 <br>
+-> 변경가능타입은 mutableListOf, arrayListOf <br>
+Set <br>
+-> 읽기전용타입은 setOf 을 통해서 <br>
+-> 변경가능타입은 mutableSetOf, hashSetOf, linkedSetOf, sortedSetOf <br>
+Map <br>
+-> 읽기전용타입은 mapOf 을 통해서 <br>
+-> 변경가능타입은 mutableSetOf, hashMapOf, linkedMapOf, sortedMapOf <br>
+<br><br>
+
+리스트말고 배열은 어떻게 사용하나 <br>
+코틀린에서 배열을 만드는 방법은 arrayOf 함수에 원소를 넘겨서 배열을 만드는 방식, arrayOfNulls 함수에 정수값을 인자로 넘겨서 모든 원소가 null이고 인자로 넘긴 값과 크기가 같은 배열을 만들 수 있다 <br>
+그리고 배열 크기와 람다를 인자로 받아서 람다를 호출해서 각 배열 원소를 초기화하는 방식도 존재한다 <br>
+<br><br>
+
+<br><br><br><br><br><br><br><br><br><br>
