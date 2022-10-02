@@ -71,3 +71,41 @@ a-b -> minus <br>
 <br><br><br>
 
 #### 비교 연산자 오버로딩
+산술 연산자와 마찬가지로 원시 타입 값 뿐만 아니라 모든 객체에 대해서 비교연산을 수행하는 것이 가능하다 <br>
+자바에서는 equals나 compareTo를 통해서 비교를 했었는데 코틀린에서는 ==을 통해서 비교를 한다 <br>
+<br>
+
+코틀린에서는 ==이 equals 메소드를 호출하게 되는 원리이다 추가로 != 이 연산자도 equals 호출로 컴파일이 된다 <br>
+물론 그대로 사용되는건 아니고 비교결과의 반대값을 결과 값으로 사용되긴한다 <br>
+추가로 ==이나 != 모두 내부에서 null에 대한 검사를 진행하기 때문에 nullable에도 적용된다 <br>
+a==b -> a?.equals(b)?: (b == null) <br>
+근데 기본적으로 엔티티는 data 클래스로 생성하는데, data 클래스에서는 따로 구현하지 않아도 자동으로 equals을 구현해준다 <br>
+만약에 직접 구현하고 싶다면 연산자처럼 뭔 키워드가 있지는 않지만 <br>
+```kotlin
+override fun equals(other: Any?): Boolean {
+        if(other == this) return true
+        if(other !is Point) return false
+        return other.x==this.x && other.y==this.y
+    }
+```
+이렇게 override으로 자동으로 지원해주는 것에 있는 equals을 상속받아보면 Any 타입의 객체를 받아서 비교를 하게 된다 
+Any의 equals에는 operator가 붙어있지만 override 할때는 따로 operator를 붙히지 않아도 자동으로 상위 클래스인 any의 operator 지정이 적용되기 떄문에 
+굳이 작성해주지 않는 것이다 <br>
+또한 any에서 상속받은 equals의 함수가 만약에 커스텀해서 또 새로운 equals을 넣어두면 우선순위 자체가 기본으로 제공해주는 any의 equals가 높기 떄문에 equals는 확장 함수로 정의할 수 없다 <br>
+<br><br>
+
+compareTo도 존재한다 이건 원래 사용할때마다 막 Comparealbe 인터페이스를 통해서 직접 재구현해주고 이랬었다 <br>
+Compareable 에 들어있는 compareTo 메소드는 한 객체와 다른 객체의 크기를 비교해서 정수로 나타내주는데, 자바에서는 이걸 원시 값을 바로 사용하는 것이 아니라 직접 a.compareTo(b) 이렇게 사용했었다 <br>
+코틀린은 친절하게도 비교연산자가 compareTo 메소드의 호출로 진행된다 <br>
+```kotlin
+override fun compareTo(other: Point): Int {
+        return compareValuesBy(this, other, Point::x, Point::y)
+    }
+```
+compareTo를 재정의하는걸 보면 compareValuesBy 을 사용하면 더욱 간결하게 정의할 수 있다 <br>
+compareValuesBy는 두 객체와 여러 비교함수를 인자로 받는데, 첫 번째 비교함수에 두 객체를 넘겨서 두 객체가 같지 않다는 결과가 나오면 
+그 결과를 즉시 반환하고 두 객체가 같다는 결과가 나오면 두 번째 비교 함수를 통해 두 객체를 비교한다 <br>
+근데 중요한건? 굳이 재정의하지 않고 단순하게 비교연산자를 통해서 compareTo가 호출되기 떄문에 잘 사용하자 <br>
+<br><br><br>
+
+#### 컬렉션과 범위에 대해 쓸 수 있는 문제 
