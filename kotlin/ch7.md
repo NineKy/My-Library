@@ -167,3 +167,112 @@ operator fun component2() = y
 
 
 ### 위임 프로퍼티 
+위임 프로퍼티를 사용하면 값을 뒷받침하는 필드를 단순하게 저장하는 것보다는 로직을 넣는 것?이 가능하다 또한 그 접근자 로직을 맨날 구현할 필요도 없다 <br>
+예로 프로퍼티는 위임을 사용해서 자신의 값을 필드가 아니라 디비 테이블이나 맵 등에 저장하는 것이다 <br>
+위임이란 객체가 직접 작업을 수행하는 것이 아니라 다른 도움객체가 그 작업을 대신 맡아서 처리하는 것을 말한다 그리고 대신 작업을 해주는 애를 위임객체라고 부른다 <br>
+일반적으로 이렇게 작성한다
+```kotlin
+class Foo {
+    var p: Type by Delegate()
+}
+```
+프로퍼티인 p는 접근자 로직을 다른 객체에게 위임하는데 우선 여기선느 Delegate 클래스의 인스턴스를 위임 객체로 사용한다는 의미이고 by 키워드를 통해서 선언한다 <br>
+여기서 Delegate() 요건 getValue와 setValue 이 2개를 가지고 있어야 하고 새로 만들어야 하는 클래스이다 <br>
+setValue 같은 경우에는 물론 변경 가능한 프로퍼티만 사용한다 그래서 구현은 어떻게 ? <br>
+```kotlin
+package me.kyu9.ktexercise.ch6
+
+import lombok.experimental.Delegate
+import java.lang.reflect.Type
+import kotlin.reflect.KProperty
+
+class MyDelegate(var p: String) {
+    operator fun getValue(foo: Foo, property: KProperty<*>): String{
+        println("This is GETTER -> $p")
+        return p
+    }
+
+    operator fun setValue(foo: Foo, property: KProperty<*>, str: String){
+        println("This is SETTER -> $str")
+        p = str
+    }
+}
+
+
+class Foo {
+    var p: String by MyDelegate("sample")
+
+}
+
+fun main() {
+    val foo = Foo()
+    val oldV = foo.p
+    foo.p = "checkthisout"
+}
+```
+이렇게 해두면 <br>
+This is GETTER -> sample <br>
+This is SETTER -> checkthisout <br>
+이렇게 기존에 구현해두었던 getValue, setValue 을 자동으로 불러오게된다 <br>
+foo.p는 일반 프로퍼티처럼 보이지만 사실 MyDelegate 타입의 위임 프로퍼티 객체에 있는 메소드를 호출하는 방식이다 <br>
+<br><br>
+
+지연 초기화라는 것은 개념은 객체의 일부분을 미리 초기화하지 않고 남겨두었다가 필요할때 그 시점에 초기화해주는 그러한 개념이다 <br>
+책에서 들어준 예시는 이러하다 <br>
+```kotlin
+class Person(val name: String) {
+    //데이터를 저장하고 emails의 위임 객체 역할을 하는 _emails 프로퍼티
+    private var _emails: List<String>? = null
+
+    val emails: List<String>
+        get(){
+            if(_emails == null){
+                //여기가 대충 db에서 조회해서 넣어주는 곳
+                //최조 접근 시 값을 가져온다
+                _emails = search(this)
+            }
+            //만약에 저장된게 있다면 저장된걸 반환한다
+            return _emails!!
+        }
+
+    fun search(person: Person): List<String>{
+        println("이 함수는 단 한 번 만 불 러 져 야 한 다")
+        return mutableListOf("QWER", "ASDF")
+    }
+}
+
+
+fun main() {
+    val p = Person("Charile")
+    //그리고 최초로 email 값을 읽을 때 한 번만 가져오고
+    println(p.emails)
+    //두 번째로는 그냥 다시 조회해서 오는것이 아니라 초기화된걸 가져오는 방식이다 
+    println(p.emails)
+}
+```
+이러한 방식을 보고 backing property(뒷받침하는 프로퍼티)라고 한다 <br>
+여기서 _email이라는 서브 프로퍼티에다가 값을 저장해두고 email에서 _email을 get 하는 방식인 것이다 <br>
+근데 이건 사실 프로퍼티가 많거나 하면 코드가 많이 복잡해지기도 하고 스레드 safe 한 방식은 아니다 <br>
+그래서 사용하는게 위임 프로퍼티라고 한단 -> 위임 프로퍼티는 데이터를 저장할 때 사용되는 프로퍼티와 같이 단 한 번만 초기화 해주는 getter 를 만들어준다 <br>
+단순하게 lazy 타입만지정해주면 <br>
+```kotlin
+class Person(val name: String) {
+
+    val emails by lazy{search(this)}
+
+    fun search(person: Person): List<String>{
+        println("이 함수는 단 한 번 만 불 러 져 야 한 다")
+        return mutableListOf("QWER", "ASDF")
+    }
+}
+```
+이렇게 단순하게 코드가 줄여진다 <br>
+lazy 함수는 getValue 메소드가 들어있는 객체를 반환해주기 때문에 by 키워드와 함께 위임 프로퍼티를 만드는 것이다 <br>
+lazy 함수의 인자는 값을 초기화할때 호출하는 람다이고, 스레드 safe 하면서도 동기화 컨트롤도 가능하다 <br>
+<br><br>
+
+위임 프로퍼티를 구현하는 예시로 <br>
+어떤 객체의 프로퍼티가 변경될 때마다 해당 리스너에게 변경되었다는 것을 알리는 그러한 방식을 구현하고자 한다 <br>
+실제로 자바에서는 PropertyChangeSupport, PropertyChangeEvent 이라는 것을 통해서 통지를 하기도 한다 <br>
+<br>
+
