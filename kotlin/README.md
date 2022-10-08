@@ -16,6 +16,7 @@ Kotlin in Action 책을 구입해서 찬찬히 볼 예정 <br>
 - [람다 방식](ch5.md)
 - [코틀린 타입 시스템](ch6.md)
 - [연산자 오버로딩과 기타 관례](ch7.md)
+- [고차함수](ch8.md)
 
 
 <br><br><br><br><br><br><br><br><br><br>

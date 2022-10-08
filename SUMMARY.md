@@ -23,6 +23,7 @@
   * [람다 방식](kotlin/ch5.md)
   * [코틀린 타입 시스템](kotlin/ch6.md)
   * [연산자 오버로딩과 기타 관례](kotlin/ch7.md)
+  * [고차함수](kotlin/ch8.md)
 * [VISION\_스터디](vision\_study/README.md)
   * [SQL 공부](vision\_study/sql/README.md)
     * [SQL의 기본 개념](vision\_study/sql/sql.md)
