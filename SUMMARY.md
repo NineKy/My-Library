@@ -177,6 +177,7 @@
     * [단어 정렬(1181)](baekjoon/sorting/1181.md)
     * [나이순 정렬(10814)](baekjoon/sorting/10814.md)
     * [커트라인(25305)](baekjoon/sorting/25305.md)
+    * [좌표압축(18870)](baekjoon/sorting/18870.md)
   * [백트래킹](baekjoon/backtracking/README.md)
     * [N과 M - 1(15649)](baekjoon/backtracking/untitled.md)
     * [N과 M - 2(15650)](baekjoon/backtracking/n-m-2-15650.md)
