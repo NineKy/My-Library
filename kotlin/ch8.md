@@ -112,6 +112,71 @@ inline 을 함수에 붙히면 컴파일러는 그 함수를 호출하는 모든
 <br><br><br>
 
 
+### 고차 함수 안에서 흐름 제어
+내부에 return 문에 있는 루프문을 filter 와 같은 람다를 호출하는 함수로 바꾸고 인자로 전달하는 람다 안에서 return 을 사용하면 어떨까? <br>
+<br>
+```kotlin
+package me.kyu9.ktexercise.ch8
+
+data class Person(val name: String val age: Int)
+
+val people = listOf(Person("Charile", 22), Person("Puth", 26))
+
+fun lookForAlice(people: List<Person>){
+    //단순 for 버전 
+//    for(person in people){
+//        if(person.name == "Puth"){
+//            println("found Charile ${person.name}")
+//            return
+//        }
+//        println("NOT FOUND")
+//    }
+    
+    people.forEach{
+        if(it.name == "Puth"){
+            println("found Charile ${it.name}")
+            return
+        }
+        println("NOT FOUND")
+    }
+}
+
+```
+이렇게 람다 안에서 return을 사용하면 람다로부터 변환되는 것이 아니라 그 람다를 호출하는 함수가 실행을 끝내고 리턴된다  <br>
+즉 자신을 둘러싸고 있는 블록이나 그 밖의 블록을 리턴시키는 리턴문을 보고 넌로컬 리턴이라고 부른다 <br>
+하지만 이렇게 리턴이 밖의 블록까지 한꺼번에 리턴시키는 경우는 람다를 인자로 받는 함수가 인라인 함수인 경우뿐이다 위의 예시인 forEach 같은 경우도 인라인 함수이기 때문에 람다 본문과 함께 
+인라이닝되기 때문에 리턴식이 바깥쪽 블록을 리턴할 수 있는 것이였다 <br>
+<br><br>
+
+물론 람다에서도 로컬 리턴을 사용할 수 있다, 만약에 리턴자체를 그렇게 외부쪽에도 영향이 가지 않고 해당 블록 내에서만 리턴이 되게 하고 싶다면 사용하는 것이 로컬 리턴이다 <br>
+이렇게 보면 로컬 리턴은 약간 break 문과 같은 느낌이라고 볼 수 있을 것 같다 로컬 리턴은 람다의 실행을 끝내고 람다를 호출한 함수를 이어서 진행하게 된다 <br>
+로컬 리턴과 넌로컬 리턴의 구분은 label으로 구분을 짓는다 -> 리턴으로 실행을 종료하고 싶다면 람다 식 앞에 label을 붙히고, return 뒤에 붙힌다 <br>
+```
+people.forEach label@{
+        if(it.name == "Puth"){
+            println("found Charile ${it.name}")
+            return@label
+        }
+        println("NOT FOUND")
+    }
+```
+이렇게 람다식 뒤에 해당 람다 식에 label 을 붙히고, 리턴할 떄 @레이블이름 이렇게 특정 이름의 label을 넘겨주는 방식으로 사용한다 <br>
+물론 이렇게 이름을 정해줘서 하는 방식도 있지만 default 으로는 return@ 이렇게 까지만 해줘도 ide 에서 알아서 forEach를 명시해주더라고 <br>
+그른데 만약에 로직이 길어지고 여러가지의 람다가 중첩되면 많은 위치에 return 이 들어가야한다 그리고 이런건 좀 그렇게 보이니까 익명함수를 통해서 조금 쉽게 작성하는 것이 가능하다 <br>
+<br>
+```kotlin
+people.forEach(fun (person){
+        if(person.name == "Charile") return
+        println("${person.name} is not Charile")
+    })
+```
+익명함수도 일반 함수와 같은 리턴 타입 지정 규칙이 따라가기 때문에 기존에 lable로 지정해서 리턴해줄 필요 없이도 그냥 리탄이 가능하다 넌로컬 리턴 처럼 모든 것을 리턴하는 것이 아닌 익명 함수만 리턴하는 방식이다<br>
+사실 리턴에 적용되는 규칙은 단순히 가장 안쪽의 함수를 리턴한다는 규칙이다  이렇게 익명함수를 통해서 구현하면 애초에 가장 안쪽에 있는 람다식, 함수가 가장 안쪽에 있는 함수이니 해당 리턴은 익명함수만을 리턴하는 것이다 <br>
+뭐 이렇게도 사용할 수 있다고 알아두쟈 <br>
+<br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br>
+
 
 
 
