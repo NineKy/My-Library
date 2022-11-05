@@ -173,6 +173,7 @@
     * [문자열 집합(14425)](baekjoon/array_map/14425.md)
     * [숫자 카드2(10816)](baekjoon/array_map/10816.md)
     * [듣보잡(1764)](baekjoon/array_map/1764.md)
+    * [대칭 차집합(1269)](baekjoon/array_map/1269.md)
   * [정렬](baekjoon/sorting/README.md)
     * [수 정렬하기(2750)](baekjoon/sorting/2750.md)
     * [수 정렬하기 2(2751)](baekjoon/sorting/2-2751.md)
