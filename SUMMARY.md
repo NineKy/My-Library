@@ -196,6 +196,8 @@
     * [스도쿠(2580)](baekjoon/backtracking/2580.md)
     * [연산자 끼워넣기(14888)](baekjoon/backtracking/14888.md)
     * [스타트와 링크(14889)](baekjoon/backtracking/14889.md)
+  * [이분 탐색](baekjoon/split_search/README.md)
+    * [수 찾기(1920)](baekjoon/split_search/1920.md)
   * [동적계획법](baekjoon/dynamic\_programming/README.md)
     * [피보나치 함수(1003)](baekjoon/dynamic\_programming/1003.md)
     * [신나는 함수 실행(9184)](baekjoon/dynamic\_programming/9184.md)
