@@ -8,18 +8,12 @@ _개발, 공부하면서 본인 뇌에 정리하는 듯이 정리하는 내 도�
 
 \
 \
-\
 
 
 [프로젝트 레포 주소](https://github.com/kyu9/MyBook)\
 현재 주소 : https://kyudo97.gitbook.io/myrecords/
 
 \
-
-
-**현재 진행 중인 공부목록 -> 항상 화이팅**\
-이펙티브 자바 책\
-코틀린 유튜브, 프로젝트\
 
 
 ### My Index
