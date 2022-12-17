@@ -4,9 +4,9 @@ description: java8에서부터 제공해주는 유용한 기능들
 
 # Stream, Optional, 람다식
 
-### Functional Programming\(함수형 프로그래밍\)?
+### Functional Programming(함수형 프로그래밍)?
 
-대입문을 사용하지 않은 프로그래밍 
+대입문을 사용하지 않은 프로그래밍
 
 부수효과가 없는 순수 함수를 1급 객체로 간주하여 인자로 넘기거나 반환 값으로 사용할 수 있다.
 
@@ -17,11 +17,11 @@ description: java8에서부터 제공해주는 유용한 기능들
   * 반환 값으로 사용할 수 있다.
   * 할당에 이용된 이름과 무관하게 고유한 구별이 가능하다.
 
-### 
+###
 
 ### 람다식?
 
-함수를 하나의 식으로 표현한 것이다. 메소드의 이름을 따로 지정해서 사용하지 않기 때문에 익명 함수의 한 종류이다. 
+함수를 하나의 식으로 표현한 것이다. 메소드의 이름을 따로 지정해서 사용하지 않기 때문에 익명 함수의 한 종류이다.
 
 익명함수들은 모두 1급 객체이고 1급 객체는 변수처럼 사용 가능하다는 것이 특징이다.
 
@@ -33,9 +33,9 @@ description: java8에서부터 제공해주는 유용한 기능들
 
 하지만, 재사용이 불가능하고, 디버깅이 어렵고 재귀로 만들 경우에는 부적합하다.
 
-### 
+###
 
-### Functional Interface\(함수형 인터페이스\)?
+### Functional Interface(함수형 인터페이스)?
 
 참고 : [https://mangkyu.tistory.com/113](https://mangkyu.tistory.com/113)
 
@@ -43,35 +43,33 @@ description: java8에서부터 제공해주는 유용한 기능들
 
 * 순수 함수 : 동일한 입력을 받았을 때, 항상 동일한 출력을 해야 하는 함수
 
-functional interface란 함수를 1급 객체처럼 다룰 수 있게 해주는 애노테이션\(@FunctionalInterface\)으로, 인터페이스에 선언해서 단 하나의 추상 메소드만을 갖도록 제한한다.
+functional interface란 함수를 1급 객체처럼 다룰 수 있게 해주는 애노테이션(@FunctionalInterface)으로, 인터페이스에 선언해서 단 하나의 추상 메소드만을 갖도록 제한한다.
 
 이미 정의되어있는 함수형 인터페이스
 
-* Supplier&lt;T&gt; : 매개변수 없이 반환 값만을 갖는 함수형 인터페이스, T get\(\)을 추상 메소드로 가지고 있다.
+* Supplier\<T> : 매개변수 없이 반환 값만을 갖는 함수형 인터페이스, T get()을 추상 메소드로 가지고 있다.
   * **input값이 없기 떄문에 내부에서 랜덤함수를 사용하는게 아니라면 항상 같은 값을 리턴해주는 특징!!!**
-* Consumer&lt;T&gt; : 객체 T를 매개변수로 받아서 사용하고, 반환 값은 없는 함수형 인터페이스이다. 
+* Consumer\<T> : 객체 T를 매개변수로 받아서 사용하고, 반환 값은 없는 함수형 인터페이스이다.
   * **인자를 받아서 소모한다는 의미**
   * 추상 메소드로 accept와 andThen을 가지고 있다.
-  * void accept\(T t\)를 호출하면서 인자를 전달하게 되면, 구현된 내용이 수행된다.
+  * void accept(T t)를 호출하면서 인자를 전달하게 되면, 구현된 내용이 수행된다.
   * andThen이라는 함수를 사용해서 다음 Consumer를 연쇄적으로 사용 가능 → 원하는 순서대로 andThen을 붙혀주고, accept에 계산하려는 값 넣어줌!
-* Function&lt;T, R&gt; : 객체 T를 매개변수로 받아서 처리하고 R로 반환하는 함수형 인터페이스이다. 
-  * **전형적인 함수를 지원한다 = 하나의 인자와 리턴타입을 가지고 있다.\(제네릭으로 지정가능\)**
-  * R apply\(T t\)를 추상 메소드로 가지고 있다. Consumer와 동일하게 andThen 이라는 함수를 지원하고, compose이라는 함수를 사용해서 첫 번째 함수 실행 이전에 먼저 함수를 실행할 수 있다\(andThen과 반대\), 그리고 identity 라는 static 함수를 사용해서 자기 자신을 반환할 수 있다.
+* Function\<T, R> : 객체 T를 매개변수로 받아서 처리하고 R로 반환하는 함수형 인터페이스이다.
+  * **전형적인 함수를 지원한다 = 하나의 인자와 리턴타입을 가지고 있다.(제네릭으로 지정가능)**
+  * R apply(T t)를 추상 메소드로 가지고 있다. Consumer와 동일하게 andThen 이라는 함수를 지원하고, compose이라는 함수를 사용해서 첫 번째 함수 실행 이전에 먼저 함수를 실행할 수 있다(andThen과 반대), 그리고 identity 라는 static 함수를 사용해서 자기 자신을 반환할 수 있다.
   * compose를 사용하게 되면 인자값으로 준 함수를 먼저 수행하고, 그리고 처음의 값을 먼저 수행한다.
-* Predicate&lt;T&gt; : 객체 T를 매개변수로 받아 처리한 후, Boolean을 반환한다.
+* Predicate\<T> : 객체 T를 매개변수로 받아 처리한 후, Boolean을 반환한다.
   * **Function과 비슷하지만 리턴 타입이 Boolean으로 고정**
-  * test\(\)함수를 사용해서 안에 인자 값에 대한 함수 계산이 true인지 false인지 확인
-  * and\(\)함수를 통해서 연결해서 사용 - 논리연산의 and와 같음
-  * or\(\)함수를 통해서 연결해서 사용 - 논리연산의 or와 같음
-  * isEqual\(\)
+  * test()함수를 사용해서 안에 인자 값에 대한 함수 계산이 true인지 false인지 확인
+  * and()함수를 통해서 연결해서 사용 - 논리연산의 and와 같음
+  * or()함수를 통해서 연결해서 사용 - 논리연산의 or와 같음
+  * isEqual()
 
-
-
-&lt;? super 클래스&gt;
+\<? super 클래스>
 
 매개변수의 자료형을 특정 클래스와 그 클래스의 상위 클래스로만 제한함
 
-&lt;?&gt; 은 어떤 자료형도 매개변수로 받을 수 있는 와일드카드이다.
+\<?> 은 어떤 자료형도 매개변수로 받을 수 있는 와일드카드이다.
 
 메소드 참조 : 함수형 인터페이스를 람다식이 아닌 일반 메소드를 참조시켜서 선언하는 방법
 
@@ -83,13 +81,13 @@ functional interface란 함수를 1급 객체처럼 다룰 수 있게 해주는 
 
 이렇게 참조 가능한 메소드는 클래스이름::메소드이름 이렇게 사용할 수 있다.
 
-### 
+###
 
 ### Stream? Optional?
 
 why? - 기존에 길었던 코드들을 짧게 사용할 수 있도록 보완하고자 나온 기능들이다.
 
-### 
+###
 
 ### Stream?
 
@@ -195,10 +193,7 @@ List<OnlineClass> springClasses = new ArrayList<>();
                                 .collect(Collectors.toList());
         list.forEach(System.out::println);
         System.out.println("==============================================");
-
 ```
-
-
 
 ### Optional?
 
@@ -206,18 +201,17 @@ Optional 객체는 null이 아닌 값을 포함하거나 포함하지 않을 수
 
 Optional 객체는 자체적으로 null을 사용하면 오류가 발생할 가능성이 있는 메서드 반환 유형으로 사용하기 위한 것이다.
 
-Optional 유형인 변수는 자체적으로 null이면 안된다! = 예측하지 못하는 null을 예방\(nullsafe!\)
+Optional 유형인 변수는 자체적으로 null이면 안된다! = 예측하지 못하는 null을 예방(nullsafe!)
 
 Optional 객체 생성
 
-* Optional.empty\(\) : 빈 Optional 객체 생성
-* Optional.of\(value\) : value값이 null이 아닌 경우에 사용
-* Optional.ofNullable\(value\) : value값이 null인지 아닌지 확실하지 않은 경우에 사용
+* Optional.empty() : 빈 Optional 객체 생성
+* Optional.of(value) : value값이 null이 아닌 경우에 사용
+* Optional.ofNullable(value) : value값이 null인지 아닌지 확실하지 않은 경우에 사용
 
 Optional이 담고 있는 객체에 접근 및 사용법
 
-* IfPresent\(함수\) : Optional 객체가 non-null인 경우에 인자로 넘긴 함수를 실행 / null이면 함수 실행X
-* orElse\(값\) : Optional 객체가 null인 경우에 인자로 넣어준 값을 리턴
-* orElseGet\(함수\) : orElse와 같은 기능이지만 인자로 넣어준 함수가 리턴하는 것을 리턴 / null인 경우에만!!!!! 함수 실행
+* IfPresent(함수) : Optional 객체가 non-null인 경우에 인자로 넘긴 함수를 실행 / null이면 함수 실행X
+* orElse(값) : Optional 객체가 null인 경우에 인자로 넣어준 값을 리턴
+* orElseGet(함수) : orElse와 같은 기능이지만 인자로 넣어준 함수가 리턴하는 것을 리턴 / null인 경우에만!!!!! 함수 실행
 * orElseThrow : null인 경우에 기본 값을 리턴하지 않고 예외를 리턴할 수 있다.
-

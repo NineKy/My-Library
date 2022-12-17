@@ -1,6 +1,6 @@
 # Day 16
 
-#### ![](../.gitbook/assets/\_2021-02-02\_\_12.23.24.png)외부 Security 파일 등록하기 <a href="2aa1f4b6-d1f8-4418-b4d8-9341461f7736" id="2aa1f4b6-d1f8-4418-b4d8-9341461f7736"></a>
+#### ![](<../.gitbook/assets/\_2021-02-02\_\_12.23.24 (1).png>)외부 Security 파일 등록하기 <a href="#2aa1f4b6-d1f8-4418-b4d8-9341461f7736" id="2aa1f4b6-d1f8-4418-b4d8-9341461f7736"></a>
 
 ClientRegistrationRepository를 생성하면 clientId와 clientSecret가 필수인데 로컬에서는 application-oauth.properties가 있어서 문제가 없었지만
 
@@ -12,7 +12,7 @@ app디렉토리에 properties 파일을 생성
 
 vim /home/ec2-user/app/application-aouth.properties
 
-로 파일을 생성, 연다음에 로컬에서의 [application-aouth.properties](http://application-aouth.properties) 파일을 그대로 복사 붙혀넣기를 하고 저장종료를 한다음
+로 파일을 생성, 연다음에 로컬에서의 [application-aouth.properties](http://application-aouth.properties/) 파일을 그대로 복사 붙혀넣기를 하고 저장종료를 한다음
 
 방금 서버에서 생성한 application-aouth.properties을 쓰도록 deploy.sh를 수정
 
@@ -31,7 +31,7 @@ properties,/home/ec2-user/app/application-oauth.properties \
   * classpath가 붙으면 jar 안에 있는 resources 디렉토리를 기준으로 경로가 생성됨
   * application-oauth.properties은 절대 경로를 사용, 외부에 파일이 있기 때문
 
-#### 스프링 부트 프로젝트로 RDS 접근하기 <a href="0842d12c-d900-41c4-9fdb-8ef1c2a166bd" id="0842d12c-d900-41c4-9fdb-8ef1c2a166bd"></a>
+#### 스프링 부트 프로젝트로 RDS 접근하기 <a href="#0842d12c-d900-41c4-9fdb-8ef1c2a166bd" id="0842d12c-d900-41c4-9fdb-8ef1c2a166bd"></a>
 
 RDS는 MariaDB를 상ㅇ중인데 여기서 스프링부트 프로젝트를 실행하기 위해서는 몇 가지 작업이 필요
 
@@ -72,7 +72,7 @@ CREATE TABLE SPRING_SESSION_ATTRIBUTES (
 ) ENGINE=InnoDB ROW_FORMAT=DYNAMIC;
 ```
 
-#### 프로젝트 설정 <a href="7a538e4e-df6c-41b3-ab8e-03656a24dc96" id="7a538e4e-df6c-41b3-ab8e-03656a24dc96"></a>
+#### 프로젝트 설정 <a href="#7a538e4e-df6c-41b3-ab8e-03656a24dc96" id="7a538e4e-df6c-41b3-ab8e-03656a24dc96"></a>
 
 먼저 MariaDB드라이버를 build.gradle에 등록
 
@@ -95,11 +95,11 @@ spring.session.store-type=jdbc
 
 이렇게 하고 푸쉬
 
-#### EC2 설정 <a href="27627b10-6216-4ef8-9844-ed0dd034a33b" id="27627b10-6216-4ef8-9844-ed0dd034a33b"></a>
+#### EC2 설정 <a href="#27627b10-6216-4ef8-9844-ed0dd034a33b" id="27627b10-6216-4ef8-9844-ed0dd034a33b"></a>
 
 OAuth와 마찬가지로 RDS 접속 정보도 보호해야할 정보이기 때문에 EC2 서버에 직접 설정 파일을 둔다
 
-app 디렉토리에 [application-real-db.properties](http://application-real-db.properties) 파일을 생성
+app 디렉토리에 [application-real-db.properties](http://application-real-db.properties/) 파일을 생성
 
 ```
 spring.jpa.hibernate.ddl-auto=none
@@ -132,7 +132,7 @@ nohup java -jar \
 
 왜자꾸
 
-![](<../.gitbook/assets/\_2021-02-02\_\_12.23.24 (1).png>)
+![](../.gitbook/assets/\_2021-02-02\_\_12.23.24.png)
 
 이렇게 뜨면서 에러가 나는걸까...
 

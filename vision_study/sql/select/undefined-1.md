@@ -13,7 +13,6 @@ insert into exam_result_2 values('서정원', 68, 99, 68);
 insert into exam_result_2 values('고종수', 84, 96, 98);
 insert into exam_result_2 values('박지성', 67, 68, 75);
 insert into exam_result_2 values('최순호', 88, 93, 68);
-
 ```
 
 새로운 테이블, 레코드 생성
@@ -47,14 +46,10 @@ select * from exam_result;
 
 는 똑같은 이름들이 두개씩 있는 것을 확인할 수 있음 = 중복을 제거하지 않고 정렬도 되지 않는다
 
-INTERSECT =&gt; 교집합이다
+INTERSECT => 교집합이다
 
-MINUS =&gt; 차집합이다
+MINUS => 차집합이다
 
 그림으로 생각하면 편하다
 
-  
-
-
 [https://stricky.tistory.com/210](https://stricky.tistory.com/210)
-

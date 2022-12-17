@@ -84,9 +84,9 @@ public class Main {
   * 환경변수의 이름을 CLASSPATH으로 해서 클래스패스의 위치를 넣어주면 jvm이 이것을 참조해서 클래스를 로드할 수 있게 된다
   * 환경변수를 지정해두면 -classpath옵션을 사용하지 않아도 괜찮다 하지만 os가 변경되면 사라지는 점이 있다
 
-![](<../.gitbook/assets/cp1 (2).png>)
+![](<../.gitbook/assets/cp1 (1) (1).png>)
 
-![](<../.gitbook/assets/cp2 (1).png>)
+![](../.gitbook/assets/cp2.png)
 
 ![](../.gitbook/assets/cp3.png)
 
@@ -95,7 +95,7 @@ public class Main {
   * 그 뒤의 경로들은 ' : '을 기준으로 나누어서 찾게 된다 ( 윈도우에서는 ' ; ')
   * 따로 실행시에만 -classpath옵션으로 사용가능
 
-![](<../.gitbook/assets/cp4 (1).png>)
+![](../.gitbook/assets/cp4.png)
 
 ## 접근 지정자
 

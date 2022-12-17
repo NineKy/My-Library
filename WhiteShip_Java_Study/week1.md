@@ -33,7 +33,7 @@
 * 이렇게 실행이 된다.
 *
 
-![](../.gitbook/assets/terminal_compile_execute.png)
+![](../.gitbook/assets/terminal\_compile\_execute.png)
 
 컴파일 과정
 
@@ -61,7 +61,7 @@
 
 ## JVM의 구성요소
 
-![](<../.gitbook/assets/java1 (1).png>)
+![](../.gitbook/assets/java1.png)
 
 ## JDK과 JRE의 차이
 
