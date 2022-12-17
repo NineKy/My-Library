@@ -57,7 +57,6 @@ list.add("1");list.add("3");list.add("b");list.add("B");
 Collections.sort(list);
 //내림차순
 Collections.reverse(list);
-
 ```
 
 ### Comparator로 비교하기
@@ -77,5 +76,13 @@ Collections.sort(비교하는 리스트, new Comparator<비교타입>(){
 
 일단은 Collections.sort형태를 사용하고, 중요한건 사용자함수를 Comparator안에서 compare함수를 통해서 계산을 해준다
 
-
-<br><br><br><br><br><br><br><br><br><br>
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
