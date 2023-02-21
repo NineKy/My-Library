@@ -48,4 +48,26 @@ findById.ifPresent{it.카운트++} (근데 이게 저장까지 되는게 신기�
 A blocking queue is a queue that blocks when you try to dequeue from it and the queue is empty, or when you try to enqueue items to it and the queue is full. A blocking queue uses locking and signaling mechanisms to provide a thread-safe, synchronized way for producer and consumer threads to communicate and synchronize with each other. <br>
 
 그럼 그 다음을 문제는 @Transactional(propagation=REQUIRES_NEW) 였는데 요거겠거니 했었다 <br>
+@Transactional 애노테이션에 대해서는 한번 공부를 하긴 했었는데 간단하게 다시 한 번 정리해보자<br>
+~~ 정리 ~~ 
+우선 propagation 속성에서 REQUIRES_NEW 이라는 속성은 기존에 진행되던 트랜잭션 이외에 새로운 트랜잭션을 생성해서 진행하겠다는 의미이다 <br>
+따라서 해당 애노테이션이 달려있는 메소드 내부에서는 새로운 트랜잭션이 실행되고 소스코드에서 해당 메소드 내부에서는 findById.ifPresent{ it.카운트++ }가 되어있었는데 여기 메소드에서 새로히 connection pool을 얻고 디비를 조회하고 수정을 하고 update 쿼리를 날리는 로직이다. <br>
+그러면 결국은 여기에서 새로히 connection pool을 요청하게 되는 결과이고, 하나의 큰 메소드에서 총 2개의 connection pool을 요한 다는 것을 확신할 수 있었다 <br>
+<br>
+
+그래서 어디에서 dead lock이 발생해서 타임아웃이 나는가? 에 대해서 고민해보았는데 생각해보면 이렇다 <br>
+처음에 언급한 api을 0.7초 내로 동시에 2개를 전송하게 되면 각각의 api가 시작되면서 메인 엔티티를 저장하기 위해서 conneciton pool 을 각각 하나씩 총 2개의 커넥션 풀을 사용하게 된다 
+그 상황에서 메소드가 끝나지 않은 상황에서 @Transactional(propagation=REQUIRES_NEW)을 통해서 새로운 트랜잭션을 시작하고 그 새로운 트랜잭션에서 동기적으로 conneciton pool을 얻기 위해서 hikariCP의 connection 대기 시간의 최대치인 30초를 기다리게 되는데, 애초에 처음에 메인 엔티리를 저장하기 위해서 열어두었던 connection pool 2개가 원래라면 메소드가 종료됨에 따라서 connection pool을 반납해야만 하지만
+해당 메소드가 끝나지 않았기 떄문에 계속해서 connection pool을 열어둔 상황으로 기다리는 것이고 그럼 각각에서 REQUIRES_NEW로 파생된 트랜잭션에서 30초를 기다리다가 타임아웃이 발생하게 된 것이다!!! <br><br>
+
+그래서 요걸 어떻게 해결할 것인가에 대해서 고민을 해보았다 <br>
+우선은 REQUIRES_NEW가 들어간 부분에서 이슈가 있었기 떄문에 요걸 지우고 테스트를 해보니 잘 되었었지만 본인이 만든 코드도 아니고 해당 코드에 이유가 있어서 그렇게 애노테이션을 달아두었을 것이기 때문에 소스 코드를 수정하는 것은 불가능했다 그렇기 떄문에 적어도 4개의 conenciton pool이 필요하다고 판단했고 맨 처음에 설정해두었던 connnection pool의 사이즈를 2개에서 4개로 늘렸고 4개로 늘려둔 상황에서 REQUIRES_NEW을 통한 테스트도 정상적으로 통과하게 되었다 <br>
+<br>
+
+정말 분석하는데 트랜잭션에 대한 개념도 다시 한번 고민하게 되는 시간이였고, 맨 처음에 REQUIRES_NEW 을 유지하면서 교착상태를 해결하기 위해서 isolation level을 건드려보려고 했었지만 해당 방법을 사용하는 것은 위험한 방법이라고 들었다 <br> 그래도 이김에 isolation level에 대해서 배울 수 있는 시간이였다 <br>
+
+원래는 dead lock을 방지하기 위해서 @Lock을 통해서 진행해보려고 까지 생각했었다. <br>
+다시 생각해보면 @Lock까지 갈 필요도 없는 문제였는데 단순히 내가 @Lock의 lockMode에 대해서 자세하게 알지 못했기 때문에 그렇게까지 생각이 진행되었던 것 같다<br>
+이 귀중한 기회를 날리지말고 공부할 수 있는 시간으로써 @Transactional, @Lock에 대해서 정리 다시 한 번 해보도록 하자<br><br>
+
 
