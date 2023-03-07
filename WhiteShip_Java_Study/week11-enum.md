@@ -75,7 +75,7 @@ Enum으로 정의할 때 사용한 이름(subject) 을 String이나 int와 같�
 * values() : 모든 enum의 요소들을 배열으로 생성
   * values함수를 이용해서 enum의 요소들을 모두 출력하는 예시
 
-![](<../.gitbook/assets/enum7 (1).png>)
+![](<../.gitbook/assets/enum7 (1) (2) (2).png>)
 
 ![](../.gitbook/assets/enum8.png)
 
