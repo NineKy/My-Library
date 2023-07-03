@@ -11,3 +11,4 @@ Elastic Search 이란 무엇인가에 대해서 배울 수 있는 강의라고 �
 
 
 * [강의 Summary](ElasticSearch_summary.md)
+* [간단 세미나용](Self_Summary.md)
