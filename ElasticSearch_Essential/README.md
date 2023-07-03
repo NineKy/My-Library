@@ -8,7 +8,14 @@ Elastic Search 이란 무엇인가에 대해서 배울 수 있는 강의라고 �
 회사가서 요 강의 듣는거 기안도 올리긴 해야겠다.. 그래도 회사 돈으로 들을 수 있어서 좋네ㅎㅎ.. <br>
 <br><br><br>
 
+공식 홈페이지에서 필요한거 서칭
+https://esbook.kimjmin.net/01-overview/1.1-elastic-stack/1.1.1-elasticsearch
 
 
+<<<<<<< HEAD
 * [강의 Summary](ElasticSearch_summary.md)
 * [간단 세미나용](Self_Summary.md)
+=======
+
+* [강의 Summary](ElasticSearch_summary.md)
+>>>>>>> dca1b6fa39845863e57397270180029850165807
