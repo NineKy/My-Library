@@ -13,8 +13,6 @@ elasticsearch 는 검색을 위해서 단독으로도 사용하는 것이 가능
 2. elasticsearch : logstash 로부터 전달받은 데이터를 검색/집계
 3. kibana : elasticsearch 의 검색으로 수집한 데이터를 시각화 / 모니터링
 
-<br>
-중요한건 Elasticsearch 이기 떄문에 이런게 있다~~ 정도만 알고 넘어가겠습니다 (kibana 는 정말 보기 좋게 잘 만들었네요) <br>
 
 Elasticsearch 의 특징으로는 아래와 같은 내용이 있습니다
 - realtime 검색 시스템
