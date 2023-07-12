@@ -81,7 +81,12 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
 
 
 
-테스트코드 작성
+테스트코드 작성 
+
+
+테스트 시  디비를 붙히는 방법은 크게 3가지 > local, in-memory, embedded <br>
+
+
 테스트 코드를 작성하는데 있어서 실제 기동 중인 ES에 붙는 것도 방법이긴 하지만 테스트 데이터를 항상 정리해야 하는 단점이 있음
 
 h2 와 같은 embededd ES 환경이 필요했음
@@ -96,15 +101,27 @@ https://discuss.elastic.co/t/in-memory-testing-with-resthighlevelclient/106196/5
 
 
 
+
 >> embededd 환경은 제공하지 않을 것이니 이런 테스트 방법을 사용해봐라
-
-여기서 제공해준 방법 중에 테스트 컨테이너에 ES 이미지를 넣어서 테스트 시 컨테이너를 띄워서 테스트를 하는 방법을 선택
-
 
 
 https://java.testcontainers.org/modules/elasticsearch/
 
-위 페이지에서 제공해주는게 elasticsearch 도커 이미지를 통해서 직접 embedded elasticsearch 을 띄워서 사용하는 방법
+<br>
+
+
+TestContainer? > docker 를 기반으로 junit 테스트를 할 떄 도와주는 라이브러리 <br>
+- java로 container 등록 가능
+- dockerFile, docker-compose, docker-hub을 통해서 컨테이너 동작 가능
+- 동작시킨 컨테이너 생명주기 관리가능
+- parallel 테스트 가능
+- 다양한 모듈들이 존재해서 사용성이 높음
+- 단점으로는 테스트 코드의 시간이 좀 오래걸림
+- 또 단점으로는 컨테이너를 테스트코드가 끝날 때 중지할 수 밖에 없어서 >> 컨테이너가 자꾸 쌓이니 싱글톤으로 가져갈 수 있도록 고려 필요 
+
+
+
+위 페이지에서 제공해주는게 elasticsearch 도커 이미지를 통해서 직접 elasticsearch 컨테이너 을 띄워서 사용하는 방법
 
 코드단에서 도커 이미지를 가져와서 > 컨테이너를 실행시키고 > 테스트
 
@@ -117,11 +134,15 @@ https://java.testcontainers.org/modules/elasticsearch/
 testcontainer 에서 제공해주는 ElasticsearchContainer 가 아닌 그냥 GenericContainer 을 통해서 Elasicsearch 을 띄우고 + runWith 을 통해서 nori 형태분석소를 등록해주자
 
 
+요건.. 결국 개발자 피씨에 도커가 있어야하고, 아직 정확하게 테스트는 해보지 못했지만 ES이미지도 있어야할 듯 함 <br>
+개발망에서는 아직 시도 x <br>
+<br>
 
+다음으로는 custom 하게 개발자들이 직접 만든 embedded elasticsearch 
 
+https://github.com/allegro/embedded-elasticsearch
 
-
-
+요건 조금 더 리서치가 필요해보임 우선은 피시 내부에 설치되어있는 es 을 가볍게 띄워서 사용하는 것으로 보이는데... <br>
 
 
 
