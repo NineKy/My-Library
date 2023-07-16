@@ -16,8 +16,6 @@ ES에 붙기 위해서 설정하는 방법은 여러가지가 있습니다 <br>
 RestHighLevelClient (ES와 통신하기 위해 사용하는 client 객체) 를 빈으로 등록해서 자동으로 해당 객체로 통신하도록 등록하는 것입니다 <br>
 간단하게 확인할 수 있습니다 <br>
 
-<br>
-해당 빈에서 통신과 관련해서 필요한 정보들을 세팅 가능합니다(타임아웃시간, 인증서, id, pwd 등)
 
 <br>
 @EnableElasticsearchRepositories 을 통해서 elasticsearch 으로 접근하는 ElasticsearchRepository 의 사용을 선언
@@ -74,6 +72,7 @@ native query 와 같은 경우에는 jpa에서는 실제 SQL 문을 넣었다면
 <br>
 조회3 - queryDsl
 <br>
+사용도 동일하게 사용함 >> save, saveAll, findBy~ 등등 jpa 에서 사용하던 것과 동일하게 사용 
 
 QueryDsl 사용 <br>
 https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
@@ -109,8 +108,9 @@ https://discuss.elastic.co/t/in-memory-testing-with-resthighlevelclient/106196/5
 embedded 테스트 기능을 추후 릴리즈에 추가해줄 수 있느냐 > 그럴일 없다, embededd 환경은 제공하지 않을 것이니 만약 통합 테스트가 필요하다면 이런 테스트 방법을 사용해봐라 <br>
 그러고 추천해주는 방법이 바로 Docker and TestContainer 입니다 <br> 
 
-<br>
+위 페이지에서 제공해주는게 elasticsearch 도커 이미지를 통해서 테스트 코드에서 직접 elasticsearch 을 띄워서 사용하는 방법
 
+TestContainer? > docker 를 기반으로 junit 테스트를 할 떄 도와주는 라이브러리
 
 TestContainer? > docker 를 기반으로 junit 테스트를 할 떄 도와주는 라이브러리입니다 <br>
 - java로 container 등록 가능
@@ -138,6 +138,8 @@ testcontainer 에서 제공해주는 ElasticsearchContainer 가 아닌 그냥 Ge
 
 test container 가 실패하고 그 다음으로는 custom 하게 공식으로 지원하는 방법은 아니지만 개발자들이 직접 만든 embedded elasticsearch 으로 사용해보고자 했습니다 <br> 
 구글링해보니 해당 팀에서 만든 라이브러리가 있었고 이걸 사용해봤습니다 <br>
+다음으로는 custom 하게 개발자들이 직접 만든 embedded elasticsearch
+
 https://github.com/allegro/embedded-elasticsearch
 
 보면 해당 라이브러리는 우선 사용하지 않는 것을 공식적으로 추천하고 있습니다 <br>
@@ -146,9 +148,21 @@ elasticsearch 공식에서도 embedded 방식은 사용하지 않도록 이야�
 테스트를 진행하면 좋을 것이라고 생각합니다 <br>
 <br><br>
 
+embedded-elasticsearch 라이브러리를 통해서 진행하는 방식은 아래와 같습니다 <br>
+테스트를 위해서 띄우고 싶은 엘라스틱에 대한 정보를 가지고 띄워야하는 객체 생성합니다 <br>
+테스트 시작 시, start, 종료시 stop 을 통해서 생명주기 직접 관리 필요합니다 <br>
+
+<br><br>
+문제사항 > 경량화된 엘라스틱서치(zip파일)를 외부 넥서스로부터 다운로드 받게 되어있습니다 → 테스트를 진행하는 개발계에서는 불가능<br>
+따로 파일을 지정해서 파일을 실행하는 방법은 일단 기본으로 해당 라이브러리에서 제공해주는 메소드에는 없었습니다 <br>
+하여 '다운로드' 하는 경로는 다행히도 지정하는 것이 가능하게 되어있기에 >> dev3에 해당 파일을 내려주는 컨트롤러를 생성해두었습니다 <br>
+
+결론적으로는 embedded-elasticsearch 을 통해서 아무런 작업 없이 간편하게 embedded 방식으로 테스트를 진행할 수 있습니다 <br>
+
+<br><br>
+
 
 <br><br><br><br><br><br><br><br><br><br>
-
 
 
 
