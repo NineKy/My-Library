@@ -13,4 +13,5 @@ https://esbook.kimjmin.net/01-overview/1.1-elastic-stack/1.1.1-elasticsearch
 
 
 * [강의 Summary](ElasticSearch_summary.md)
-* [간단 세미나용](Self_Summary.md)
+* [개념 정리](Self_Summary.md)
+* [Spring에 적용 정리](Self_Summary2.md)
