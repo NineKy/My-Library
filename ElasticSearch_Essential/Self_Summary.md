@@ -260,7 +260,7 @@ tokenizer의 종류
 token filter 는 토크나이저를 통해서 분리된 단어를 필터로 지정한 규칙에 따라서 처리합니다 <br>
 
 다양하게 있으니 필요한 것을 사용하면 좋습니다 <br>
-https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html <br>
 예시 중 하나로 stop token filter 이란게 있는데 해당 필터는 a, an, the, are 등 이러한 필요 없는 단어들을 제거하는 방식입니다 <br>
 <br><br>
 
