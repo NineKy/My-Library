@@ -164,7 +164,31 @@ embedded-elasticsearch 라이브러리를 통해서 진행하는 방식은 아�
 https://github.com/allegro/embedded-elasticsearch/blob/master/es60-test/src/test/groovy/pl/allegro/tech/embeddedelasticsearch/EmbeddedElasticSpec.groovy <br>
 하여 해당 메소드들을 라이브러리화 시켜서 테스트코드에서 사용하는 것이 가장 나은 방법으로 보입니다 <br>
 
+
+
 <br><br>
+### 세미나 이후 개발 관련해서 확인해봐야할 사항
+configuration 에 대한 고민 <br> 
+
+
+테스트 코드에 대한 고민<br>
+embedded elasticsearch 의 세미나 전의 결론은 테스트에서 직접 spring-data 메소드드을 사용할 수 없기 때문에 api 단위 테스트도 불가능, 직접 서비스로 테스트도 불가능하다는 것이 결론이였는데 <br> 
+++ 그렇게 생각하고 있었는데 이게 생각해보니까 elasticsearch 와 통신하는데 주로 사용되는 RestHighLevelClinet 객체를 테스트코드에서 오버라이딩을 해주고 해주는 당시에 connection 을 맺는 부분이 있는데 이걸 <br>
+embedded 에 띄우는 elasticsearch 의 정보를 입력해서 테스트가 돌면서 실행되는 repository 를 통한 자동으로 조회하는 방식을 embedded 으로 통하도록 하는 것이 가능합니다 <br>
+그래서 시도해봤는데 >> embedded elasticsearch 을 띄우고, 기본적으로 띄운 엘라스틱서치를 GET 메소드를 통해서 조회를 하도록 되어있는데 이 조회 시 리턴값 중에 필요한 것을 받아야하는데 낮은 버전의 embedded elasticsearch(5.1.1) 에서 required 값을 내려주지 않아서 에러 발생하는 것으로 확인 했습니다 <br>
+<br><br>
+
+그래서 우선 1차 결론은 이렇게 결정났습니다 >> 버전이 다른 케이스에서 테스트를 진행하는 것은 무리가 있고 현재 테스트를 위해서 따로 또 조회하는 개발을 하는 것은 아니라고 생각 <br>
+testcontainer 같은 경우에는 인터넷 망이 필요하기 떄문에 실제 elasticsearch 에 붙어서 진행하는 것으로 결론이 났습니다 <br>
+
+testcontainer 를 무조건 로컬에 도커가 있어야 하는걸까?? 하는 의문과 함께 testcontainer 내부의 설정을 바꾸는 방법에 대해서 고민해보게 되었습니다<br>
+호스트를 개발계 서버로 돌려놓고 testcontainer 를 띄우고 죽이는걸 개발계에서 작업하는 것도 방법이라는 생각이 들었습니다 <br>
+만약에 가능하다면 편리하게 테스트코드를 작성하는 것이 가능하기도 하며 해당 테스트 코드를 돌리고자 하는 개발자의 PC 에 도커가 없어도 해당 테스트 코드를 실행할 수 있을 것 이라고 예상하고 테스트를 해볼 생각입니다<br>
+<br><br>
+
+Transaction 에 대한 고민 <br>
+Elasticsearch 에서의 @Transaction 에 대한 정보 - 트랜잭션 범위, 롤백 범위에 대한 고민 <br>
+Elasticsearch 에서의 @Lock 에 대한 정보 <br>
 
 
 <br><br><br><br><br><br><br><br><br><br>
