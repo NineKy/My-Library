@@ -189,9 +189,16 @@ testcontainer 를 무조건 로컬에 도커가 있어야 하는걸까?? 하는 
 Transaction 에 대한 고민 <br>
 Elasticsearch 에서의 @Transaction 에 대한 정보 - 트랜잭션 범위, 롤백 범위에 대한 고민 <br>
 Elasticsearch 에서의 @Lock 에 대한 정보 <br>
+<br>
+
+### 피드백에 대한 리서치 내용
+Elasticsearch 에서 transaction 에 대한 고민 <br>
+![image](https://github.com/NineKy/My-Library/assets/57998468/46d79916-3e55-4692-9ff3-a4f252e813c8)
+
 
 
 <br><br><br><br><br><br><br><br><br><br>
+
 
 
 
