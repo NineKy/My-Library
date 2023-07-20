@@ -192,8 +192,39 @@ Elasticsearch 에서의 @Lock 에 대한 정보 <br>
 <br>
 
 ### 피드백에 대한 리서치 내용
-Elasticsearch 에서 transaction 에 대한 고민 <br>
+#### Elasticsearch 에서 transaction 에 대한 고민 <br>
+**결론적으로는 지원하지 않습니다** <br>
+stackoverflow 으로부터의 답변 : https://stackoverflow.com/questions/68957591/does-elastic-search-support-acid-properties <br>
+<br>
+
+공식 블로그 <br>
 ![image](https://github.com/NineKy/My-Library/assets/57998468/46d79916-3e55-4692-9ff3-a4f252e813c8)
+<br>
+
+100% 까지는 아니고 모든 문서에 대해서 lock 처리를 하는 방식이 있긴하지만 우선 공식 블로그에서도 명시한 것 처럼 전체 / 아님 안한다로 보입니다 <br>
+그래서 RDBMS와 함꼐해서 사용하는 것을 공식 블로그에서도 추천해주고 있습니다 <br>
+
+![image](https://github.com/NineKy/My-Library/assets/57998468/d9b31e36-2a7f-443e-a057-14afa60a852c)
+<br>
+
+데이터를 ACID 하게 트랜잭션을 관리할 필요가 있는 경우에는 RDBMS와 함께 사용하는게 필요합니다 > CQRS 형식의 프로젝트 구성하면 좋을 것이라고 생각합니다 <br>
+
+단일로 document을 보장하기 위해서 Elasticsearch 에서 제공하는 방법은 document 별로 versioning 을 제공한다는 것입니다 <br>
+버저닝으로 버전이 다른 케이스에서는 optimistic locking exception 을 통해서 버전이 다른 케이스에는 데이터가 수정되지 못하도록 막고 있습니다 <br>
+또한 문서를 조회할 때 api에 query param 값을 통해서 버전별로 해당 문서의 상태를 조회하는 것 또한 가능합니다 <br>
+<br><br><br>
+
+#### Elasticsearch 의 configuration 을 구성하는데 있어서 고민 <br>
+직접 config 을 구현해서만 사용해야 하는건가?? >> X <br>
+결론적으로 확인해봤을 때 스프링에서 지원하는 것이니 만큼 단순한게 application.properties 에서 설정해 주는 것으로 어렵지 않게 설정들을 해주는 것이 가능했습니다 <br>
+다만 인증서관련해서 작업하는 것은 공식적으로 application-properties 을 통해서 설정하는 것은 없는 것으로 확인했습니다 <br>
+내부적으로 커스텀하게 config 설정하는 것이 필요한 경우에는 따로 기존에 구현했던 방식대로 구현이 필요합니다 <br>
+<br><br><br> 
+
+#### 테스트 코드에 대한 고민 <br>
+embedded > 버전으로 차이로 인한 잠정적 이슈사항을 고려하기 어려우니 포기 <br>
+test container > 무조건 로컬에서만 할 수 있을까? > 테스트 전용으로 진행하는 사항들을 dev1 docker 를 바라보게 해보자 
+
 
 
 
