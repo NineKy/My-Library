@@ -192,8 +192,10 @@ Elasticsearch 에서의 @Lock 에 대한 정보 <br>
 <br>
 
 ### 피드백에 대한 리서치 내용
-#### Elasticsearch 에서 transaction 에 대한 고민 <br>
-**결론적으로는 지원하지 않습니다** <br>
+#### Elasticsearch 에서 transaction 에 대한 고민
+<br>
+
+**Elasticsearch 에서는  지원하지 않습니다** <br>
 stackoverflow 으로부터의 답변 : https://stackoverflow.com/questions/68957591/does-elastic-search-support-acid-properties <br>
 <br>
 
@@ -201,8 +203,7 @@ stackoverflow 으로부터의 답변 : https://stackoverflow.com/questions/68957
 ![image](https://github.com/NineKy/My-Library/assets/57998468/46d79916-3e55-4692-9ff3-a4f252e813c8)
 <br>
 
-100% 까지는 아니고 모든 문서에 대해서 lock 처리를 하는 방식이 있긴하지만 우선 공식 블로그에서도 명시한 것 처럼 전체 / 아님 안한다로 보입니다 <br>
-그래서 RDBMS와 함꼐해서 사용하는 것을 공식 블로그에서도 추천해주고 있습니다 <br>
+그래서 정말 필수적으로 필요했던 RDBMS와 함꼐해서 사용하는 것을 공식 블로그에서도 추천해주고 있습니다 <br>
 
 ![image](https://github.com/NineKy/My-Library/assets/57998468/d9b31e36-2a7f-443e-a057-14afa60a852c)
 <br>
@@ -223,7 +224,11 @@ stackoverflow 으로부터의 답변 : https://stackoverflow.com/questions/68957
 
 #### 테스트 코드에 대한 고민 <br>
 embedded > 버전으로 차이로 인한 잠정적 이슈사항을 고려하기 어려우니 포기 <br>
-test container > 무조건 로컬에서만 할 수 있을까? > 테스트 전용으로 진행하는 사항들을 dev1 docker 를 바라보게 해보자 
+test container > 무조건 로컬에서만 할 수 있을까? > 테스트 전용으로 진행하는 사항들을 dev1 docker 를 바라보게 해보자 <br>
+우선 진행하는데 .testcontainer.properties 를 해당 테스트 코드를 돌리는 컴퓨터의 루트 디렉토리에서 설정해주어야 합니다 <br>
+거기서 Environment 뭐시키 strategy 를 설정해줘서 직접 내가 원하는 도커 호스트로 돌리는 방법이 가능한데 이 방식을 사용해서 dev1 서버로 돌려봤는데 <br> 
+dev1 에 떠져있는 도커에서 아웃바운드를 설정해줘야 했습니다.. <br>
+그래서 dev1 도커에서 도커 설정을 통해서 2375(default) 포트를 통해서 외부에서 해당 포트로 접근할 수 있도록 설정해주고, 진행하니까 이제는 docker client api, docker server api 의 버전이 맞지 않는다고 에러를 뱉는 중입니다 <br>
 
 
 
