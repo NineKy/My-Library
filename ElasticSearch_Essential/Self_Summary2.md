@@ -195,7 +195,7 @@ Elasticsearch 에서의 @Lock 에 대한 정보 <br>
 #### Elasticsearch 에서 transaction 에 대한 고민
 <br>
 
-**Elasticsearch 에서는  지원하지 않습니다** <br>
+**Elasticsearch 에서는 지원하지 않습니다** <br>
 stackoverflow 으로부터의 답변 : https://stackoverflow.com/questions/68957591/does-elastic-search-support-acid-properties <br>
 <br>
 
@@ -203,16 +203,58 @@ stackoverflow 으로부터의 답변 : https://stackoverflow.com/questions/68957
 ![image](https://github.com/NineKy/My-Library/assets/57998468/46d79916-3e55-4692-9ff3-a4f252e813c8)
 <br>
 
-그래서 정말 필수적으로 필요했던 RDBMS와 함꼐해서 사용하는 것을 공식 블로그에서도 추천해주고 있습니다 <br>
+그래서 정말 필수적으로 필요했던 RDBMS와 함꼐 조합해서 사용하는 것을 공식 블로그에서도 추천하고 있습니다 <br>
 
 ![image](https://github.com/NineKy/My-Library/assets/57998468/d9b31e36-2a7f-443e-a057-14afa60a852c)
 <br>
 
-데이터를 ACID 하게 트랜잭션을 관리할 필요가 있는 경우에는 RDBMS와 함께 사용하는게 필요합니다 > CQRS 형식의 프로젝트 구성하면 좋을 것이라고 생각합니다 <br>
+데이터를 ACID 하게 트랜잭션을 관리할 필요가 있는 경우에는 RDBMS와 함께 사용하는게 필요합니다 > CQRS 패턴으로 프로젝트를 구성하면 좋을 것이라고 생각합니다 <br>
+<br>
 
 단일로 document을 보장하기 위해서 Elasticsearch 에서 제공하는 방법은 document 별로 versioning 을 제공한다는 것입니다 <br>
-버저닝으로 버전이 다른 케이스에서는 optimistic locking exception 을 통해서 버전이 다른 케이스에는 데이터가 수정되지 못하도록 막고 있습니다 <br>
-또한 문서를 조회할 때 api에 query param 값을 통해서 버전별로 해당 문서의 상태를 조회하는 것 또한 가능합니다 <br>
+각각의 document 의 수정이 일어나면 증가하는 방식입니다 <br>
+
+```http request
+GET http://localhost:9200/movie/_doc/1
+
+HTTP/1.1 200 OK
+content-type: application/json; charset=UTF-8
+content-encoding: gzip
+content-length: 261
+
+{
+  "_index": "movie",
+  "_type": "_doc",
+  "_id": "1",
+  "_version": 2,
+  "_seq_no": 1,
+  "_primary_term": 1,
+  "found": true,
+  "_source": {
+    "title": "전우치",
+    "genre": [
+      "액션",
+      "코미디",
+      "모험"
+    ],
+    "country": "대한민국",
+    "runningTime": 136,
+    "releaseYear": 20091223,
+    "reviewRate": 8.22
+  }
+}
+
+Response code: 200 (OK); Time: 18ms (18 ms); Content length: 270 bytes (270 B)
+
+```
+
+https://www.elastic.co/guide/en/elasticsearch/reference/7.17/optimistic-concurrency-control.html <br>
+위의 링크는 Elasticsearch 진영에서 낙관적 동시성 제어에 대한 내용을 작성해둔 내용 <br> 
+document 가 생성되거나, 업데이트되거나, 삭제되면 새로운 버전으로 바뀌면서 클러스터 내부에 있는 노드들에게 데이터가 병렬로 동시적으로 데이터들이 뿌려지게 되는데 <br> 
+Elasticsearch 에서는 옛날 버전의 문서가 신규 버전의 문서를 덮어쓰지 않도록 보장해야한다고 합니다, 그리고 이것을 보장하기 위해서 사용하는 방법이 <br> 
+
+
+
 <br><br><br>
 
 #### Elasticsearch 의 configuration 을 구성하는데 있어서 고민 <br>
