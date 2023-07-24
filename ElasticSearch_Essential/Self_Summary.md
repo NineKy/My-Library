@@ -301,6 +301,37 @@ elasticsearch 를 가장 상단에서 확인해보면 클러스터 구조로 구
 ### 피드백에 대한 리서치 내용
 
 #### Elasticsearch 의 구조
+https://www.elastic.co/guide/en/elasticsearch/reference/current/documents-indices.html <br> 
+클러스터 구조로 보았을 때 다수의 노드들이 있다면, document 가 저장될 때 클러스터 전반에 걸쳐서 저장되게 되고, 어느 노드에서든 해당 문서를 확인하는 것이 가능합니다 <br>
+Elasticsearch 는 역인덱스라고 불리우는 데이터 구조를 가지고 있습니다 <br>
+토크나이징을 통해서 데이터를 쪼개고 그 쪼갠 단어와 그 단어가 어떤 document 에서 나왔는지를 저장하는 구조입니다 <br>
+<br>
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html <br>
+Elasticsearch 공식문서에서는 Elasticsearch 가 무엇인가? 에 대한 답변 중 하나의 특징으로 확장성(Scalability), 회복성(resilience) 을 꼽고 있습니다 <br>
+확장성의 의미는 ES의 구조 상 서버의 구조를 사용에 따라서 늘리고 줄이는 것이 가능하다는 것으로 보입니다 <br>
+필요에 의해서 노드를 늘리게 되면, ES가 알아서 데이터를 사용 가능한 노드로 균등하게 나누어 주게 됩니다 <br>
+ES의 인덱스는 논리적으로 샤드를 그룹핑하기 위해서 존재하는 개념이라고 생각하시면 됩니다 <br> 
+<br>
+
+그래서 물리적 저장공간으로 가장 안쪽부터 보면, document 는 각각의 인덱스 틀에 맞춰져서 각각의 샤드에 분산되어 동일하게 되고 <br> 
+그렇게 분산된 샤드들이 다수의 노드들에 분산되어 저장되어 있습니다 <br>
+그리고 이렇게 다수의 노드들이 얽혀있는 구조를 보고 클러스터 구조를 띄고 있다고 하는겁니다 <br>
+<br>
+
+이러한 구조가 ES으로 하여금 하드웨어적 이슈를 해결하거나 쿼리의 기능을 발전시킨다는 점이였습니다 <Bbr>
+- 샤드의 수를 늘리면 > 모든 샤드에 document 가 들어가야 하니 시간이 더 오래걸립니다
+- 샤드의 사이즈가 크면 > 클러스터를 다시 밸런싱 맞누는 순간이 오래 걸립니다
+
+<br>
+이러한 고민들에 있어서 ES 에서는 처음 시작할 때 추천을 해줍니다 <br>
+샤드의 사이즈는 최대한 수 GB 에서 수십GB 사이를 유지할 수 있도록 목표를 세워야 한다고 합니다 <br>
+운영 구조에서는 ES 클러스터들을 모니터링하고 제어하는 것이 아주 중요한데 이것을 키바나를 통해서 확인하고 관리하면 좋다고 합니다 <br>
+<br><br>
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html <br>
+노드의 종류는 다양하게 존재하고 있습니다 <br>
+기본적으로는 모든 기능을 수행하는 것이 가능하지만 ES의 설정을 하는데 있어서 yml 로 세팅하는 환경에서 node.roles 을 통해서 노드들을 list 형식으로 각각의 역할을 부여하는 것이 가능합니다 <br>
 
 
 #### 동적 매핑에 대한 고민
