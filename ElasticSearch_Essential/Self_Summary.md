@@ -365,15 +365,32 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.htm
 
 
 #### 동적 매핑에 대한 고민
+https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-mapping.html <br>
+
 springboot에 @Document 으로 명시되어 있는 객체가 있고, 해당 객체에 맞게 동일하게 index 도 매핑도 맞춰서 생성되어 있는 상황이고 현재 해당 index 형식에 document 가 들어가 있는 상황이라고 가정해보겠습니다 <br>
 <br>
 
 한번 인덱스가 만들어지고, 직접 elasticsearch 에 /_mapping api 를 통해서 변경하려고 해도 변경할 수 없습니다 > 새로운 인덱스를 만들거나 해야합니다 <br>
 이미 만들어진 인덱스에 같은 이름으로 지정하지 않은 타입을 넣어주면 > **들어갑니다** <br>
 <br>
-WHY?? 이미 있는 필드에 다른 타입이 들어가는건 > 에러를 던지지만 위 같이 같은 이름, 다른 타입으로 해서 색인을 시도하면, 새로운 필드가 추가되는 방식 <br>
-그래서 이 에러를 무시하기 위한 방법이 ignoreMalformed 이라는 방식이라고 이론상 이런데 <br>
-왜 실제로 코드에서 위와 같은 상황을 가정하고 실험해보면 안되는걸까?? <br>
+이미 생성된 movie 라는 인덱스에 text 타입을 가진 title 이 있다고 가정하고, document 을 넣는다고 했을 때 title 에 double 값을 넣고 document 을 넣으려고 하면 저장됩니다 <br> 
+인덱스 는 document 의 논리적인 그룹이며 ES의 특성 상 유연한 데이터 구조를 가지기 때문에 문제 없이 들어가게 됩니다 <br>
+어떻게 보면 장점이기도하고 단점이기도 한 점이라고 보이는데 <br>
+전 데이터를 관리하는데 있어서 데이터의 틀을 맞추어야 예상하지 못한 데이터에 보복당하지 않을 것이라고 생각하기 때문에 <br> 
+저희가 RDBMS 에서 테이블을 관리하는 것처럼 맞지 않는 타입을 가진 document 나 알 수 없는 새로운 필드를 가진 document 가 들어왔을 때 document가 저장되지 못하도록 막고 싶었습니다 <br>
+그 방법이 바로 dynamic 설정입니다 <br>
+<br> 
+이전에 말씀드렸던 ddl-auto 설정과 비슷하다고 생각하면 됩니다 <br>
+설정 값은 아래와 같습니다 <br>
+- true : default 값으로 매핑에 신경쓰지 않고 유연하게 대응하겠다는 의미
+- runtime : runtime field로 매핑해주겠다는 의미로, 평소에는 유연하게 대응하지만 조회할 때만 확인하겠다는 의미
+- false : 인덱스에 설정된 케이스 이외의 타입이나 필드가 확인되면 무시하겠다는 의미
+- strict : 인덱스에 설정된 케이스 이외의 타입이나 필드가 확인되면 ES에서 에러를 전달하겠다는 의미
+
+dynamic 설정 값은 index의 매핑을 설정하는 과정에서 설정하는 것이 가능합니다 <br>
+인덱스에 지정하지 않은 필드가 들어오는 케이스를 방어하기 위해서는 인덱스의 상위 json에 설정하는 것이 가능하고 <br>
+각각의 필드에 처음에 설정하지 않은 데이터 타입이 들어오는 케이스를 방어하기 위해서는 porperties 설정하는 json 부분에서 설정하는 것이 가능합니다 <br>
+
 <br>
 
 이러한 상황을 해결하기 위해서 사용하는 것이 @Field 애노테이션에서 ignoreMalformed 이라는 boolean 옵션 값이 있습니다 이걸 사용해서 이상한 타입이 들어오면 무시하는 방법도 있습니다 <br>
