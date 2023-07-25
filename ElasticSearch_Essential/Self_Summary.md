@@ -367,16 +367,17 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.htm
 #### 동적 매핑에 대한 고민
 https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-mapping.html <br>
 
-springboot에 @Document 으로 명시되어 있는 객체가 있고, 해당 객체에 맞게 동일하게 index 도 매핑도 맞춰서 생성되어 있는 상황이고 현재 해당 index 형식에 document 가 들어가 있는 상황이라고 가정해보겠습니다 <br>
-<br>
+이미 생성된 movie 라는 인덱스에 text 타입을 가진 title 이 있다고 가정하고, document 을 넣는다고 가정해 보았을 떄 <br>
 
-한번 인덱스가 만들어지고, 직접 elasticsearch 에 /_mapping api 를 통해서 변경하려고 해도 변경할 수 없습니다 > 새로운 인덱스를 만들거나 해야합니다 <br>
+전에 고려사항으로 나왔던 항목들을 확인해보면 <br>
 이미 만들어진 인덱스에 같은 이름으로 지정하지 않은 타입을 넣어주면 > **들어갑니다** <br>
+title 에 double 값을 넣고 document 을 넣으려고 하면 저장됩니다 <br>
 <br>
-이미 생성된 movie 라는 인덱스에 text 타입을 가진 title 이 있다고 가정하고, document 을 넣는다고 했을 때 title 에 double 값을 넣고 document 을 넣으려고 하면 저장됩니다 <br> 
-이러한 상황을 해결하기 위해서 사용하는 것이 @Field 애노테이션에서 ignoreMalformed 이라는 boolean 옵션 값이 있습니다 이걸 사용해서 이상한 타입이 들어오면 무시하는 방법도 있습니다 <br>
-이미 만들어진 인덱스에 새로운 필드가 추가된다면 elasticsearch 의 특성 대로 > **들어갑니다** <br>
-여기서 중요한건, Elasticsearch 에서 이미 매핑이 등록되어 있는 인덱스에 새로운 필드를 추가하면 기존에 해당 인덱스의 템플릿으로 생성된 document 들이 다시 색인됩니다 <br>
+ 
+이미 만들어진 인덱스에 기존에 선언하지 않은 필드를 추가해서 데이터를 넣으려고 하면 elasticsearch 의 특성 대로 > **들어갑니다** <br>
+여기서 중요한건, Elasticsearch 에서 이미 매핑이 등록되어 있는 인덱스에 새로운 필드를 추가해서 다시 인덱스의 매핑을 설정해주게 되면 <br>
+ES 내부의 프로세스는 새로운 매핑을 기준으로 인덱스를 새로 만들고, 기존의 인덱스로 들어가 있는 document 들을 새로운 인덱스에 복사하는 과정을 거치게 됩니다 <br> 
+즉 프로퍼티를 생성하게 되면, 데이터의 재색인이 일어난다는 것입니다 <br>
 
 인덱스 는 document 의 논리적인 그룹이며 ES의 특성 상 유연한 데이터 구조를 가지기 때문에 문제 없이 들어가게 됩니다 <br>
 어떻게 보면 장점이기도하고 단점이기도 한 점이라고 보이는데 <br>
@@ -401,10 +402,13 @@ dynamic 설정 값은 index의 매핑을 설정하는 과정에서 설정하는 
 <br>
 
 default 으로는 true 으로 설정되어 있으며 false 같은 경우에는 새로운 필드를 무시하고 strict 같은 경우에는 새로운 필드가 들어오게 되면 에러를 발생시킵니다 <br>
+
+springboot 코드 단에서도 가능한데요, @Field 애노테이션에서 ignoreMalformed 이라는 boolean 옵션 값이 있습니다 이걸 사용해서 이상한 타입이 들어오면 무시하는 방법도 있습니다 <br>
+
 <br><br>
 
 결론적으로는 elasticsearch 에서 인덱스의 매핑을 설정하는데 있어서 dynamic 을 strict 으로 해서 의도치 않은 새로운 필드가 추가되어서 모든 document가 다시 색인되는 것에 대해서 방지할 필요가 있을 것으로 보입니다 <br> 
-객체 단에서 필드가 변경되는 사항에 대해서 방어할 수 있는 방법으로는 자바 단에서 objectmapper 등을 통해서 strict 하게 매핑을 작업해주는 방법 말고는 따로 없는 것으로 보입니다 <br>
+추가적으로 객체 단에서 필드가 변경되는 사항에 대해서 방어할 수 있는 방법으로는 자바 단에서 objectmapper 등을 통해서 코드단에서 매핑을 체크해주는 작업해주는 방법이 있다고 생각했습니다 <br>
 추가로 그냥 신규로 넣고 싶은 경우에는 PUT /_mapping 을 통해서 넣고 싶은 **새로운 필드만** 전달해주면 기존의 필드들에 새로운 필드가 정상적으로 추가됩니다 <br>
 <br><br>
 
