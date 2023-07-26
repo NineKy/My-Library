@@ -249,12 +249,17 @@ Response code: 200 (OK); Time: 18ms (18 ms); Content length: 270 bytes (270 B)
 ```
 
 https://www.elastic.co/guide/en/elasticsearch/reference/7.17/optimistic-concurrency-control.html <br>
-위의 링크는 Elasticsearch 진영에서 낙관적 동시성 제어에 대한 내용을 작성해둔 내용입니다 <br> 
-우선 데이터를 직접 잠구는 비관적 락(for update) 은 따로 없습니다 <br> 
+위의 링크는 Elasticsearch 진영에서 낙관적 동시성 제어에 대한 내용을 작성해둔 내용입니다 <br>  
 <br><br>
 
-document 가 생성되거나, 업데이트되거나, 삭제되면 새로운 버전으로 바뀌면서 클러스터 내부에 있는 노드들에게 데이터가 병렬로 동시적으로 데이터들이 뿌려지게 되는데 <br> 
-Elasticsearch 에서는 옛날 버전의 문서가 신규 버전의 문서를 덮어쓰지 않도록 보장해야한다고 합니다, 그리고 이것을 보장하기 위해서 낙관적 동시성 제어 기능을 제공합니다 <br> 
+elasticsearch 의 특성 상 document 가 생성되거나, 업데이트되거나, 삭제되면 새로운 버전으로 바뀌면서 클러스터 내부에 있는 노드들에게 데이터가 병렬로 동시적으로 데이터들이 뿌려지게 되는데 <br>
+이 과정에서 elasticsearch 에서는 옛날 버전의 문서가 신규 버전의 문서를 덮어쓰지 않도록 보장해야한다고 합니다, 그리고 이것을 보장하기 위해서 낙관적 동시성 제어 기능을 제공합니다 <br>
+이것을 가능하게 해주는 것을 확인하는 방법이 바로 _version, _seq_no, _primary_term 3개의 필드를 통해서 확인하는 것이 가능합니다 <br>
+_version : document의 버전을 나타냅니다, document 가 수정되면 해당 값이 증가합니다 <br>
+_seq_no : document 의 작업 순서를 식별하기 위해서 사용되는 필드이고, 이건 각 작업 마다 샤드가 일렬번호를 주고 그 일렬번호 대로 작업이 적용됩니다(document 을 조회했을때 나오는 seq 는 해당 document 을 수행한 작업의 seq_no) <br>
+_primary_term : 샤드의 재할당이나 샤드의 에러로 인한 replica>primary 샤드 변경이 진행할 때 증가하는 번호입니다 해당 번호를 통해서 ES 는 구 primary 샤드, 신 primary 샤드에 연관된 작업을 구분하고 충돌을 방지합니다 <br>
+<br><br> 
+
 
 
 
