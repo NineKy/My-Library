@@ -249,9 +249,12 @@ Response code: 200 (OK); Time: 18ms (18 ms); Content length: 270 bytes (270 B)
 ```
 
 https://www.elastic.co/guide/en/elasticsearch/reference/7.17/optimistic-concurrency-control.html <br>
-위의 링크는 Elasticsearch 진영에서 낙관적 동시성 제어에 대한 내용을 작성해둔 내용 <br> 
+위의 링크는 Elasticsearch 진영에서 낙관적 동시성 제어에 대한 내용을 작성해둔 내용입니다 <br> 
+우선 데이터를 직접 잠구는 비관적 락(for update) 은 따로 없습니다 <br> 
+<br><br>
+
 document 가 생성되거나, 업데이트되거나, 삭제되면 새로운 버전으로 바뀌면서 클러스터 내부에 있는 노드들에게 데이터가 병렬로 동시적으로 데이터들이 뿌려지게 되는데 <br> 
-Elasticsearch 에서는 옛날 버전의 문서가 신규 버전의 문서를 덮어쓰지 않도록 보장해야한다고 합니다, 그리고 이것을 보장하기 위해서 사용하는 방법이 <br> 
+Elasticsearch 에서는 옛날 버전의 문서가 신규 버전의 문서를 덮어쓰지 않도록 보장해야한다고 합니다, 그리고 이것을 보장하기 위해서 낙관적 동시성 제어 기능을 제공합니다 <br> 
 
 
 
