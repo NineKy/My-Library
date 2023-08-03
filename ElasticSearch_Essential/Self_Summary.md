@@ -370,6 +370,22 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.htm
 <br><br><br>
 
 
+질문
+엘라스틱에서 노드가 클러스터구조로 되어있는지 설정으로 할 수 있는가
+https://esbook.kimjmin.net/03-cluster > 항상 클러스터를 기본으로 동작
+
+인덱스를 처음에 설정했을 때 프라이머리와 레플리카의 갯수가 어떻게 구성되는지
+https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 단 하나만 들어감
+
+노드에 프라이머리와 레플리카가 같이 들어갈 수 있는지
+https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 반드시 서로 다른 노드에 저장이 됩니다.
+
+프라이머리와 레플리카를 샤드에 배치하는걸 알아서 할 수 있는지
+
+참고<br>
+https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
+
+
 #### 동적 매핑에 대한 고민
 https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-mapping.html <br>
 
