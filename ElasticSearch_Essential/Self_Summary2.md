@@ -279,6 +279,8 @@ test container > 무조건 로컬에서만 할 수 있을까? > 테스트 전용
 거기서 Environment 뭐시키 strategy 를 설정해줘서 직접 내가 원하는 도커 호스트로 돌리는 방법이 가능한데 이 방식을 사용해서 dev1 서버로 돌려봤는데 <br> 
 dev1 에 떠져있는 도커에서 아웃바운드를 설정해줘야 했습니다.. <br>
 그래서 dev1 도커에서 도커 설정을 통해서 2375(default) 포트를 통해서 외부에서 해당 포트로 접근할 수 있도록 설정해주고, 진행하니까 이제는 docker client api, docker server api 의 버전이 맞지 않는다고 에러를 뱉는 중입니다 <br>
+dev3 에서도 docker 의 server api version 이 현재 버전으로써는 testcontainer 를 사용하기에는 무리가 있다고 판단되어 real dev1 docker 로 설정해둔 elasticsearch 에 붙어서 진행하는 것으로 결론 <br>
+
 
 
 
