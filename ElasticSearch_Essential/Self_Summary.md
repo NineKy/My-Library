@@ -356,7 +356,7 @@ ES는 자동으로 rebalancing 을 통해서 노드간에 샤드를 배치시켜
 여기서 잡는 기준은 기본적으로 데이터 노드 같은 경우에는 데이터 노드의 티어(https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html)에 따라서 ES 가 자동으로 해당 티어에 맞는 밸런싱을 진행하지만 config 을 통해서 따로 설정하는 것도 가능합니다 <br>
 
 <br>
-예시로 보면 <br>
+예시로 보면 
 ![img_8.png](img_8.png) <br>
 만약 노드가 1개이고, primary가 1개, replica가 5개 이렇게 있는 상황에서 <br>
 primary 같은 경우에는 반드시 노드에 존재해야 하고, replica 같은 경우에는 반드시 다른 노드에 존재해야 하는데 primary 가 있는 노드 외에 노드가 없는 경우에 이렇게 unassigned 상태로 표기되고 결국은 replica의 업무를 다하지 못하고 있게 됩니다 <br>
