@@ -370,17 +370,23 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.htm
 <br><br><br>
 
 
-질문
-엘라스틱에서 노드가 클러스터구조로 되어있는지 설정으로 할 수 있는가
-https://esbook.kimjmin.net/03-cluster > 항상 클러스터를 기본으로 동작
+질문 <br>
+엘라스틱에서 노드가 클러스터구조로 되어있는지 설정으로 할 수 있는가 <br>
+https://esbook.kimjmin.net/03-cluster > 항상 클러스터를 기본으로 동작 <br>
+<br>
 
-인덱스를 처음에 설정했을 때 프라이머리와 레플리카의 갯수가 어떻게 구성되는지
-https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 단 하나만 들어감
+인덱스를 처음에 설정했을 때 프라이머리와 레플리카의 갯수가 어떻게 구성되는지 <br>
+https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 단 하나만 들어감 <br>
 
-노드에 프라이머리와 레플리카가 같이 들어갈 수 있는지
-https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 반드시 서로 다른 노드에 저장이 됩니다.
+노드에 프라이머리와 레플리카가 같이 들어갈 수 있는지 <br>
+https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 반드시 서로 다른 노드에 저장이 됩니다. <br>
 
-프라이머리와 레플리카를 샤드에 배치하는걸 알아서 할 수 있는지
+<br>
+프라이머리와 레플리카를 샤드에 배치하는걸 알아서 할 수 있는지 > 사용할 수 있는 샤드들은 자동으로 사용이 가능한 데이터 노드들으로 분산되어 들어가게 되어있다 <br>
+
+<br>
+인덱스를 처음 만들었을 때 프라이머리 샤드의 갯수는 default 으로 1 <br>
+인덱스를 처음 만들었을 때 레플리카 샤드의 갯수는 default 으로 1 <br>
 
 참고<br>
 https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-small-clusters.html
