@@ -355,8 +355,7 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.
 ES는 자동으로 rebalancing 을 통해서 노드간에 샤드를 배치시켜 균형을 맞춥니다 <br>
 여기서 잡는 기준은 기본적으로 데이터 노드 같은 경우에는 데이터 노드의 티어(https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html)에 따라서 ES 가 자동으로 해당 티어에 맞는 밸런싱을 진행하지만 config 을 통해서 따로 설정하는 것도 가능합니다 <br>
 
-<br>
-예시로 보면 
+
 ![img_8.png](img_8.png) 
 
 <br> 만약 노드가 1개이고, primary가 1개, replica가 5개 이렇게 있는 상황에서 <br>
