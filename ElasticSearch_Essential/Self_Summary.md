@@ -450,6 +450,8 @@ https://esbook.kimjmin.net/03-cluster/3.2-index-and-shards > 반드시 서로 �
 
 
 <img src="../.gitbook/assets/image (2).png" alt="" data-size="line">\
+```GET http://localhost:9200/_cat/indices?v```
+
 인덱스를 처음 만들었을 때 프라이머리 샤드의 갯수는 default 으로 1\
 인덱스를 처음 만들었을 때 레플리카 샤드의 갯수는 default 으로 1\
 
