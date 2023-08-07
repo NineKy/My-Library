@@ -2,7 +2,7 @@
 
 sudo yum install mysql
 
-### AWS에서 데이터베이스 환경을 사용 : RDS <a href="e4fda241-422b-4457-9f99-a2745b642d3e" id="e4fda241-422b-4457-9f99-a2745b642d3e"></a>
+### AWS에서 데이터베이스 환경을 사용 : RDS <a href="#e4fda241-422b-4457-9f99-a2745b642d3e" id="e4fda241-422b-4457-9f99-a2745b642d3e"></a>
 
 웹 서비스의 벡엔드를 다룬다고 했을 떄 애플리케이션 코드를 작성하는 것만큼 중요한 것이 데이터베이스를 다루는 일이다.
 
@@ -10,13 +10,13 @@ sudo yum install mysql
 
 →만약 직접 설치해서 다루게 된다면 모니터링, 알람, 백업, HA 구성 등을 모두 직접 해야함
 
-#### AWS에서는 위에서 언급한 작업을 모두 지원하는 관리형 서비스 : RDS(Relational Database Service)를 제공 <a href="9bc3ef60-b2be-43c7-9b80-ad37b067f531" id="9bc3ef60-b2be-43c7-9b80-ad37b067f531"></a>
+#### AWS에서는 위에서 언급한 작업을 모두 지원하는 관리형 서비스 : RDS(Relational Database Service)를 제공 <a href="#9bc3ef60-b2be-43c7-9b80-ad37b067f531" id="9bc3ef60-b2be-43c7-9b80-ad37b067f531"></a>
 
-#### RDS는 AWS에서 지원하는 클라우드 기반 관계형 데이터베이스 <a href="0d72f75c-e3a5-4a7e-a282-7c33cad7bfff" id="0d72f75c-e3a5-4a7e-a282-7c33cad7bfff"></a>
+#### RDS는 AWS에서 지원하는 클라우드 기반 관계형 데이터베이스 <a href="#0d72f75c-e3a5-4a7e-a282-7c33cad7bfff" id="0d72f75c-e3a5-4a7e-a282-7c33cad7bfff"></a>
 
 추가로 조정 가능한 용량을 지원하여 예상치 못한 양의 데이터가 쌓여도 비용만 추가로 내면 정상적으로 서비스가 가능
 
-#### 1. RDS 인스턴스 생성하기 <a href="624ecb28-7a1c-4590-97fd-647016987c7a" id="624ecb28-7a1c-4590-97fd-647016987c7a"></a>
+#### 1. RDS 인스턴스 생성하기 <a href="#624ecb28-7a1c-4590-97fd-647016987c7a" id="624ecb28-7a1c-4590-97fd-647016987c7a"></a>
 
 아마존에서 RDS 대시보드에서 데이터베이스 생성을 눌러보면
 
@@ -57,7 +57,7 @@ sudo yum install mysql
 
 첫 날에 진행하는 도중에 잘안됬음 → Intellij에서 db를 연동해서 사용하려고하니까 안됬음 ㅠ 스키마에 안나와서 뭐가 문제지하고 구글링을 통해 [https://velog.io/@johnwi/Ch07.-AWS-RDS](https://velog.io/@johnwi/Ch07.-AWS-RDS) 여기서 찾아봤음
 
-#### Trouble Shooting(변경사항) <a href="0f7ca174-5f3e-4957-9cce-13d5a831b8bc" id="0f7ca174-5f3e-4957-9cce-13d5a831b8bc"></a>
+#### Trouble Shooting(변경사항) <a href="#0f7ca174-5f3e-4957-9cce-13d5a831b8bc" id="0f7ca174-5f3e-4957-9cce-13d5a831b8bc"></a>
 
 rds를 처음에 생성시, 추가 구성을 눌러서
 
@@ -67,7 +67,7 @@ rds를 처음에 생성시, 추가 구성을 눌러서
 
 라고 적혀있는데 이번에는 다시 SpringBoot-Book이라는 이름으로 진행해보자
 
-#### 2. RDS 운영환경에 맞는 파라미터 설정하기 <a href="71e505b8-7ca3-4d62-9725-609897cbc237" id="71e505b8-7ca3-4d62-9725-609897cbc237"></a>
+#### 2. RDS 운영환경에 맞는 파라미터 설정하기 <a href="#71e505b8-7ca3-4d62-9725-609897cbc237" id="71e505b8-7ca3-4d62-9725-609897cbc237"></a>
 
 설정 3가지
 
@@ -99,7 +99,7 @@ DB 파라미터 그룹에서 아까 만들어뒀던 DB파라미터 그룹을 설
 
 그리고 재부팅을 해준다
 
-### 3. 내 PC에서 RDS에 접속해보기 <a href="8ca81d57-7f9d-4532-bd73-e4eabfc60bb9" id="8ca81d57-7f9d-4532-bd73-e4eabfc60bb9"></a>
+### 3. 내 PC에서 RDS에 접속해보기 <a href="#8ca81d57-7f9d-4532-bd73-e4eabfc60bb9" id="8ca81d57-7f9d-4532-bd73-e4eabfc60bb9"></a>
 
 로컬 PC에서 RDS로 접근하기 위해서 RDS의 보안 그룹에 본인 PC의 IP를 추가해야함
 
@@ -109,7 +109,7 @@ DB 파라미터 그룹에서 아까 만들어뒀던 DB파라미터 그룹을 설
 
 이렇게까지하면 개인 PC, EC2간의 연동 설정은 모두 끝났다 : 로컬에서 테스트해보자
 
-#### Database 플러그인 설치 <a href="51c798af-96b2-46d7-87d2-08259070ed9a" id="51c798af-96b2-46d7-87d2-08259070ed9a"></a>
+#### Database 플러그인 설치 <a href="#51c798af-96b2-46d7-87d2-08259070ed9a" id="51c798af-96b2-46d7-87d2-08259070ed9a"></a>
 
 로컬에서 원격 데이터베이스로 붙을 떄 GUI 클라이언트를 많이 사용함
 
@@ -121,9 +121,9 @@ DB 파라미터 그룹에서 아까 만들어뒀던 DB파라미터 그룹을 설
 
 인텔리제이에서 Database Navigator를 install
 
-***
 
-#### Intellij Ultimate을 사용하고 있기 때문에 굳이 깔지 않고 <a href="23596db7-7221-4d4e-a78d-ba1485ae2c18" id="23596db7-7221-4d4e-a78d-ba1485ae2c18"></a>
+
+#### Intellij Ultimate을 사용하고 있기 때문에 굳이 깔지 않고 <a href="#23596db7-7221-4d4e-a78d-ba1485ae2c18" id="23596db7-7221-4d4e-a78d-ba1485ae2c18"></a>
 
 전체 검색 → command+shift+a
 
@@ -175,13 +175,13 @@ show variables like 'c%';
 
 를 통해서 정상적으로 변경되었는지 확인
 
-#### 타임존을 확인 <a href="23d3cdea-291d-4527-8f0c-b79b71803dfe" id="23d3cdea-291d-4527-8f0c-b79b71803dfe"></a>
+#### 타임존을 확인 <a href="#23d3cdea-291d-4527-8f0c-b79b71803dfe" id="23d3cdea-291d-4527-8f0c-b79b71803dfe"></a>
 
 select @@time\_zone, now();
 
 →정상적으로 Asia/Seoul이 나오고
 
-#### 한글명이 잘 들어가는지 간단한 테이블 생성을 통해서 확인 <a href="8b431832-fcbc-4fb2-8464-062469b9d3ab" id="8b431832-fcbc-4fb2-8464-062469b9d3ab"></a>
+#### 한글명이 잘 들어가는지 간단한 테이블 생성을 통해서 확인 <a href="#8b431832-fcbc-4fb2-8464-062469b9d3ab" id="8b431832-fcbc-4fb2-8464-062469b9d3ab"></a>
 
 ```
 CREATE TABLE test(
@@ -196,7 +196,7 @@ select * from test;
 
 이렇게보면 한글 데이터가 잘 등록되는 것을 확인
 
-### 4. EC2에서 RDS에서 접근 확인 <a href="f4dc4e7a-ebe2-4189-872e-ca79c69d3a09" id="f4dc4e7a-ebe2-4189-872e-ca79c69d3a09"></a>
+### 4. EC2에서 RDS에서 접근 확인 <a href="#f4dc4e7a-ebe2-4189-872e-ca79c69d3a09" id="f4dc4e7a-ebe2-4189-872e-ca79c69d3a09"></a>
 
 터미널에서
 

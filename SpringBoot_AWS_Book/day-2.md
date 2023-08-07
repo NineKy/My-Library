@@ -88,7 +88,7 @@ plugins에 추가
 
 롬복은 프로젝트마나 설정을 해줘야함 ⇒ build.gradle에 추가 / Settings > Build > Compiler > Annotation processors > Enable annotation processing
 
-***
+
 
 위의 방식으로 gradle에 추가하려니까 안됨
 
@@ -177,7 +177,7 @@ assertThat
   * 동등한지 비교하는 메소드
   * 값이 같으면 성공
 * assertj의 장점 : 백기선님 유튜브를 보고 배우자
-  * [https://www.youtube.com/watch?v=zLx_fI24UXM](https://www.youtube.com/watch?v=zLx_fI24UXM)
+  * [https://www.youtube.com/watch?v=zLx\_fI24UXM](https://www.youtube.com/watch?v=zLx\_fI24UXM)
 
 ## 👉ResponseDto를 사용하도록 추가
 

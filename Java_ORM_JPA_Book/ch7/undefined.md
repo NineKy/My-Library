@@ -45,9 +45,9 @@ public class Address{
 
 **엔티티와 임베디드 타입의 관계를 UML로 표현하자면 Composition 관계가 된다.**
 
-****
 
-****
+
+
 
 ## 임베디드 타입과 테이블의 매핑
 
@@ -55,9 +55,9 @@ public class Address{
 
 _나중에 진짜 되는지 한번 보자_
 
-__
 
-__
+
+
 
 ## @AttributeOverride(속성 재정의)
 

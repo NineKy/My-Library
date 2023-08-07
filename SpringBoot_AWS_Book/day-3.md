@@ -39,7 +39,7 @@ Spring Data JPA의 등장 배경
 
 JPA를 사용하지 못하는 가장 큰 이유는 어려워서 : 객체 지향 프로그래밍과 관계형 데이터베이스를 잘 이해해야함
 
-***
+
 
 ## 앞으로 만들 게시판의 요구사항 분석
 
@@ -56,7 +56,7 @@ JPA를 사용하지 못하는 가장 큰 이유는 어려워서 : 객체 지향 
 * 로그인한 사용자 글 작성 권한
 * 본인 작성 글에 대한 권한 관리
 
-***
+
 
 ## 프로젝트에 Spring Data JPA 적용하기
 
@@ -129,7 +129,7 @@ public class Posts {
 @Entity
 
 * 테이블과 링크(데이터베이스와 연결)될 클래스임을 나타냄
-* [SalesManager.java](http://salesmanager.java) → sales_manager table
+* [SalesManager.java](http://salesmanager.java) → sales\_manager table
 * 이런 식으로 db의 이름을 짓는다
 
 @Id
@@ -139,7 +139,7 @@ public class Posts {
 @GeneratedValue
 
 * Primary Key의 생성 규칙을 나타냄
-* 스프링 부트 2.0에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 됨
+* 스프링 부트 2.0에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto\_increment가 됨
 
 @Column
 
@@ -161,7 +161,7 @@ public class Posts {
 * 해당 클래스의 빌더 패턴 클래스를 생성
 * 생성자 상단에서 선언 시 생성자에 포함된 필드만 빌더에 포함
 
-\*Entity의 primarykey는 Long타입의 auto_increment를 추천
+\*Entity의 primarykey는 Long타입의 auto\_increment를 추천
 
 \*Entity에는 절대로 Setter 메소드를 만들지 않는다
 
