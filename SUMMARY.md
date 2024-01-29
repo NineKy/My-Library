@@ -446,3 +446,6 @@
 * [토비의 스프링 강의](Toby_Spring/README.md)
   * [스프링부트 살펴보기](Toby_Spring/Chapter1.md)
   * [독립 실행형 서블릿 애플리케이션](Toby_Spring/Chapter2.md)
+* [k8s](k8s/k8s.md)
+  * [minikube 설치](k8s/minikube.md)
+  * [jenkins 추가](k8s/minikube2.md)
